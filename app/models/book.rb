@@ -7,4 +7,8 @@ class Book < ApplicationRecord
 
   has_many :joint_table_wishlist_books, dependent: :destroy
   has_many :wishlists, through: :joint_table_wishlist_books
+
+  belongs_to :editor
+  belongs_to :category
+  belongs_to :price_code
 end
