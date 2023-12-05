@@ -1,0 +1,2 @@
+class JointTableOrderBook < ApplicationRecord
+end

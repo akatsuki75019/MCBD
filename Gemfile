@@ -65,3 +65,12 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+group :development do
+  gem "faker"
+  gem "table_print"
+end
+
+gem "devise"
+gem "stripe"
+gem "dotenv-rails"

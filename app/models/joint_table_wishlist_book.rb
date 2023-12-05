@@ -1,0 +1,2 @@
+class JointTableWishlistBook < ApplicationRecord
+end
