@@ -10,6 +10,10 @@ class CreateBooks < ActiveRecord::Migration[7.1]
       t.float :tva
       t.string :image_url
 
+      t.references :editor, foreign_key: true
+      t.references :price_code, foreign_key: true
+      t.references :category, foreign_key: true
+
       t.timestamps
     end
   end
