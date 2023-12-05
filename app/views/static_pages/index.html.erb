@@ -1,0 +1,14 @@
+<h1>Homepage</h1>
+
+<p>Ceci sera notre homepage</p>
+
+<div id="books">
+  <% @books.each do |book| %>
+    <%= render book %>
+    <p>
+      <%= link_to "Show this book", book %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New book", new_book_path %>

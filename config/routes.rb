@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'static_pages/index'
+  get 'static_pages/contact'
   resources :events
   resources :books
   devise_for :users
