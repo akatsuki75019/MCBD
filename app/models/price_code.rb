@@ -1,0 +1,2 @@
+class PriceCode < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class JointTableCartBook < ApplicationRecord
+end

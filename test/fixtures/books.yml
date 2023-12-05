@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  isbn: MyString
+  title: MyString
+  author: MyString
+  description: MyText
+  quantity: 1
+  release_date: 2023-12-05 13:53:12
+  tva: 1.5
+  image_url: MyString
+
+two:
+  isbn: MyString
+  title: MyString
+  author: MyString
+  description: MyText
+  quantity: 1
+  release_date: 2023-12-05 13:53:12
+  tva: 1.5
+  image_url: MyString
