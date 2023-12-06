@@ -1,3 +1,10 @@
 //= link_tree ../images
 //= link_directory ../stylesheets .css
 //= link_tree ../builds
+//= require bootstrap.min
+//= require jquery-3.3.1.min
+//= require jquery.nice-select.min
+//= require main
+//= require mixitup.min
+//= require owl.carousel.min
+//= require player
