@@ -15,11 +15,11 @@ class JoinTableCartBooksController < ApplicationController
     when "Quantité mise à jour dans le panier"
       redirect_to books_path, notice: "La quantité a été mise à jour dans le panier"
     when "La quantité demandée n'est pas disponible"
-      redirect_to books_path, alert: "La quantité demandée n'est pas disponible"
+      redirect_to books_path, notice: "La quantité demandée n'est pas disponible"
     when "Le livre est en rupture de stock"
-      redirect_to books_path, alert: "Le livre est actuellement en rupture de stock"
+      redirect_to books_path, notice: "Le livre est actuellement en rupture de stock"
     else
-      redirect_to books_path, alert: "Erreur lors de l'ajout au panier"
+      redirect_to books_path, notice: "Erreur lors de l'ajout au panier"
     end
 
   end

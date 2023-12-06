@@ -2,7 +2,8 @@ class CartsController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @cart = current_user.cart
+    @cart = Cart.find(params[:id])
+    #@total_price = @cart.total_price
   end
 
   def create
