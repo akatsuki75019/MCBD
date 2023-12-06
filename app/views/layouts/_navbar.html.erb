@@ -1,0 +1,41 @@
+<nav class="navbar header navbar-dark" aria-label="Dark offcanvas navbar">
+    <div class="container-fluid">
+      <%= render 'layouts/sidebar' %>
+      <a class="navbar-brand" href="/">LOGO</a>
+      <div class="navbar-brand">
+        <ul class="navbar-nav d-flex flex-row gap-4">
+            <!-- Icons -->
+            <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-shopping-cart fa-lg"></i>
+                </a>
+            </li>
+            <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link" href="#">
+                    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+                </a>
+            </li>
+            <!-- Icon dropdown -->
+            <li class="nav-item me-3 me-lg-0 dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                data-mdb-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-user fa-lg"></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li>
+                        <a class="dropdown-item" href="#">Action</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Another action</a>
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  

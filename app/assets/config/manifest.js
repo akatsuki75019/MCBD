@@ -8,3 +8,4 @@
 //= require mixitup.min
 //= require owl.carousel.min
 //= require player
+//= require sidebar
