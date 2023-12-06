@@ -7,5 +7,12 @@
   <%= link_to "Back to books", books_path %>
 
   <%= button_to "Destroy this book", @book, method: :delete %>
-  <%= button_to "Ajout au panier Nelly", join_table_cart_books_path(book_id: @book.id), method: :post, class: "add-to-cart-button" %>
+
+  <!--boutons de travail NELLY-->
+   <%= form_tag(join_table_cart_books_path, method: :post, class: "add-to-cart-form") do %>
+    <%= hidden_field_tag :book_id, @book.id %>
+    <label for="quantity">Quantité :</label>
+    <%= number_field_tag :quantity, 1, min: 1 %>
+    <%= submit_tag "Ajout au panier Nelly 2", class: "add-to-cart-button" %>
+  <% end %>
 </div>
