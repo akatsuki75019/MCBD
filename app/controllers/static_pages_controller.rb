@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def index
-    @books = Item.all
+    @books = Book.all
     @events = Event.all
   end
 
