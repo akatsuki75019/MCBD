@@ -10,7 +10,7 @@ class JoinTableCartBooksController < ApplicationController
     result = current_user.cart.add_book_in_cart(book, quantity) #la methode add_book_in_cart se trouve dans le model JointTableCartBook
 
     case result
-    when CartBook #dans les cas où l'ajout au panier se fait depuis le show_book
+    when JointTableCartBook #dans les cas où l'ajout au panier se fait depuis le show_book
       redirect_to books_path, notice: "Le livre a été ajouté au panier avec succès"
     when "Quantité mise à jour dans le panier"
       redirect_to books_path, notice: "La quantité a été mise à jour dans le panier"
