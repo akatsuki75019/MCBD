@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'join_table_cart_book/create'
-  get 'join_table_cart_book/update'
-  get 'join_table_cart_book/destroy'
   root 'static_pages#index'
   
   get 'static_pages/index'
