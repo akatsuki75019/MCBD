@@ -10,4 +10,7 @@ class Book < ApplicationRecord
   belongs_to :editor
   belongs_to :category
   belongs_to :price_code
+
+  validates_presence_of :title, :author, true, message: "Il manque une ou plusieurs données"
+  validates :isbn, presence: true, length: {in: 13..14, message: "L'ISBN doit comprendre 13 chiffres et 1 tiret."}
 end
