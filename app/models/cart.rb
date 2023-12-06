@@ -22,6 +22,11 @@ class Cart < ApplicationRecord
       return cart_book
     end
   end
+
+  def total_price
+    joint_table_cart_books.sum { |joint_table_cart_book| joint_table_cart_book.quantity * joint_table_cart_book.book.price }
+  end
+
 end
 
   

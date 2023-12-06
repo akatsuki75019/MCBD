@@ -1,0 +1,20 @@
+<h1>Details du Panier #<%= @cart.id %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Book ID</th>
+      <th>Title</th>
+      <th>Quantité</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart.joint_table_cart_books.each do |joint_table_cart_book| %>
+      <tr>
+        <td><%= joint_table_cart_book.book.id %></td>
+        <td><%= joint_table_cart_book.book.title %></td>
+        <td><%= joint_table_cart_book.quantity %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
