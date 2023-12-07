@@ -1,6 +1,6 @@
 <div class="product__item">
-  <%= image_tag(image_url, class: "product__item__pic set-bg", data: { setbg: image_url }, alt: "Description de l'image") %>
+  <%= image_tag(book.image_url, class: "product__item__pic set-bg", data: { setbg: book.image_url }, alt: "Description de l'image") %>
   <div class="product__item__text">
-    <h5><a href="#"><%= Book.all.title.sample%></a></h5>
+    <h5><a href="#"><%= book.title %></a></h5>
   </div>
 </div>
