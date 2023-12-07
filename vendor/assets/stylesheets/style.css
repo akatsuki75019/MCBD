@@ -712,6 +712,11 @@ ol {
 	display: inline-block;
 }
 
+.product__item__text h5  {
+	color: #ffffff;
+	font-weight: 700;
+	line-height: 26px;
+}
 .product__item__text h5 a {
 	color: #ffffff;
 	font-weight: 700;
