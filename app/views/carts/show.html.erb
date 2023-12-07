@@ -1,4 +1,4 @@
-<h1>Details du Panier #<%= @cart.id %></h1>
+<h1>Détails du Panier #<%= @cart.id %></h1>
 
 <table>
   <thead>
@@ -6,6 +6,9 @@
       <th>Book ID</th>
       <th>Title</th>
       <th>Quantité</th>
+      <th>Prix unitaire</th>
+      <th>Prix total du livre</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -14,7 +17,14 @@
         <td><%= joint_table_cart_book.book.id %></td>
         <td><%= joint_table_cart_book.book.title %></td>
         <td><%= joint_table_cart_book.quantity %></td>
+        <td><%= number_with_precision(joint_table_cart_book.book.price_code.price, precision: 2) %></td>
+        <td><%= number_with_precision(joint_table_cart_book.quantity * joint_table_cart_book.book.price_code.price, precision: 2) %></td>
+        <td>
+          <%= button_to "Supprimer du panier", joint_table_cart_book_path(joint_table_cart_book), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce livre du panier?" } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<p>Total du Panier: <%= number_with_precision(@cart.total_price, precision: 2) %></p>

@@ -1,4 +1,4 @@
-class JoinTableCartBooksController < ApplicationController
+class JointTableCartBooksController < ApplicationController
 
   def index
     @cart_books = current_user.cart.cart_books
@@ -25,10 +25,10 @@ class JoinTableCartBooksController < ApplicationController
   end
 
   def update
-    cart_book = CartBook.find(params[:id])
+    joint_table_cart_book = JointTableCartBook.find(params[:id])
     new_quantity = params.fetch(:quantity, 1).to_i
 
-    if cart_book.update(quantity: new_quantity) #dans les cas ou les quantités peuvent seulement être modifiées depuis le panier
+    if joint_table_cart_book.update(quantity: new_quantity) #dans les cas ou les quantités peuvent seulement être modifiées depuis le panier
       redirect_to cart_path, notice: "La quantité a été mise à jour avec succès"
     else
       redirect_to cart_path, alert: "Erreur lors de la mise à jour de la quantité"
@@ -36,8 +36,9 @@ class JoinTableCartBooksController < ApplicationController
   end
 
   def destroy
-    cart_book = CartBook.find(params[:id])
-    cart_book.destroy
-    redirect_back(fallback_location: cart_path, notice: "Le livre a été supprimé du panier avec succès") #dans le cas ou la suppression se fait depuis de cart du user
+    joint_table_cart_book = JointTableCartBook.find(params[:id])
+    joint_table_cart_book.destroy
+    redirect_back(fallback_location: cart_path, notice: "Le livre a été supprimé du panier avec succès")
   end
+
 end
