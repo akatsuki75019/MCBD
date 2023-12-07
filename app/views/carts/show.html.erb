@@ -16,7 +16,12 @@
       <tr>
         <td><%= joint_table_cart_book.book.id %></td>
         <td><%= joint_table_cart_book.book.title %></td>
-        <td><%= joint_table_cart_book.quantity %></td>
+        <td>
+          <%= form_for(joint_table_cart_book, url: joint_table_cart_book_path(joint_table_cart_book), method: :put) do |f| %>
+            <%= f.number_field :quantity, value: joint_table_cart_book.quantity, min: 1 %>
+            <%= f.submit "Mettre à jour" %>
+          <% end %>
+        </td>
         <td><%= number_with_precision(joint_table_cart_book.book.price_code.price, precision: 2) %></td>
         <td><%= number_with_precision(joint_table_cart_book.quantity * joint_table_cart_book.book.price_code.price, precision: 2) %></td>
         <td>
