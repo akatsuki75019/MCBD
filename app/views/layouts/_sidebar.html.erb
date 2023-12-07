@@ -24,7 +24,7 @@
         <ul class="dropdown-menu">
           <% if user_signed_in? %>
             <li>
-              <%= link_to "Mon Compte", root_path, class:"dropdown-item"%>
+              <%= link_to "Mon Compte", user_path(current_user), class:"dropdown-item"%>
             </li>
             <li><hr class="dropdown-divider" /></li>
             <li>

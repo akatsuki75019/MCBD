@@ -1,18 +1,13 @@
 Rails.application.routes.draw do
-  get 'users/show'
-  get 'users/check_user'
-  get 'users/create'
-  get 'users/edit'
-  get 'users/update'
-  get 'users/destroy'
   root 'static_pages#index'
   
   get 'static_pages/index'
   get 'static_pages/contact'
   
+  devise_for :users
+  resources :users
   resources :events
   resources :books
-  devise_for :users
 
   resources :carts, except: [:index, :new, :edit]
   resources :joint_table_cart_books, only: [:index, :create, :update, :destroy]  
