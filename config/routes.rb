@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'users/show'
+  get 'users/check_user'
+  get 'users/create'
+  get 'users/edit'
+  get 'users/update'
+  get 'users/destroy'
   root 'static_pages#index'
   
   get 'static_pages/index'
