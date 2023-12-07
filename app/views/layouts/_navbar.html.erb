@@ -1,41 +1,42 @@
-<nav class="navbar header navbar-dark" aria-label="Dark offcanvas navbar">
-  <div class="container-fluid">
+<nav class="header navbar-dark" aria-label="Dark offcanvas navbar">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
     <%= render 'layouts/sidebar' %>
     <a class="navbar-brand" href="/">LOGO</a>
     <div class="navbar-brand">
-      <ul class="navbar-nav d-flex flex-row gap-4">
+      <ul class="navbar-nav d-flex flex-row gap-4 me-4">
         <!-- Icons -->
         <li class="nav-item me-3 me-lg-0">
           <a class="nav-link" href="#">
-              <i class="fas fa-shopping-cart fa-lg"></i>
+              <i class="fas fa-shopping-cart"></i>
           </a>
         </li>
         <li class="nav-item me-3 me-lg-0">
           <a class="nav-link" href="#">
-              <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+              <i class="fa-solid fa-magnifying-glass"></i>
           </a>
         </li>
         <!-- Icon dropdown -->
         <li class="nav-item me-3 me-lg-0 dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-          data-mdb-toggle="dropdown" aria-expanded="false">
-            <i class="fas fa-user fa-lg"></i>
+          data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user"></i>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <% if user_signed_in? %>
               <li>
                 <%= link_to "Mon Compte", root_path, class:"dropdown-item"%>
               </li>
-              <li><hr class="dropdown-divider" /></li>
+              <li><hr class="dropdown-divider"></li>
               <li>
                 <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, data: {turbo_method: :delete}, :class=>"dropdown-item" %>
               </li>
             <% else %>
               <li>
-                <%= link_to "S'inscrire_test", new_user_registration_path, class:"dropdown-item"%>
+                <%= link_to "Se connecter", new_user_session_path, class:"dropdown-item"%>
               </li>
+              <li><hr class="dropdown-divider"></li>
               <li>
-                <%= link_to "Se_connecter_test", new_user_session_path, class:"dropdown-item"%>
+                <%= link_to "S'inscrire", new_user_registration_path, class:"dropdown-item"%>
               </li>
             <% end %>
           </ul>

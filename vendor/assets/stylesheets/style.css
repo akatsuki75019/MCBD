@@ -2345,3 +2345,11 @@ ol {
 		padding: 18px 20px 20px;
 	}
 }
+
+.text-light {
+  color: #b7b7b7 !important;
+} 
+
+.text-white {
+	color: #ffffff !important;
+}
