@@ -1,12 +1,12 @@
 require 'faker'
 
 personas = [
-  ["Alex", "Martin", "1985-04-13", "alexthp"],
-  ["Axel", "Leveque", "1973-11-07", "axelthp"],
-  ["Floriane", "Blanc", "989-04-1989", "flothp"],
-  ["Nelly", "Schmitt", "1992-03-07", "nellythp"],
-  ["Sam", "Pichon", "1997-07-22", "samthp"],
-  ["Vincent", "Weber", "1999-09-21", "vincthp"]
+  ["Alex", "Martin", "1985-04-13", "alexthp", "false"],
+  ["Axel", "Leveque", "1973-11-07", "axelthp", "false"],
+  ["Floriane", "Blanc", "989-04-1989", "flothp", "true"],
+  ["Nelly", "Schmitt", "1992-03-07", "nellythp", "true"],
+  ["Sam", "Pichon", "1997-07-22", "samthp", "false"],
+  ["Vincent", "Weber", "1999-09-21", "vincthp", "false"]
 ]
 
 personas.shuffle.each do |persona|
@@ -14,6 +14,7 @@ personas.shuffle.each do |persona|
   last_name = persona[1]
   birthday = persona[2]
   password = persona[3]
+  is_admin = persona[4]
 
   email = "#{first_name.downcase}@yopmail.com"
 
@@ -22,7 +23,8 @@ personas.shuffle.each do |persona|
     password: password,
     first_name: first_name,
     last_name: last_name,
-    birthday: birthday
+    birthday: birthday,
+    is_admin: is_admin
   )
 end
 
