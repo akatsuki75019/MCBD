@@ -20,7 +20,7 @@
         <td><%= number_with_precision(joint_table_cart_book.book.price_code.price, precision: 2) %></td>
         <td><%= number_with_precision(joint_table_cart_book.quantity * joint_table_cart_book.book.price_code.price, precision: 2) %></td>
         <td>
-          <%= button_to "Supprimer du panier", join_table_cart_book_path(join_table_cart_book), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce livre du panier?" } %>
+          <%= button_to "Supprimer du panier", joint_table_cart_book_path(joint_table_cart_book), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce livre du panier?" } %>
         </td>
       </tr>
     <% end %>
