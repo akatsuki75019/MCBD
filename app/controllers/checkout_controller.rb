@@ -46,6 +46,16 @@ class CheckoutController < ApplicationController
     #Création d'une nouvelle instance dans la BDD Order (voir dans le model Order)
     Order.create_order_with_books(current_user, joint_table_cart_book_ids)
 
+    #Gérer la màj des quantités après un paiement stripe:
+    joint_table_cart_book_ids.each do |joint_table_cart_book_id| #conversion des identifiants des JointTableCartBook, on les diviseàchaque virgule, on converti en entiers
+      joint_table_cart_book = JointTableCartBook.find(joint_table_cart_book_id) #on chercheun id specifique
+  
+      # Ajouter une logique pour mettre à jour la quantité en stock du livre
+      book = joint_table_cart_book.book 
+      new_stock_quantity = book.quantity - joint_table_cart_book.quantity #new stock = quantité actuelle du livre - qté commandée
+      book.update(quantity: new_stock_quantity) #mise à jour de la qté en stock
+    end
+
 
 
     # Effacer les articles du panier après la commande
