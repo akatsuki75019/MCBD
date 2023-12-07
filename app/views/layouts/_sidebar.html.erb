@@ -1,7 +1,11 @@
-<button type="button" class="btn shadow-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-  <i class="fa-solid fa-bars fa-2xl" style="color: #ffffff;"></i>
-</button>
+<!-- Button toggler canva -->
+<div class=" navbar-brand navbar-nav me-3 me-lg-0 ms-5">
+  <a role="button" href="#" class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+    <i class="fa-solid fa-bars fa-lg"></i>
+  </a>
+</div>
 
+<!-- Canva -->
 <div class="offcanvas offcanvas-start header" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
   <div class="offcanvas-header">
     <div id="offcanvasWithBothOptionsLabel"></div>
@@ -32,10 +36,10 @@
             </li>
           <% else %>
             <li>
-              <%= link_to "S'inscrire_test", new_user_registration_path, class:"dropdown-item"%>
+              <%= link_to "Se connecter", new_user_session_path, class:"dropdown-item"%>
             </li>
             <li>
-              <%= link_to "Se_connecter_test", new_user_session_path, class:"dropdown-item"%>
+              <%= link_to "S'inscrire", new_user_registration_path, class:"dropdown-item"%>
             </li>
           <% end %>
         </ul>
@@ -47,4 +51,5 @@
     </form>
   </div>
 </div>
+
 

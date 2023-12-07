@@ -712,6 +712,11 @@ ol {
 	display: inline-block;
 }
 
+.product__item__text h5  {
+	color: #ffffff;
+	font-weight: 700;
+	line-height: 26px;
+}
 .product__item__text h5 a {
 	color: #ffffff;
 	font-weight: 700;
@@ -2339,4 +2344,12 @@ ol {
 	.anime__review__item__text {
 		padding: 18px 20px 20px;
 	}
+}
+
+.text-light {
+  color: #b7b7b7 !important;
+} 
+
+.text-white {
+	color: #ffffff !important;
 }
