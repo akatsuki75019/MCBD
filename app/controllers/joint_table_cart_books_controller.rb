@@ -25,6 +25,8 @@ class JointTableCartBooksController < ApplicationController
   end
 
   def update
+    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+    puts "Params ID: #{params[:id]}"
     @joint_table_cart_book = JointTableCartBook.find(params[:id])
     new_quantity = params.fetch(:quantity, 1).to_i
 
