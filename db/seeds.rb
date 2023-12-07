@@ -58,7 +58,15 @@ books = [
   ["979-1032716519", "Valkyrie Apocalypse T18 - Édition Collector", "15", "kaguya-sama_-_love_is_war_26965636.jpg", "Eiichiro Oda", "2023-01-04"],
   ["979-1032716588", "Valkyrie Apocalypse - La Légende De Lü Bu T01", "15", "kaiju.jpg", "Eiichiro Oda", "2023-01-04"],
   ["979-1032716625", "Crescent Moon, Dance With The Monster T01", "15", "shonen_abyss.jpg", "Eiichiro Oda", "2023-01-25"],
-  ["978-2723488525", "One Piece T01", "7", "wind_breaker.png", "Eiichiro Oda", "2023-01-25"]
+  ["978-2723488525", "One Piece T01", "7", "wind_breaker.png", "Eiichiro Oda", "2023-01-25"],
+  ["979-1042013371", "Skeleton DoubleT02", "15", "ao_ashi.jpg", "Eiichiro Oda", "2023-01-12"],
+  ["979-1032716206", "Jujutsu Kaisen T23", "25", "choujin_x_1959146.png", "Eiichiro Oda", "2023-01-05"],
+  ["979-1032716077", "Frieren T12", "20", "coq_de_baston.jpg", "Eiichiro Oda", "2023-01-05"],
+  ["979-1032718033", "#Drcl Midnight Children T02", "20", "db1.jpg", "Eiichiro Oda", "2023-01-26"],
+  ["979-1032716497", "Valkyrie Apocalypse T19", "20", "FX__8rvaAAEmYwi.jpg", "Eiichiro Oda", "2023-01-05"],
+  ["979-1032716520", "Valkyrie Apocalypse T19 - Édition Collector", "15", "kaguya-sama_-_love_is_war_26965636.jpg", "Eiichiro Oda", "2023-01-05"],
+  ["979-1032716589", "Valkyrie Apocalypse - La Légende De Lü Bu T02", "15", "kaiju.jpg", "Eiichiro Oda", "2023-01-05"],
+  ["979-1032716626", "Crescent Moon, Dance With The Monster T02", "15", "shonen_abyss.jpg", "Eiichiro Oda", "2023-01-26"]
 ]
 
 books.shuffle.each do |book|

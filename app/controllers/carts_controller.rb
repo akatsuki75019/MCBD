@@ -3,7 +3,8 @@ class CartsController < ApplicationController
 
   def show
     @cart = Cart.find(params[:id])
-    #@total_price = @cart.total_price
+    @total_price = @cart.total_price
+    @joint_table_cart_books = @cart.joint_table_cart_books
   end
 
   def create
