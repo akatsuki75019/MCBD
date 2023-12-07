@@ -24,18 +24,23 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <% if user_signed_in? %>
               <li>
-                <%= link_to "Mon Compte", root_path, class:"dropdown-item"%>
+                <%= link_to "Mon Compte", user_path(current_user), class:"dropdown-item"%>
               </li>
+              <% if current_user.is_admin? &&  %>
+                <li>
+                  <%= link_to "Dashboard Admin", admin_root_path(current_user), class:"dropdown-item"%>
+                </li>
+              <% end %>
               <li><hr class="dropdown-divider" /></li>
               <li>
                 <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, data: {turbo_method: :delete}, :class=>"dropdown-item" %>
               </li>
             <% else %>
               <li>
-                <%= link_to "S'inscrire_test", new_user_registration_path, class:"dropdown-item"%>
+                <%= link_to "S'inscrire", new_user_registration_path, class:"dropdown-item"%>
               </li>
               <li>
-                <%= link_to "Se_connecter_test", new_user_session_path, class:"dropdown-item"%>
+                <%= link_to "Se connecter", new_user_session_path, class:"dropdown-item"%>
               </li>
             <% end %>
           </ul>
