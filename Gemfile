@@ -74,3 +74,4 @@ end
 gem "devise"
 gem "stripe"
 gem "dotenv-rails"
+gem "letter_opener"

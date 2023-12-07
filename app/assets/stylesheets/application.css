@@ -18,4 +18,5 @@
  *= require plyr.css
  *= require slicknav.min.css
  *= require style.css
+ *= require_self
  */
