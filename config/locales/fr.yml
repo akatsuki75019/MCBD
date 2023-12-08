@@ -1,0 +1,13 @@
+fr:
+  activerecord:
+    models:
+      attendance: "Participation Événement"
+      book: "Livre"
+      cart: "Panier"
+      category: "Catégorie"
+      editor: "Éditeur"
+      event: "Événement"
+      order: "Commande"
+      price_code: "Code Prix"
+      user: "Client"
+      wishlist: "Favori"
