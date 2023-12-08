@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def show
+  
     if current_user == nil
       redirect_to new_user_session_path
     else
