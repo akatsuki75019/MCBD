@@ -2,9 +2,8 @@
     <div class="container ">
       <div class="anime__details__content ">
         <div class="row d-flex justify-content-center">
-          <div class="anime__details__title">
-            <h1> Mon profil</h1>
-          </div>
+          <h1> Mon profil</h1>
+        </div>
           <div class="col-lg-3 ">
             <div class="anime__details__text">
               <div class="anime__details__title">
@@ -19,6 +18,10 @@
                 <h3><%= @user.email %></h3>
                   <span><%= @user.birthday %></span>
               </div>
+              <%= link_to "Editer mon mot de passe", edit_user_registration_path(@user) %>
+              <br>
+              <%= link_to "Editer mon profil", edit_user_path(@user) %>
+
             </div>
           </div>
         </div>

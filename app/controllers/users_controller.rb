@@ -25,10 +25,21 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
   end
 
   def update
+    @user = current_user
+    @user.update(user_params)
+    
+  
+    if @user.errors.empty?
+      redirect_to root_path, notice: 'Profil mis à jour avec succès.'
+    else
+      render :edit
+    end
   end
+
 
   def destroy
   end
@@ -36,6 +47,6 @@ class UsersController < ApplicationController
   private 
 
   def user_params
-    params.require(:user).permit(:nom, :email, :password)
+    params.require(:user).permit(:email, :password, :first_name, :last_name, :birthday)
   end
 end
