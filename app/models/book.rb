@@ -13,4 +13,9 @@ class Book < ApplicationRecord
 
   validates_presence_of :title, :author, message: "Il manque une ou plusieurs données"
   validates :isbn, presence: true, length: {in: 13..14, message: "L'ISBN doit comprendre 13 chiffres et 1 tiret."}
+
+  #In Administrate views to show only price code name and not only id
+  def price_code_name
+    price_code.name if price_code
+  end
 end
