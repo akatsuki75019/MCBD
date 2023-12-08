@@ -11,3 +11,12 @@ fr:
       price_code: "Code Prix"
       user: "Client"
       wishlist: "Favori"
+
+  helpers:
+    label:
+      book:
+        title: "Titre"
+        author: "Auteur"
+        category: "Catégorie"
+        quantity: "Quantité"
+        price_code: "Code Prix"

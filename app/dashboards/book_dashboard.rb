@@ -36,9 +36,11 @@ class BookDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
+    title
     author
-    carts
     category
+    quantity
+    price_code
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -102,7 +104,4 @@ class BookDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how books are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(book)
-  #   "Book ##{book.id}"
-  # end
 end
