@@ -67,7 +67,7 @@ group :test do
 end
 
 group :development do
-  gem "faker"
+  
   gem "table_print"
 end
 
@@ -75,4 +75,6 @@ gem "devise"
 gem "stripe"
 gem "dotenv-rails"
 gem "letter_opener"
+gem "administrate"
 gem "faker"
+

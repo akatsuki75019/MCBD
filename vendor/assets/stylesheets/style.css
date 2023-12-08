@@ -712,6 +712,11 @@ ol {
 	display: inline-block;
 }
 
+.product__item__text h5  {
+	color: #ffffff;
+	font-weight: 700;
+	line-height: 26px;
+}
 .product__item__text h5 a {
 	color: #ffffff;
 	font-weight: 700;
@@ -1060,8 +1065,7 @@ ol {
 	width: 115px;
 	display: inline-block;
 }
-
-.anime__details__btn .follow-btn {
+.anime__details__btn .add-to-cart-button {
 	font-size: 13px;
 	color: #ffffff;
 	background: #e53637;
@@ -1074,7 +1078,25 @@ ol {
 	margin-right: 11px;
 }
 
-.anime__details__btn .watch-btn span {
+.anime__details__btn .add-to-cart-button:hover {
+  background: #d32f30; /* Variation de couleur au survol */
+}
+
+
+.anime__details__btn .follow-btn {
+	font-size: 13px;
+	color: #ffffff;
+	background: #e53637;
+	display: inline-block;
+	font-weight: 700;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	padding: 14px 20px;
+	border-radius: 4px;
+	margin-right: 1px;
+}
+
+.anime__details__btn .watch-btn  {
 	font-size: 13px;
 	color: #ffffff;
 	background: #e53637;
@@ -2339,4 +2361,12 @@ ol {
 	.anime__review__item__text {
 		padding: 18px 20px 20px;
 	}
+}
+
+.text-light {
+  color: #b7b7b7 !important;
+} 
+
+.text-white {
+	color: #ffffff !important;
 }

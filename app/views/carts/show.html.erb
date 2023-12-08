@@ -16,7 +16,12 @@
       <tr>
         <td><%= joint_table_cart_book.book.id %></td>
         <td><%= joint_table_cart_book.book.title %></td>
-        <td><%= joint_table_cart_book.quantity %></td>
+        <td>
+          <%= form_for(joint_table_cart_book, url: joint_table_cart_book_path(joint_table_cart_book), method: :put) do |f| %>
+            <%= f.number_field :quantity, value: joint_table_cart_book.quantity, min: 1 %>
+            <%= f.submit "Mettre à jour" %>
+          <% end %>
+        </td>
         <td><%= number_with_precision(joint_table_cart_book.book.price_code.price, precision: 2) %></td>
         <td><%= number_with_precision(joint_table_cart_book.quantity * joint_table_cart_book.book.price_code.price, precision: 2) %></td>
         <td>
@@ -28,3 +33,7 @@
 </table>
 
 <p>Total du Panier: <%= number_with_precision(@cart.total_price, precision: 2) %></p>
+
+<!--Bouton de paiement STRIPE--->
+ <%= button_to "Confirmer la commande et payer", checkout_create_path(total: @joint_table_cart_books.sum { |joint_table_cart_book| joint_table_cart_book.book.price_code.price * joint_table_cart_book.quantity }), class: "inline-block w-full px-8 py-4 font-bold text-center text-white uppercase transition duration-200 bg-gray-800 rounded-md md:w-auto hover:bg-gray-900", data: { turbo: false } %>
+<!--Bouton de paiement STRIPE--->
