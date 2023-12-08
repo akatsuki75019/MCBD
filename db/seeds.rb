@@ -90,3 +90,36 @@ books.shuffle.each do |book|
     category_id: Category.all.sample.id,
   )
 end
+
+events = [
+  ["La Nuit ONE PIECE", "Le manga le plus vendu de l'histoire sort son 105e volume ! Pour l'occasion, Glénat, l'éditeur de 'One Piece', lance la seconde édition de la 'Nuit One Piece', le 29 septembre prochain dans toutes les librairies partenaires. Au programme, animations et prévente du nouveau tome.", "2024-09-29", "onepiec_night.png"],
+  ["Mini Conférence", "Manga, un peu.. beaucoup.. passionnément. Que vous découvrire les manges ou êtes fan au point de trouver des figurines dans chaque recoin de votre domicile, tout le monde est bienvenu", "2024-02-11", "naruto_event.png"],
+  ["Initiation à l'art traditionnel du manga avec Jessie Lousteau", "L'illustratrice Jessie Lousteau vous initiera à l'art ancestrale du dessin manga. Venez découvrir autour d'une plume et d'un pinceau, la technique de l'encre de Chine dans l'univers du Manga : lignes claires, hachures et ombrages. À partir de 10 ans.", "2023-12-13", "art_manga.png"],
+  ["Raconte-moi une histoire Japon", "Un samedi par mois, les bibliothécaires vous proposent des lectures d’albums, d’histoires projetées et kamishibaïs. Les bibliothécaires vous lisent des haïku, des kamishibaïs et des albums pour découvrir le Japon en histoires. Suivi d’un atelier origami. Pour les 4-7 ans", "2023-12-16", "japan_history.png"],
+  ["Goûter des ados : spécial manga", "Tu as entre 11 et 15 ans et tu es mordu.e de manga ? Rejoins-nous pour partager tes coups de coeur ! Fais ta sélection de mangas et partage-la avec les autres lecteurs et lectrices et les bibliothécaires, nous t'attendons autour d'un goûter ! Ce sera aussi l'occasion de discuter de tes lectures dans le cadre de l'opération des Mordus du manga, qui se termine le samedi 13 janvier 2024. Tu as adoré, détesté ? Parlons-en !", "2024-01-10", "manga_lunch.png"],
+  ["Apéro Philo", "La soirée philo est animé par Charles et modéré par Jules. La question: 'La quête du sens peut-elle abolir l'absurde ?", "2024-02-06", "apero_philo.png"],
+  ["Yoga du Rire", "Avec Jo et Véro, un grand moment de lâcher prise, thérapie par le rire - découverte ludique d'une oeuvre célèbre", "2024-02-07", "yoga_rire.png"],
+  ["Festival de la BD", "Festival International de la Bande Dessinée d'Angoulême - Site officiel du Festival qui se déroule à Angoulême du 25 au 28 janvier 2024.", "2024-02-08", "bd_festival.png"],
+  ["Rencontre et Dédicace", "Naruto nous fait l'honneur de sa présence dans la librairie et nous présentera sa dernière tome", "2024-02-10", "manga_love.png"],
+  ["La Nuit ONE PIECE", "Le manga le plus vendu de l'histoire sort son 105e volume ! Pour l'occasion, Glénat, l'éditeur de 'One Piece', lance la seconde édition de la 'Nuit One Piece', le 29 septembre prochain dans toutes les librairies partenaires. Au programme, animations et prévente du nouveau tome.", "2024-09-29", "onepiec_night.png"],
+  ["Mini Conférence", "Manga, un peu.. beaucoup.. passionnément. Que vous découvrire les manges ou êtes fan au point de trouver des figurines dans chaque recoin de votre domicile, tout le monde est bienvenu", "2024-02-11", "naruto_event.png"],
+  ["Initiation à l'art traditionnel du manga avec Jessie Lousteau", "L'illustratrice Jessie Lousteau vous initiera à l'art ancestrale du dessin manga. Venez découvrir autour d'une plume et d'un pinceau, la technique de l'encre de Chine dans l'univers du Manga : lignes claires, hachures et ombrages. À partir de 10 ans.", "2023-12-13", "art_manga.png"],
+  ["Raconte-moi une histoire Japon", "Un samedi par mois, les bibliothécaires vous proposent des lectures d’albums, d’histoires projetées et kamishibaïs. Les bibliothécaires vous lisent des haïku, des kamishibaïs et des albums pour découvrir le Japon en histoires. Suivi d’un atelier origami. Pour les 4-7 ans", "2023-12-16", "japan_history.png"],
+  ["Goûter des ados : spécial manga", "Tu as entre 11 et 15 ans et tu es mordu.e de manga ? Rejoins-nous pour partager tes coups de coeur ! Fais ta sélection de mangas et partage-la avec les autres lecteurs et lectrices et les bibliothécaires, nous t'attendons autour d'un goûter ! Ce sera aussi l'occasion de discuter de tes lectures dans le cadre de l'opération des Mordus du manga, qui se termine le samedi 13 janvier 2024. Tu as adoré, détesté ? Parlons-en !", "2024-01-10", "manga_lunch.png"],
+  ["Apéro Philo", "La soirée philo est animé par Charles et modéré par Jules. La question: 'La quête du sens peut-elle abolir l'absurde ?", "2024-02-06", "apero_philo.png"],
+  ["Yoga du Rire", "Avec Jo et Véro, un grand moment de lâcher prise, thérapie par le rire - découverte ludique d'une oeuvre célèbre", "2024-02-07", "yoga_rire.png"]
+]
+
+events.shuffle.each do |event|
+  title = event[0]
+  description = event[1]
+  start_date = event[2]
+  image_url = event[3]
+
+  Event.create!(
+    title: title,
+    description: description,
+    start_date: start_date,
+    image_url: image_url
+    )
+end
