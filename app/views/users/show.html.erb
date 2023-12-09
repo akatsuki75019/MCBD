@@ -1,30 +1,37 @@
-  <section class="anime-details spad">
-    <div class="container ">
-      <div class="anime__details__content ">
-        <div class="row d-flex justify-content-center">
-          <h1> Mon profil</h1>
+<div class="container my-auto">
+  <h1 class="anime__details__title d-flex justify-content-center my-5">Mon Profil</h1>
+  <div class="row">
+    <div class="col-lg-4 ">
+      <h2 class="blog__details__title d-flex align-items-start">Mes infos</h2>
+      <div class="anime__details__text">
+        <div class="anime__details__title ">
+          <h5><%= @user.first_name %> <%= @user.last_name %></h5>
+          <h5><%= @user.email %></h5>
+          <span><%= @user.birthday %></span>
         </div>
-          <div class="col-lg-3 ">
-            <div class="anime__details__text">
-              <div class="anime__details__title">
-                <h3> <%= @user.first_name %> </h3>
-                  <span><%= @user.last_name %></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="anime__details__text">
-              <div class="anime__details__title">
-                <h3><%= @user.email %></h3>
-                  <span><%= @user.birthday %></span>
-              </div>
-              <%= link_to "Editer mon mot de passe", edit_user_registration_path(@user) %>
-              <br>
-              <%= link_to "Editer mon profil", edit_user_path(@user) %>
-
-            </div>
-          </div>
+        <div>
+          <%= link_to "Editer mon mot de passe", edit_user_registration_path(@user) %>
+          <br>
+          <%= link_to "Editer mon profil", edit_user_path(@user) %>
         </div>
       </div>
     </div>
-  </section>
+    <div class="col-lg-4 ">
+      <h2 class="blog__details__title d-flex align-items-start">Mes derniers achats</h2>
+      <% @recent_purchases.each do |order| %>
+        <div class="product__item d-flex align-items-center ">
+          <!-- Affichage des détails de la commande -->
+          <ol class ="list-style-position-inside" >
+            <% order.books.each do |book| %>
+              <li ><%= book.title %></li>
+            <% end %>
+          </ol>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-lg-4">
+      <h2 class="blog__details__title ">Evénements</h2>
+      <!-- Ajoutez le contenu des événements ici -->
+    </div>
+  </div>
+</div>

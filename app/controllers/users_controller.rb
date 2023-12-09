@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
   def show
-  
+    @user = current_user
     if current_user == nil
       redirect_to new_user_session_path
     else
       @user = current_user
+      @recent_purchases = @user.orders.includes(:books).order(created_at: :desc).limit(4)
+
     end
   end
 

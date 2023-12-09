@@ -1,39 +1,42 @@
-<h1>Détails du Panier #<%= @cart.id %></h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Book ID</th>
-      <th>Title</th>
-      <th>Quantité</th>
-      <th>Prix unitaire</th>
-      <th>Prix total du livre</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @cart.joint_table_cart_books.each do |joint_table_cart_book| %>
-      <tr>
-        <td><%= joint_table_cart_book.book.id %></td>
-        <td><%= joint_table_cart_book.book.title %></td>
-        <td>
-          <%= form_for(joint_table_cart_book, url: joint_table_cart_book_path(joint_table_cart_book), method: :put) do |f| %>
-            <%= f.number_field :quantity, value: joint_table_cart_book.quantity, min: 1 %>
-            <%= f.submit "Mettre à jour" %>
+<div class="container product">
+  <div class="row ">
+    <h1 class="text-white d-flex justify-content-center mb-5">Détails du Panier</h1>
+    <div class="table-responsive-md">
+      <table class="table table-striped table-hover" >
+        <thead class >
+          <tr class="thead-dark">
+            <th scope="col">Title</th>
+            <th scope="col">Quantité</th>
+            <th scope="col">Prix unitaire</th>
+            <th scope="col">Prix total du livre</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <% @cart.joint_table_cart_books.each do |joint_table_cart_book| %>
+            <tr>
+              <td><%= joint_table_cart_book.book.title %></td>
+              <td>
+                <%= form_for(joint_table_cart_book, url: joint_table_cart_book_path(joint_table_cart_book), method: :put) do |f| %>
+                  <%= f.number_field :quantity, value: joint_table_cart_book.quantity, min: 1 %>
+                  <%= f.submit "Mettre à jour", class: "btn " %>
+                <% end %>
+              </td>
+              <td><%= number_with_precision(joint_table_cart_book.book.price_code.price, precision: 2) %></td>
+              <td><%= number_with_precision(joint_table_cart_book.quantity * joint_table_cart_book.book.price_code.price, precision: 2) %></td>
+              <td>
+                <%= button_to "Supprimer du panier", joint_table_cart_book_path(joint_table_cart_book), class: "btn btn-danger", method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce livre du panier?" } %>
+              </td>
+            </tr>
           <% end %>
-        </td>
-        <td><%= number_with_precision(joint_table_cart_book.book.price_code.price, precision: 2) %></td>
-        <td><%= number_with_precision(joint_table_cart_book.quantity * joint_table_cart_book.book.price_code.price, precision: 2) %></td>
-        <td>
-          <%= button_to "Supprimer du panier", joint_table_cart_book_path(joint_table_cart_book), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce livre du panier?" } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </tbody>
+      </table>
 
-<p>Total du Panier: <%= number_with_precision(@cart.total_price, precision: 2) %></p>
+      <h5 class="text-white d-flex justify-content-center mb-4">Total du Panier: <%= number_with_precision(@cart.total_price, precision: 2) %></h5>
 
-<!--Bouton de paiement STRIPE--->
- <%= button_to "Confirmer la commande et payer", checkout_create_path(total: @joint_table_cart_books.sum { |joint_table_cart_book| joint_table_cart_book.book.price_code.price * joint_table_cart_book.quantity }), class: "inline-block w-full px-8 py-4 font-bold text-center text-white uppercase transition duration-200 bg-gray-800 rounded-md md:w-auto hover:bg-gray-900", data: { turbo: false } %>
-<!--Bouton de paiement STRIPE--->
+      <div class="text-center">
+        <%= button_to "Confirmer la commande et payer", checkout_create_path(total: @joint_table_cart_books.sum { |joint_table_cart_book| joint_table_cart_book.book.price_code.price * joint_table_cart_book.quantity }), class: "site-btn btn btn-success", data: { turbo: false } %>
+      </div>
+    </div>
+  </div>
+</div>
