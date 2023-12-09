@@ -8,7 +8,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+          :recoverable, :rememberable, :validatable
+
 
   validates :password, 
     presence: true,
@@ -23,11 +24,13 @@ class User < ApplicationRecord
       with: /\A[\p{L}0-9.!~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z]{2,4})\z/, message: "L'email renseigné est incorrect"
     },
     on: :create
+
   
   after_create do
     create_user_cart 
     welcome_send
   end
+
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now

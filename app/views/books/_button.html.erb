@@ -1,19 +1,21 @@
 <div class="anime__details__btn">
   <div class="row mb-5 "> 
-    <div class="col-lg-9 d-flex align-items-end  ">
+    <div class="d-flex align-items-end  ">
       <div class="col-lg-2 mb-lg-0 mb-2 ">
         <%= form_tag(joint_table_cart_books_path, method: :post, class: "text-white") do %>
           <%= hidden_field_tag :book_id, @book.id %>
-          
           <label for="quantity" class ="ml-2">Quantité:</label>
           <%= number_field_tag :quantity, 1, min: 1, class: "form-control mb-2 ml-2 w-100" %>
         <% end %>
       </div>
-      <div class="col-lg-2">
+      <div class="col-lg-3">
         <%= form_tag(joint_table_cart_books_path, method: :post, class: "text-white") do %>
           <%= hidden_field_tag :book_id, @book.id %>
-          <%= submit_tag "Ajout au panier", class: "add-to-cart-button add-to-cart-button:hover" %>
+          <%= submit_tag "Ajout au panier", class: "add-to-cart-button btn add-to-cart-button:hover" %>
         <% end %>
+      </div class="d-flex align-items-end">
+      <div>
+        <%= button_to "Achat express", checkout_create_path(total: @book.price_code.price * params[:quantity].to_i), method: :post, class: "add-to-cart-button btn add-to-cart-button:hover btn", data: { turbo: false } %>
       </div>
     </div>
   </div>
