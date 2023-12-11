@@ -7,7 +7,6 @@ class CheckoutController < ApplicationController
   
     joint_table_cart_book_ids = @joint_table_cart_books.pluck(:id)
   
-
     @session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [
@@ -32,8 +31,51 @@ class CheckoutController < ApplicationController
       success_url: checkout_success_url + '?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: checkout_cancel_url
     )
+    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+    puts "Session: #{@session.inspect}"
+    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
     redirect_to @session.url, allow_other_host: true
   
+  end
+
+  def express_checkout
+    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+    puts "Params: #{params.inspect}"
+    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+
+    @user_id = params[:user_id]
+    @book = Book.find_by(id: params[:book_id])
+    @quantity = params[:quantity].to_i
+    @total = params[:total].present? ? params[:total].to_d : @book.price_code.price #test : s'assurer que si le paramètre "total" est présent, vous l'utilisez, sinon, vous utilisez le prix du livre comme total par défaut
+
+    @session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [
+        {
+          price_data: {
+            currency: 'eur',
+            unit_amount: (@total*100).to_i,
+            product_data: {
+              name: @book.title,
+            },
+          },
+          quantity: 1
+        },
+      ],
+
+      metadata: {
+        user_id: @user_id,
+      },
+
+      mode: 'payment',
+      customer_email: current_user.email, 
+      success_url: checkout_success_url + '?session_id={CHECKOUT_SESSION_ID}',
+      cancel_url: checkout_cancel_url
+    )
+    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+    puts "Session: #{@session.inspect}"
+    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+    redirect_to @session.url, allow_other_host: true
   end
 
   def success
@@ -56,12 +98,9 @@ class CheckoutController < ApplicationController
       book.update(quantity: new_stock_quantity) #mise à jour de la qté en stock
     end
 
-
-
     # Effacer les articles du panier après la commande
       current_user.cart.joint_table_cart_books.destroy_all
   end
-
 
   def cancel
   end
