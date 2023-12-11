@@ -106,9 +106,9 @@ class CheckoutController < ApplicationController
 
 
     else # gestion pour l'achat express (pas de panier)
-      book_id = params[:book_id]
+      book_id = @session.metadata['book_id']
       user_id = @session.metadata.user_id
-      total_price = @session.amount_total / 100.0 
+      total_price = @session.amount_total / 100.0
 
        # Récupérer le livre associé à l'achat express
       book = Book.find_by(id: book_id)
