@@ -10,6 +10,7 @@
         <%= submit_tag "Ajout au panier", class: "add-to-cart-button btn add-to-cart-button:hover" %>
       </div>
     <% end %>
+    <div class="anime__details__btn">
     <div class="ml-3">
       <%= button_to "Achat express", checkout_create_path(total: @book.price_code.price * params[:quantity].to_i), method: :post, class: "add-to-cart-button btn add-to-cart-button:hover btn", data: { turbo: false } %>
     </div>
