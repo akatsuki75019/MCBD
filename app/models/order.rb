@@ -21,4 +21,13 @@ class Order < ApplicationRecord
     order.update(total_price: total_price) # Mise à jour du montant total de la commande
     order
   end 
+
+  def self.create_order_for_express_purchase(current_user, book, total_price)
+    order = create(user: current_user) # Crée une nouvelle instance de Order avec le current user
+    order.books << book #ajoute les book dans l'instance
+    order.total_price = total_price #définition du total price
+    order.save
+    order
+  
+  end
 end

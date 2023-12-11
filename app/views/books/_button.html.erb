@@ -11,6 +11,6 @@
       </div>
     <% end %>
     <div class="ml-3">
-      <%= button_to "Achat express", express_checkout_path(book_id: @book.id, quantity: params[:quantity], user_id: current_user.id, total: @book.price_code.price), method: :post, class: "add-to-cart-button btn add-to-cart-button:hover btn", data: { turbo: false } %>    </div>
+      <%= button_to "Achat express pour 1 livre", express_checkout_path(book_id: @book.id, quantity: params[:quantity], user_id: current_user.id, total: @book.price_code.price), method: :post, class: "add-to-cart-button btn add-to-cart-button:hover btn", data: { turbo: false } %>    </div>
     </div>
 </div>
