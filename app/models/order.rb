@@ -24,8 +24,8 @@ class Order < ApplicationRecord
 
   def self.create_order_for_express_purchase(current_user, book, total_price)
     order = create(user: current_user) # Crée une nouvelle instance de Order avec le current user
-    order.books << book #ajoute les book dans l'instance
-    order.total_price = total_price #définition du total price
+    order.joint_table_order_books.create(book: book, quantity: 1) # Ajoute le livre avec une quantité de 1
+    order.total_price = total_price # Définition du total price
     order.save
     order
   
