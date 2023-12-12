@@ -11,7 +11,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     if current_user.attendances.create(event: @event)
-      flash[:notice] = 'Inscription réussie!'
+      flash[:notice] = 'Inscription réussie! Vous allez recevoir une confirmation par email'
     else
       flash[:alert] = "Erreur lors de l'inscription"
     end
