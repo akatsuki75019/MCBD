@@ -7,7 +7,9 @@ class JointTableCartBooksController < ApplicationController
   def create
     book = Book.find(params.fetch(:book_id, nil)) # .fetch = Si la clé :book_id n'est pas présente dans params, la valeur par défaut nil sera utilisée. 
     quantity = params.fetch(:quantity, 1).to_i  # prendre la quantité fournie, sinon par défaut à 1
-    result = current_user.cart.add_book_in_cart(book, quantity) #la methode add_book_in_cart se trouve dans le model JointTableCartBook
+    user_cart = current_user&.cart || Cart.create # Si l'utilisateur est connecté, utilisez son panier, sinon créez un nouveau panier
+
+    result = user_cart.add_book_in_cart(book, quantity) #la methode add_book_in_cart se trouve dans le model JointTableCartBook
 
     case result
     when JointTableCartBook #dans les cas où l'ajout au panier se fait depuis le show_book
