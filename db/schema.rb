@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_08_145638) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_11_092011) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,7 +29,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_145638) do
     t.string "author"
     t.text "description"
     t.integer "quantity"
-    t.datetime "release_date"
+    t.date "release_date"
     t.float "tva"
     t.string "image_url"
     t.bigint "editor_id"

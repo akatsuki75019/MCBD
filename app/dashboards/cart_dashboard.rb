@@ -23,9 +23,9 @@ class CartDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    books
-    joint_table_cart_books
     user
+    books
+    created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

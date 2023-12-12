@@ -1,4 +1,6 @@
 class Book < ApplicationRecord
+  before_create :set_default_tva
+
   has_many :joint_table_cart_books, dependent: :destroy
   has_many :carts, through: :joint_table_cart_books
 
@@ -17,5 +19,14 @@ class Book < ApplicationRecord
   #In Administrate views to show only price code name and not only id
   def price_code_name
     price_code.name if price_code
+  end
+
+  # Pour obtenir la date formatée sans l'heure
+  def formatted_release_date
+    release_date.to_date
+  end
+
+  def set_default_tva
+    self.tva ||= 5.5
   end
 end
