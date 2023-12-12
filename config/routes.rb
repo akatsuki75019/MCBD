@@ -2,23 +2,20 @@ Rails.application.routes.draw do
   root 'static_pages#index'
   
   namespace :admin do
-      resources :attendances
+      resources :users
       resources :books
+      resources :orders
       resources :carts
+      resources :wishlists
+      resources :price_codes
       resources :categories
       resources :editors
       resources :events
-      resources :joint_table_cart_books
-      resources :joint_table_order_books
-      resources :orders
-      resources :price_codes
-      resources :users
-      resources :wishlists
+      resources :attendances
 
-      root to: "attendances#index"
+      root to: "books#index"
     end
   
-  get 'static_pages/index'
   get 'static_pages/contact'
   get '/cgv', to: 'static_pages#cgv', as: 'cgv'
   get '/mentions_legales', to: 'static_pages#mentions_legales', as: 'mentions_legales'
@@ -41,6 +38,13 @@ Rails.application.routes.draw do
     post 'create', to: 'checkout#create', as: 'checkout_create'
     get 'success', to: 'checkout#success', as: 'checkout_success'
     get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
+    post 'express_checkout', to: 'checkout#express_checkout', as: 'express_checkout'
+  end
+
+  resources :events do
+    member do
+      post 'attend', to: 'events#attend'
+    end
   end
   
 end

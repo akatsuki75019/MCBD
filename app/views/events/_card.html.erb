@@ -1,12 +1,4 @@
-<style>
-  /* Ajoutez ces styles dans votre fichier CSS */
-  .card-description {
-    max-height: 80px; /* Choisissez une hauteur maximale qui convient à votre design */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    cursor: pointer;
-  }
-</style>
+
 
 <% @events.each do |event| %>
   <div class="col">
@@ -18,36 +10,10 @@
       <div class="card-body px-0">
         <p class="card-text text-white text-start card-description" data-truncate="80"><%= event.description %></p>
         <div class="d-flex justify-content-around align-items-center mt-4">
-          <%= link_to "Voir l'event", event_path(event), class:"btn btn-sm btn-outline-secondary"%>
+          <%= link_to "Voir l'évènement", event_path(event), class:"btn btn-sm btn-outline-secondary"%>
           <small class="text-light">Le <%= event.start_date %></small>
         </div>
       </div>
     </div>
   </div>
 <% end %>
-
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const cardDescriptions = document.querySelectorAll('.card-description');
-
-    cardDescriptions.forEach(description => {
-      const truncateLength = parseInt(description.getAttribute('data-truncate'));
-
-      description.addEventListener('click', function() {
-        if (description.classList.contains('truncated')) {
-          description.classList.remove('truncated');
-          description.style.maxHeight = 'none';
-        } else {
-          description.classList.add('truncated');
-          description.style.maxHeight = truncateLength + 'px';
-        }
-      });
-
-      // Masquer les boutons "Voir plus" pour les descriptions courtes
-      if (description.clientHeight <= truncateLength) {
-        description.classList.add('truncated');
-      }
-    });
-  });
-</script>

@@ -7,13 +7,13 @@ class StaticPagesController < ApplicationController
   def contact
   end
 
-  def cgv
+  def terms_and_conditions
   end
 
-  def rgpd
+  def gdpr
   end
 
-  def mentions_legales
+  def legal_notice
   end
 
 end

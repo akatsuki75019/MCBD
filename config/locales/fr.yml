@@ -10,8 +10,28 @@ fr:
       order: "Commande"
       price_code: "Code Prix"
       user: "Client"
-      wishlist: "Favori"
+      wishlist: "Articles mis en Favori"
 
+  administrate:
+    resources:
+      book:
+        attributes:
+          title: "Titre"
+          author: "Auteur"
+          editor: "Éditeur"
+          category: "Catégorie"
+          image_url: "URL de l'image"
+          price_code: "Code prix"
+          release_date: "Date de sortie"
+      user:
+        attributes:
+
+  fr:
+  date:
+    formats:
+      default: "%d/%m/%Y"
+
+  #to change table header in every index dashboard pages
   helpers:
     label:
       book:
@@ -20,3 +40,46 @@ fr:
         category: "Catégorie"
         quantity: "Quantité"
         price_code: "Code Prix"
+
+      cart:
+        user: "Client"
+        books: "Nombre de livre.s"
+        created_at: "Date de création"
+      category:
+        books: "Livres concernés"
+        name: "Nom"
+      order:
+        user: "Client"
+        books: "Nombre de livre.s"
+        total_price: "Prix total"
+        created_at: "Date de création"
+      price_code:
+        books: "Livres concernés"
+        name: "Sigle"
+        price: "Prix"
+      user:
+        attendances: "Participation.s"
+        birthday: "Date de naissance"
+        encrypted_password: "Mot de Passe encrypté"
+        events: "Événement.s"
+        first_name: "Prénom"
+        is_admin: "Admin"
+        last_name: "Nom"
+        orders: "Commande.s"
+
+
+fr:
+  time:
+    formats:
+      long: "%A %e %B %Y à %H:%M"
+fr:
+  date:
+    day_names:
+      - lundi
+      - mardi
+      - mercredi
+      - jeudi
+      - vendredi
+      - samedi
+      - dimanche
+
