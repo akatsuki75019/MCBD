@@ -39,5 +39,11 @@ Rails.application.routes.draw do
     get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
     post 'express_checkout', to: 'checkout#express_checkout', as: 'express_checkout'
   end
+
+  resources :events do
+    member do
+      post 'attend', to: 'events#attend'
+    end
+  end
   
 end
