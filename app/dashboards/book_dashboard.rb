@@ -21,9 +21,9 @@ class BookDashboard < Administrate::BaseDashboard
     orders: Field::HasMany,
     price_code: Field::BelongsTo,
     quantity: Field::Number,
-    release_date: Field::DateTime,
+    release_date: Field::Date,
     title: Field::String,
-    tva: Field::Number.with_options(decimals: 2),
+    tva: Field::Number.with_options(decimals: 1),
     wishlists: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -71,22 +71,16 @@ class BookDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    author
-    carts
-    category
-    description
-    editor
-    image_url
     isbn
-    joint_table_cart_books
-    joint_table_order_books
-    orders
+    title
+    description
+    author
+    editor
+    category
+    image_url
     price_code
     quantity
     release_date
-    title
-    tva
-    wishlists
   ].freeze
 
   # COLLECTION_FILTERS
@@ -100,8 +94,4 @@ class BookDashboard < Administrate::BaseDashboard
   #     open: ->(resources) { resources.where(open: true) }
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
-
-  # Overwrite this method to customize how books are displayed
-  # across all pages of the admin dashboard.
-  #
 end
