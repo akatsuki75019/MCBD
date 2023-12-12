@@ -66,4 +66,7 @@ class JointTableCartBookDashboard < Administrate::BaseDashboard
   # def display_resource(joint_table_cart_book)
   #   "JointTableCartBook ##{joint_table_cart_book.id}"
   # end
+  def display_resource(resource)
+    "#{resource.name}"
+  end
 end
