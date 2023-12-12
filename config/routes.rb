@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       root to: "books#index"
     end
   
+  get 'static_pages/index'
   get 'static_pages/contact' 
   get 'static_pages/gdpr'
   get 'static_pages/legal_notice'
