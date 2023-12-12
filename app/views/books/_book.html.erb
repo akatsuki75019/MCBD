@@ -16,107 +16,106 @@
   <!-- Breadcrumb End -->
 
     <!-- Anime Section Begin -->
-  <section class="anime-details spad">
-    <div class="container">
-      <div class="anime__details__content">
-        <div class="row">
-          <div class="col-lg-3">
-            <%= image_tag("https://m.media-amazon.com/images/I/71dwbtwA4SL._AC_UF1000,1000_QL80_.jpg", class: "anime__details__pic set-bg", data: { setbg: "https://m.media-amazon.com/images/I/71dwbtwA4SL._AC_UF1000,1000_QL80_.jpg" }, alt: "Description de l'image") %>
+<section class="anime-details spad">
+  <div class="container">
+    <div class="anime__details__content">
+      <div class="row">
+        <div class="col-lg-3">
+          <%= image_tag(book.google_book_info&.google_image_link, class: "anime__details__pic set-bg", data: { setbg: book.google_book_info&.google_image_link }, alt: "Description de l'image") %>
+        </div>
+        <div class="col-lg-9">
+          <div class="anime__details__text">
+            <div class="anime__details__title">
+              <h3><%= book.google_book_info&.google_title %></h3>
+              <span><%= book.google_book_info&.google_authors %></span>
+            </div>
+            <p><%= book.google_book_info&.google_description || "Description non disponible" %></p>
           </div>
-            <div class="col-lg-9">
-              <div class="anime__details__text">
-                <div class="anime__details__title">
-                  <h3><%= book.title %></h3>
-                    <span><%= book.author %></span>
-                </div>
-                <p>Every human inhabiting the world of Alcia is branded by a “Count” or a number written on their body. For Hina’s mother, her total drops to 0 and she’s pulled into the Abyss, never to be seen again. But her mother’s last words send Hina on a quest to find a legendary hero from the Waste War - the fabled Ace!</p>
+          <div class="anime__details__widget">
+            <div class="row">
+              <div class="col-lg-6 col-md-6">
+                <ul>
+                  <li><span>Type:</span> <%= book.category.name if book.category %></li>
+                  <li><span>Editeur:</span> <%= book.editor.name if book.editor %></li>
+                  <li><span>Date:</span> <%= book.google_book_info&.google_published_date %></li>
+                </ul>
               </div>
-              <div class="anime__details__widget">
-                <div class="row">
-                  <div class="col-lg-6 col-md-6">
-                    <ul>
-                      <li><span>Type:</span> <%book . category_id%></li>
-                      <li><span>Editeur:</span> <%book. editor_id%></li>
-                      <li><span>Date:</span> <%book.release_date%> </li>
-                    </ul>
-                  </div>
-                  <div class="col-lg-6 col-md-6">
-                    <ul>
-                      <li><span>ISBN:</span><%book.isbn%> </li>
-                      <li><span>Disponibilité:</span> Oui </li>
-                  </ul>
-                </div>
+              <div class="col-lg-6 col-md-6">
+                <ul>
+                  <li><span>ISBN:</span> <%= book.google_book_info&.google_isbn %> </li>
+                  <li><span>Disponibilité:</span> Oui </li>
+                </ul>
               </div>
             </div>
-            <%= render 'books/button'%>
+          </div>
+
+          <%= render 'books/button'%>
             
-          </div>
-          
-                
-      <!-- BOOK Section End -->
-      <!-- DANS LE MEME GENRE start -->
-          <div class="col-lg-12">
-            <div class="trending__product">
-              <div class="row">
-                <div class="col-lg-8 col-md-8 col-sm-8">
-                  <div class="section-title">
-                    <h4>Dans le meme genre</h4>
-                  </div>
+        </div>
+                          
+    <!-- BOOK Section End -->
+    <!-- DANS LE MEME GENRE start -->
+        <div class="col-lg-12">
+          <div class="trending__product">
+            <div class="row">
+              <div class="col-lg-8 col-md-8 col-sm-8">
+                <div class="section-title">
+                  <h4>Dans le meme genre</h4>
                 </div>
-              </div>
-              <%= render 'card_row'%>
-              <!-- DANS LE MEME GENRE end -->
-              
-              <!-- OU NOUS TROUVER start -->
-                <div class="col-lg-8 col-md-8 col-sm-8">
-                  <div class="section-title">
-                    <h4>ou nous trouver ?</h4>
-                  </div>
-                </div>
-                  
-                  <div class="row d-flex ">
-                    <div class="col-lg-2 col-md-8 col-sm-4 mr-auto">
-                        <iframe width="600" height="450" style="border:0<>"Loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJt2lfewdy5kcRnc05-mzm3eQ&key=AIzaSyAI4Dte5N9sTmpRSdFpewT4teWGR5OEW6Q"></iframe>                    
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-4 m-auto p-2">
-                      <div class="anime__review__item__text">
-                        <h6>MCBD SHOP</h6>
-                        <p>Horaires:</p>
-                        <p>Lundi 11:00–19:00</p>
-                        <p>Mardi 11:00–19:00</p>
-                        <p>Mercredi 11:00–19:00</p>
-                        <p>Jeudi 11:00–19:00</p>
-                        <p>Vendredi 11:00–19:00</p>            
-                        <p>Samedi 11:00–19:00</p>  
-                        <p>Dimanche fermé</p>              
-                      </div>
-                    </div>
-                  </div>
-                </div>    
               </div>
             </div>
+            <%= render 'card_row'%>
+            <!-- DANS LE MEME GENRE end -->
+            
+            <!-- OU NOUS TROUVER start -->
+              <div class="col-lg-8 col-md-8 col-sm-8">
+                <div class="section-title">
+                  <h4>ou nous trouver ?</h4>
+                </div>
+              </div>
+                
+              <div class="row d-flex ">
+                <div class="col-lg-2 col-md-8 col-sm-4 mr-auto">
+                    <iframe width="600" height="450" style="border:0<>"Loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJt2lfewdy5kcRnc05-mzm3eQ&key=AIzaSyAI4Dte5N9sTmpRSdFpewT4teWGR5OEW6Q"></iframe>                    
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-4 m-auto p-2">
+                  <div class="anime__review__item__text">
+                    <h6>MCBD SHOP</h6>
+                    <p>Horaires:</p>
+                    <p>Lundi 11:00–19:00</p>
+                    <p>Mardi 11:00–19:00</p>
+                    <p>Mercredi 11:00–19:00</p>
+                    <p>Jeudi 11:00–19:00</p>
+                    <p>Vendredi 11:00–19:00</p>            
+                    <p>Samedi 11:00–19:00</p>  
+                    <p>Dimanche fermé</p>              
+                  </div>
+                </div>
+              </div>
+            </div>    
           </div>
         </div>
       </div>
-    </section>
-
-            
-
-
-          <!-- Search model Begin -->
-          <div class="search-model">
-            <div class="h-100 d-flex align-items-center justify-content-center">
-                <div class="search-close-switch"><i class="icon_close"></i></div>
-                <form class="search-model-form">
-                    <input type="text" id="search-input" placeholder="Search here.....">
-                </form>
-            </div>
-          </div>
-        <!-- Search model end -->
-
-        <!-- Js Plugins -->
-        <%= javascript_include_tag 'manifest' %>
-      </div>
     </div>
-  </section>
+</section>
+
+          
+
+
+        <!-- Search model Begin -->
+        <div class="search-model">
+          <div class="h-100 d-flex align-items-center justify-content-center">
+              <div class="search-close-switch"><i class="icon_close"></i></div>
+              <form class="search-model-form">
+                  <input type="text" id="search-input" placeholder="Search here.....">
+              </form>
+          </div>
+        </div>
+      <!-- Search model end -->
+
+      <!-- Js Plugins -->
+      <%= javascript_include_tag 'manifest' %>
+    </div>
+  </div>
+</section>
 
