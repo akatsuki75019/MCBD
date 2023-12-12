@@ -20,3 +20,18 @@ fr:
         category: "Catégorie"
         quantity: "Quantité"
         price_code: "Code Prix"
+
+fr:
+  time:
+    formats:
+      long: "%A %e %B %Y à %H:%M"
+fr:
+  date:
+    day_names:
+      - lundi
+      - mardi
+      - mercredi
+      - jeudi
+      - vendredi
+      - samedi
+      - dimanche
