@@ -24,9 +24,10 @@ class OrderDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
+    user
     books
-    joint_table_order_books
     total_price
+    created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

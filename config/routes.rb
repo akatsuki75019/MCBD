@@ -2,20 +2,18 @@ Rails.application.routes.draw do
   root 'static_pages#index'
   
   namespace :admin do
-      resources :attendances
+      resources :users
       resources :books
+      resources :orders
       resources :carts
+      resources :wishlists
+      resources :price_codes
       resources :categories
       resources :editors
       resources :events
-      resources :joint_table_cart_books
-      resources :joint_table_order_books
-      resources :orders
-      resources :price_codes
-      resources :users
-      resources :wishlists
+      resources :attendances
 
-      root to: "attendances#index"
+      root to: "books#index"
     end
   
   get 'static_pages/index'
