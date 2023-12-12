@@ -1,7 +1,7 @@
 class Cart < ApplicationRecord
   has_many :joint_table_cart_books
   has_many :books, through: :joint_table_cart_books
-  belongs_to :user
+  belongs_to :user, optional: true
 
   # Règles de métiers pour ajouter une entrée "cart-book" dans la BDD
   def add_book_in_cart(book, quantity)
