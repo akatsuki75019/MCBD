@@ -28,7 +28,7 @@
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Espace Client
         </a>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu color-dropdown">
           <% if user_signed_in? %>
             <li>
               <%= link_to "Mon Compte", user_path(current_user), class:"dropdown-item"%>
@@ -40,14 +40,14 @@
             <% end %>
             <li><hr class="dropdown-divider" /></li>
             <li>
-              <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, data: {turbo_method: :delete}, :class=>"dropdown-item" %>
+              <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, data: {turbo_method: :delete}, :class=>"dropdown-item btn-deconnect" %>
             </li>
           <% else %>
             <li>
-              <%= link_to "Se connecter", new_user_session_path, class:"dropdown-item", style:"color: #16181B"%>
+              <%= link_to "Se connecter", new_user_session_path, class:"dropdown-item"%>
             </li>
             <li>
-              <%= link_to "S'inscrire", new_user_registration_path, class:"dropdown-item", style:"color: #16181B"%>
+              <%= link_to "S'inscrire", new_user_registration_path, class:"dropdown-item"%>
             </li>
           <% end %>
         </ul>
