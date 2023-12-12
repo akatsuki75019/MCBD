@@ -2370,3 +2370,53 @@ ol {
 .text-white {
 	color: #ffffff !important;
 }
+
+/*<!-- Hero Section Begin -->*/
+.main-container {
+position: relative;
+width: 1518px; /* Adjust width as needed */
+height: 553px; /* Adjust height as needed */
+margin: 0 auto;
+overflow: hidden;
+background: url('<%= asset_path("MCDB.jpg") %>') no-repeat center;
+background-size: cover;
+opacity: 0.8;
+}
+  
+  .hero__text {
+    color: #ffffff; /* Adjust text color as needed */
+  }
+  
+  .label {
+    font-size: 18px; /* Adjust label font size as needed */
+    font-weight: bold;
+  }
+  
+  .hero__text h2 {
+    font-size: 24px; /* Adjust heading font size as needed */
+    font-weight: bold;
+  }
+  
+  .hero__text p {
+    font-size: 16px; /* Adjust paragraph font size as needed */
+  }
+  
+  .hero__text a {
+    color: #ffffff; /* Adjust link color as needed */
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  
+  .hero__text a span {
+    border: 1px solid #ffffff; /* Adjust border color as needed */
+    padding: 5px 10px; /* Adjust padding as needed */
+    border-radius: 5px;
+  }
+  
+  .carousel-image {
+    width: 70%;
+    margin: auto; /* Pour centrer l'image horizontalement */
+  }
+
+  /*<!-- Hero Section Begin end -->*/
