@@ -2420,3 +2420,7 @@ opacity: 0.8;
   }
 
   /*<!-- Hero Section Begin end -->*/
+
+  h1.text-center {
+	text-align: center;
+  }

@@ -5,9 +5,14 @@
     </div>
 
     <ul class="nav justify-content-center border-bottom py-3 mb-3 ">
-      <li class="nav-item"><a href="#" class="nav-link px-2  text-light">Conditions générales de vente</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2  text-light">Politique de confidentialité (RGPD)</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2  text-light">Mentions légales</a></li>
+      <li class="nav-item">
+        <%= link_to "Conditions Générales de Vente", cgv_path, class: "nav-link px-2 text-light" %>
+      </li>
+      <%= link_to "Politique de confidentialité (RGPD)", rgpd_path, class: "nav-link px-2 text-light" %>
+      </li>
+      <%= link_to "Mentions légales", mentions_legales_path, class: "nav-link px-2 text-light" %>
+    </li>
+     
       <li class="nav-item"><a href="#" class="nav-link px-2  text-light">Contact</a></li>
     </ul>
 

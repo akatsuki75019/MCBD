@@ -6,4 +6,14 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
+
+  def cgv
+  end
+
+  def rgpd
+  end
+
+  def mentions_legales
+  end
+
 end

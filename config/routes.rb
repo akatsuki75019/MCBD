@@ -20,7 +20,12 @@ Rails.application.routes.draw do
   
   get 'static_pages/index'
   get 'static_pages/contact'
-  
+  get '/cgv', to: 'static_pages#cgv', as: 'cgv'
+  get '/mentions_legales', to: 'static_pages#mentions_legales', as: 'mentions_legales'
+  get '/rgpd', to: 'static_pages#rgpd', as: 'rgpd'
+
+
+
   devise_for :users
   resources :users
   resources :events, only: [:show, :index]
