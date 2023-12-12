@@ -28,10 +28,16 @@ personas.shuffle.each do |persona|
   )
 end
 
-3.times do 
+
+categories = [["Shonen"], ["Seinen"], ["Shojo"]]
+
+categories.shuffle.each do |category|
+  name = category[0]
+
   Category.create!(
-    name: ["Shonen", "Seinen", "Shojo"].sample
+    name: name
   )
+
 end
 
 10.times do

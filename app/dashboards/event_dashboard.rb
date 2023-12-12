@@ -25,9 +25,9 @@ class EventDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    attendances
-    description
+    title
     start_date
+    users
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

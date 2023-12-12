@@ -11,7 +11,6 @@ Rails.application.routes.draw do
       resources :categories
       resources :editors
       resources :events
-      resources :attendances
 
       root to: "books#index"
     end
