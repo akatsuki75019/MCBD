@@ -117,7 +117,7 @@ class CheckoutController < ApplicationController
       Order.create_order_for_express_purchase(current_user, book, total_price)
 
       #Gérer la màj des quantités après un paiement stripe:
-      #book.update_stock_quantity(1)
+      book.update_stock_quantity(1)
     end
   end
 
