@@ -1,13 +1,19 @@
 class ApplicationController < ActionController::Base
   before_action :current_user, :current_cart
 
-  def current_user
-    @user ||= User.find(session[:user_id]) if session[:user_id]
+  def after_sign_in_path_for(resource)
+    # Récupérer l'URL stockée 
+    stored_location = stored_location_for(resource)
+    if stored_location
+      stored_location
+    else
+      root_path
+    end
   end
 
   def current_cart
     if login?
-      @cart = current_user.cart
+      @cart = current_user.cart || Cart.create(user: current_user)
     else
       if session[:cart]
         @cart = Cart.find(session[:cart])
@@ -20,6 +26,7 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+  
 
   def login?
     !!current_user
