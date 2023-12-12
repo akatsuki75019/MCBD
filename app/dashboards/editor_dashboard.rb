@@ -63,6 +63,9 @@ class EditorDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how editors are displayed
   # across all pages of the admin dashboard.
   #
+  def display_resource(resource)
+    "#{resource.name}"
+  end
   # def display_resource(editor)
   #   "Editor ##{editor.id}"
   # end

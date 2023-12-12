@@ -23,9 +23,7 @@ fr:
           image_url: "URL de l'image"
           price_code: "Code prix"
           release_date: "Date de sortie"
-      user:
-        attributes:
-
+      
   #to change table header in every index dashboard pages
   helpers:
     label:
@@ -35,7 +33,6 @@ fr:
         category: "Catégorie"
         quantity: "Quantité"
         price_code: "Code Prix"
-
       cart:
         user: "Client"
         books: "Nombre de livre.s"

@@ -103,6 +103,7 @@ class BookDashboard < Administrate::BaseDashboard
   
   COLLECTION_FILTERS = {}.freeze
 
+  #permit to display resource.name like for category the name of category
   def display_resource(resource)
     "#{resource.name}"
   end
