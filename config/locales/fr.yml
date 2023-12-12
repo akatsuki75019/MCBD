@@ -40,6 +40,7 @@ fr:
         category: "Catégorie"
         quantity: "Quantité"
         price_code: "Code Prix"
+
       cart:
         user: "Client"
         books: "Nombre de livre.s"
@@ -65,3 +66,20 @@ fr:
         is_admin: "Admin"
         last_name: "Nom"
         orders: "Commande.s"
+
+
+fr:
+  time:
+    formats:
+      long: "%A %e %B %Y à %H:%M"
+fr:
+  date:
+    day_names:
+      - lundi
+      - mardi
+      - mercredi
+      - jeudi
+      - vendredi
+      - samedi
+      - dimanche
+
