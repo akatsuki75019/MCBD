@@ -18,8 +18,11 @@ Rails.application.routes.draw do
       root to: "attendances#index"
     end
   
-  get 'static_pages/index'
   get 'static_pages/contact'
+  get 'static_pages/gdpr'
+  get 'static_pages/index'
+  get 'static_pages/legal_notice'
+  get 'static_pages/terms_and_conditions'
   
   devise_for :users
   resources :users
