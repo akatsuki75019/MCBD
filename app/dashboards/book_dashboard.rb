@@ -11,7 +11,10 @@ class BookDashboard < Administrate::BaseDashboard
     id: Field::Number,
     author: Field::String,
     carts: Field::HasMany,
-    category: Field::BelongsTo.with_options(attributes: [:name]),
+    category: Field::BelongsTo.with_options(
+      searchable: true,
+      searchable_fields: ['name'],
+      ),
     description: Field::Text,
     editor: Field::BelongsTo,
     image_url: Field::String,
@@ -19,7 +22,10 @@ class BookDashboard < Administrate::BaseDashboard
     joint_table_cart_books: Field::HasMany,
     joint_table_order_books: Field::HasMany,
     orders: Field::HasMany,
-    price_code: Field::BelongsTo,
+    price_code: Field::BelongsTo.with_options(
+      searchable: true,
+      searchable_fields: ['name'],
+      ),
     quantity: Field::Number,
     release_date: Field::Date,
     title: Field::String,
@@ -93,13 +99,14 @@ class BookDashboard < Administrate::BaseDashboard
   #   COLLECTION_FILTERS = {
   #     open: ->(resources) { resources.where(open: true) }
   #   }.freeze
+
+  
   COLLECTION_FILTERS = {}.freeze
 
-  # def render_field_value(field, resource)
-  #   if field.attribute == :category
-  #     resource.category.name
-  #   else
-  #     super
-  #   end
+  def display_resource(resource)
+    "#{resource.name}"
+  end
+  # def display_resource(price_code)
+  #   "PriceCode ##{price_code.id}"
   # end
 end

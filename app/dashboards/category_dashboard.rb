@@ -54,12 +54,14 @@ class CategoryDashboard < Administrate::BaseDashboard
   #   COLLECTION_FILTERS = {
   #     open: ->(resources) { resources.where(open: true) }
   #   }.freeze
-  COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how categories are displayed
-  # across all pages of the admin dashboard.
-  #
-  # def display_resource(category)
-  #   "Category ##{category.id}"
+  
+  COLLECTION_FILTERS = {}.freeze
+  
+  def display_resource(resource)
+    "#{resource.name}"
+  end
+  # def display_resource(price_code)
+  #   "PriceCode ##{price_code.id}"
   # end
 end
