@@ -26,11 +26,6 @@ fr:
       user:
         attributes:
 
-  fr:
-  date:
-    formats:
-      default: "%d/%m/%Y"
-
   #to change table header in every index dashboard pages
   helpers:
     label:
@@ -67,12 +62,10 @@ fr:
         last_name: "Nom"
         orders: "Commande.s"
 
-
-fr:
   time:
     formats:
       long: "%A %e %B %Y à %H:%M"
-fr:
+
   date:
     day_names:
       - lundi
@@ -82,4 +75,5 @@ fr:
       - vendredi
       - samedi
       - dimanche
-
+    formats:
+      default: "%d/%m/%Y"

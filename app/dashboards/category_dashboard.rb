@@ -22,8 +22,8 @@ class CategoryDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    books
     name
+    books
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

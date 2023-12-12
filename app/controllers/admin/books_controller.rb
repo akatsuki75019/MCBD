@@ -42,10 +42,5 @@ module Admin
 
     # See https://administrate-demo.herokuapp.com/customizing_controller_actions
     # for more information
-
-    #to include joint table datas to this one
-    def scoped_resource
-      super.includes(:price_code) # Faites la jointure avec la table PriceCode
-    end
   end
 end

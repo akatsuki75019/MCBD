@@ -11,7 +11,7 @@ class BookDashboard < Administrate::BaseDashboard
     id: Field::Number,
     author: Field::String,
     carts: Field::HasMany,
-    category: Field::BelongsTo,
+    category: Field::BelongsTo.with_options(attributes: [:name]),
     description: Field::Text,
     editor: Field::BelongsTo,
     image_url: Field::String,
@@ -94,4 +94,12 @@ class BookDashboard < Administrate::BaseDashboard
   #     open: ->(resources) { resources.where(open: true) }
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
+
+  # def render_field_value(field, resource)
+  #   if field.attribute == :category
+  #     resource.category.name
+  #   else
+  #     super
+  #   end
+  # end
 end
