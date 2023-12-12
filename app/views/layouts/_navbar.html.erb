@@ -5,14 +5,27 @@
     <div class="navbar-brand">
       <ul class="navbar-nav d-flex flex-row gap-4 me-4">
         <!-- Icons -->
-        <% if user_signed_in? %>
           <li class="nav-item me-3 me-lg-0">
-            <%= link_to cart_path(current_user), class: "nav-link" do %>
+            <% if current_user && current_user.cart.present? %>
+              <%= link_to cart_path(current_user.cart), class: "nav-link" do %>
                 <i class="fas fa-shopping-cart"></i>
+                <span class="badge rounded-pill bg-danger">
+                  <%= current_user.cart.joint_table_cart_books.sum(:quantity) %>
+                </span>
+              <% end %>
+            <% elsif session[:cart].present? %>
+              <%= link_to cart_path(session[:cart]), class: "nav-link" do %>
+                <i class="fas fa-shopping-cart"></i>
+                <span class="badge rounded-pill bg-danger">
+                  <%= JointTableCartBook.where(cart_id: session[:cart]).sum(:quantity) %>
+                </span>
+              <% end %>
+            <% else %>
+              <%= link_to root_path, class: "nav-link" do %>
+                <i class="fas fa-shopping-cart"></i>
+              <% end %>
             <% end %>
           </li>
-        <% end %>
-        <li class="nav-item me-3 me-lg-0">
           <a class="nav-link" href="#">
               <i class="fa-solid fa-magnifying-glass"></i>
           </a>
