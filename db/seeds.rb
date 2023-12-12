@@ -127,3 +127,8 @@ events.shuffle.each do |event|
     image_url: image_url
     )
 end
+
+User.find_each do |user|
+  event_to_attend = Event.all.sample
+  Attendance.create(user: user, event: event_to_attend)
+end
