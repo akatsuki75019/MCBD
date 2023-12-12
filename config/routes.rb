@@ -16,11 +16,10 @@ Rails.application.routes.draw do
       root to: "books#index"
     end
   
-  get 'static_pages/contact'
-  get '/cgv', to: 'static_pages#cgv', as: 'cgv'
-  get '/mentions_legales', to: 'static_pages#mentions_legales', as: 'mentions_legales'
-  get '/rgpd', to: 'static_pages#rgpd', as: 'rgpd'
-
+  get 'static_pages/contact' 
+  get 'static_pages/gdpr'
+  get 'static_pages/legal_notice'
+  get 'static_pages/terms_and_conditions'
 
 
   devise_for :users
