@@ -1,0 +1,5 @@
+<% if user_signed_in? %>
+  <%= button_to 'Participer à cet évènement', attend_event_path(@event), method: :post, class: 'btn btn-primary' %>
+<% else %>
+  <%= button_to 'Connectez-vous pour vous inscrire', new_user_session_path, class: 'btn btn-secondary' %>
+<% end %>
