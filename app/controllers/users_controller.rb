@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     else
       @user = current_user
       @recent_purchases = @user.orders.includes(:books).order(created_at: :desc).limit(4)
-
     end
   end
 
