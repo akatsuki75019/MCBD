@@ -23,9 +23,9 @@ class EditorDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    books
-    distributor
     name
+    distributor
+    books
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -63,6 +63,9 @@ class EditorDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how editors are displayed
   # across all pages of the admin dashboard.
   #
+  def display_resource(resource)
+    "#{resource.name}"
+  end
   # def display_resource(editor)
   #   "Editor ##{editor.id}"
   # end

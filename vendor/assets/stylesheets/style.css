@@ -2383,3 +2383,133 @@ ol {
 .text-white {
 	color: #ffffff !important;
 }
+
+/*<!-- Hero Section Begin -->*/
+.main-container {
+position: relative;
+width: 1518px; /* Adjust width as needed */
+height: 553px; /* Adjust height as needed */
+margin: 0 auto;
+overflow: hidden;
+background: url('<%= asset_path("MCDB.jpg") %>') no-repeat center;
+background-size: cover;
+opacity: 0.8;
+}
+  
+  .hero__text {
+    color: #ffffff; /* Adjust text color as needed */
+  }
+  
+  .label {
+    font-size: 18px; /* Adjust label font size as needed */
+    font-weight: bold;
+  }
+  
+  .hero__text h2 {
+    font-size: 24px; /* Adjust heading font size as needed */
+    font-weight: bold;
+  }
+  
+  .hero__text p {
+    font-size: 16px; /* Adjust paragraph font size as needed */
+  }
+  
+  .hero__text a {
+    color: #ffffff; /* Adjust link color as needed */
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  
+  .hero__text a span {
+    border: 1px solid #ffffff; /* Adjust border color as needed */
+    padding: 5px 10px; /* Adjust padding as needed */
+    border-radius: 5px;
+  }
+  
+  .carousel-image {
+    width: 70%;
+    margin: auto; /* Pour centrer l'image horizontalement */
+  }
+
+  /*<!-- Hero Section Begin end -->*/
+
+  h1.text-center {
+	text-align: center;
+	margin-bottom: 20px;
+  }
+
+.card-description {
+	max-height: 80px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	cursor: pointer;
+}
+
+.color-dropdown {
+	background: #1d1e39;
+}
+
+.btn-deconnect {
+	color : white;
+}
+
+.btn-deconnect :hover{
+	color : black;
+}
+
+.color-nav {
+	background: #070720;
+}
+
+/* Page contact */
+
+
+.container.static-page {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+	box-sizing: border-box;
+  }
+  
+.container.static-page h1,
+.container.static-page p {
+	color: #ffffff;
+ }
+  
+  @media screen and (max-width: 600px) {
+	.container.static-page {
+	  padding: 10px;
+	}
+  
+	.container.static-page h1 {
+	  font-size: 1.5em;
+	}
+  }
+  
+ 
+  .form-group {
+	margin-bottom: 15px;
+  }
+  
+  label {
+	display: block;
+	margin-bottom: 8px;
+	font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  textarea {
+	width: 100%;
+	max-width: 600px;
+	padding: 8px;
+	box-sizing: border-box;
+  }
+  
+.container_static_pages {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+	box-sizing: border-box;
+  }

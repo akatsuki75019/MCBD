@@ -22,8 +22,8 @@ class WishlistDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    book
     user
+    book
     created_at
   ].freeze
 
@@ -60,6 +60,9 @@ class WishlistDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how wishlists are displayed
   # across all pages of the admin dashboard.
   #
+  def display_resource(resource)
+    "#{resource.name}"
+  end
   # def display_resource(wishlist)
   #   "Wishlist ##{wishlist.id}"
   # end

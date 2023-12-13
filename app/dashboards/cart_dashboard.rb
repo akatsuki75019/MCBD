@@ -23,9 +23,9 @@ class CartDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    books
-    joint_table_cart_books
     user
+    books
+    created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -66,4 +66,7 @@ class CartDashboard < Administrate::BaseDashboard
   # def display_resource(cart)
   #   "Cart ##{cart.id}"
   # end
+  def display_resource(resource)
+    "#{resource.name}"
+  end
 end
