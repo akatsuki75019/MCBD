@@ -14,8 +14,6 @@ class CartTransferService
       end
 
       session[:shopping_cart] = nil
-    else
-      puts "DEBUG: Guest Cart not found"
     end
   end
 end
