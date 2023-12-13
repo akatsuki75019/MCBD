@@ -17,6 +17,13 @@ module Admin
         user.orders.update_all(user_id: generic_user.id)
       end
 
+      #réattribuer les attendances aux events
+
+      if user.attendances.any?
+        generic_user = User.find_by(email: 'generic-user@yopmail.com')
+        user.attendances.update_all(user_id: generic_user.id)
+      end
+
       # Supprimer l'utilisateur 
       user.destroy
 
