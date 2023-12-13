@@ -23,14 +23,7 @@ fr:
           image_url: "URL de l'image"
           price_code: "Code prix"
           release_date: "Date de sortie"
-      user:
-        attributes:
-
-  fr:
-  date:
-    formats:
-      default: "%d/%m/%Y"
-
+      
   #to change table header in every index dashboard pages
   helpers:
     label:
@@ -40,7 +33,6 @@ fr:
         category: "Catégorie"
         quantity: "Quantité"
         price_code: "Code Prix"
-
       cart:
         user: "Client"
         books: "Nombre de livre.s"
@@ -67,12 +59,10 @@ fr:
         last_name: "Nom"
         orders: "Commande.s"
 
-
-fr:
   time:
     formats:
       long: "%A %e %B %Y à %H:%M"
-fr:
+
   date:
     day_names:
       - lundi
@@ -82,4 +72,5 @@ fr:
       - vendredi
       - samedi
       - dimanche
-
+    formats:
+      default: "%d/%m/%Y"

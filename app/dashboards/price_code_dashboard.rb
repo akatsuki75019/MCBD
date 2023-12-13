@@ -23,9 +23,9 @@ class PriceCodeDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    books
     name
     price
+    books
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -63,6 +63,9 @@ class PriceCodeDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how price codes are displayed
   # across all pages of the admin dashboard.
   #
+  def display_resource(resource)
+    "#{resource.name}"
+  end
   # def display_resource(price_code)
   #   "PriceCode ##{price_code.id}"
   # end

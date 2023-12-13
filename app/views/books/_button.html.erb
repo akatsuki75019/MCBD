@@ -7,10 +7,14 @@
         <%= number_field_tag :quantity, 1, min: 1, class: "form-control mb-2 ml-2 w-100" %>
       </div>
       <div class="col-lg-3">
-        <%= submit_tag "Ajout au panier", class: "add-to-cart-button btn add-to-cart-button:hover" %>
+        <%= submit_tag "Ajouter au panier au panier", class: "add-to-cart-button btn add-to-cart-button:hover" %>
       </div>
     <% end %>
     <div class="ml-3">
-      <%= button_to "Achat express pour 1 livre", express_checkout_path(book_id: @book.id, quantity: params[:quantity], user_id: current_user.id, total: @book.price_code.price), method: :post, class: "add-to-cart-button btn add-to-cart-button:hover btn", data: { turbo: false } %>    </div>
+      <% if user_signed_in? %>
+        <%= button_to "Achat express pour 1 livre", express_checkout_path(book_id: @book.id, quantity: params[:quantity], user_id: current_user.id, total: @book.price_code.price), method: :post, class: "add-to-cart-button btn add-to-cart-button:hover btn", data: { turbo: false } %>
+      <% else %>
+        <%= link_to "Achat express : connectez-vous", new_user_session_path, class: "btn btn-secondary" %>
+      <% end %>
     </div>
 </div>

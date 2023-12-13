@@ -11,17 +11,17 @@ Rails.application.routes.draw do
       resources :categories
       resources :editors
       resources :events
-      resources :attendances
 
       root to: "books#index"
     end
   
-  get 'static_pages/contact'
-  get 'static_pages/gdpr'
   get 'static_pages/index'
+  get 'static_pages/contact' 
+  get 'static_pages/gdpr'
   get 'static_pages/legal_notice'
   get 'static_pages/terms_and_conditions'
-  
+
+
   devise_for :users
   resources :users
   resources :events, only: [:show, :index]
@@ -38,6 +38,12 @@ Rails.application.routes.draw do
     get 'success', to: 'checkout#success', as: 'checkout_success'
     get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
     post 'express_checkout', to: 'checkout#express_checkout', as: 'express_checkout'
+  end
+
+  resources :events do
+    member do
+      post 'attend', to: 'events#attend'
+    end
   end
   
 end

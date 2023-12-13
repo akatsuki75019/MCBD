@@ -28,10 +28,16 @@ personas.shuffle.each do |persona|
   )
 end
 
-3.times do 
+
+categories = [["Shonen"], ["Seinen"], ["Shojo"]]
+
+categories.shuffle.each do |category|
+  name = category[0]
+
   Category.create!(
-    name: ["Shonen", "Seinen", "Shojo"].sample
+    name: name
   )
+
 end
 
 10.times do
@@ -122,4 +128,9 @@ events.shuffle.each do |event|
     start_date: start_date,
     image_url: image_url
     )
+end
+
+User.find_each do |user|
+  event_to_attend = Event.all.sample
+  Attendance.create(user: user, event: event_to_attend)
 end
