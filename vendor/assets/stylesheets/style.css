@@ -1096,6 +1096,19 @@ ol {
 	margin-right: 1px;
 }
 
+.express_purchase {
+	font-size: 13px;
+	color: #ffffff;
+	background: #FCEB2F;
+	display: inline-block;
+	font-weight: 700;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	padding: 14px 20px;
+	border-radius: 4px;
+	margin-right: 11px;
+}
+
 .anime__details__btn .watch-btn  {
 	font-size: 13px;
 	color: #ffffff;
@@ -2423,6 +2436,7 @@ opacity: 0.8;
 
   h1.text-center {
 	text-align: center;
+	margin-bottom: 20px;
   }
 
 .card-description {
@@ -2444,3 +2458,58 @@ opacity: 0.8;
 	color : black;
 }
 
+.color-nav {
+	background: #070720;
+}
+
+/* Page contact */
+
+
+.container.static-page {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+	box-sizing: border-box;
+  }
+  
+.container.static-page h1,
+.container.static-page p {
+	color: #ffffff;
+ }
+  
+  @media screen and (max-width: 600px) {
+	.container.static-page {
+	  padding: 10px;
+	}
+  
+	.container.static-page h1 {
+	  font-size: 1.5em;
+	}
+  }
+  
+ 
+  .form-group {
+	margin-bottom: 15px;
+  }
+  
+  label {
+	display: block;
+	margin-bottom: 8px;
+	font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  textarea {
+	width: 100%;
+	max-width: 600px;
+	padding: 8px;
+	box-sizing: border-box;
+  }
+  
+.container_static_pages {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+	box-sizing: border-box;
+  }
