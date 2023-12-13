@@ -6,7 +6,9 @@ personas = [
   ["Floriane", "Blanc", "989-04-1989", "flothp", "true"],
   ["Nelly", "Schmitt", "1992-03-07", "nellythp", "true"],
   ["Sam", "Pichon", "1997-07-22", "samthp", "false"],
-  ["Vincent", "Weber", "1999-09-21", "vincthp", "false"]
+  ["Vincent", "Weber", "1999-09-21", "vincthp", "false"],
+  ["Generic-user", "Generic-user", "1999-09-21", "genericthp", "true"]
+  
 ]
 
 personas.shuffle.each do |persona|
