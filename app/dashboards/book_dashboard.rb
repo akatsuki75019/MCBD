@@ -105,8 +105,9 @@ class BookDashboard < Administrate::BaseDashboard
 
   #permit to display resource.name like for category the name of category
   def display_resource(resource)
-    "#{resource.name}"
+    "#{resource.title}"
   end
+  
   # def display_resource(price_code)
   #   "PriceCode ##{price_code.id}"
   # end
