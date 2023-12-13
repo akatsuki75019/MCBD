@@ -4,11 +4,11 @@ class JointTableCartBooksController < ApplicationController
     @cart_books = current_user.cart.cart_books
   end
 
-  #s'assure que l'ID du panier est correctement stocké dans la session avant d'utiliser cette information pour créer ou récupérer le panier, 
   def create
     book = Book.find(params.fetch(:book_id, nil))
     quantity = params.fetch(:quantity, 1).to_i
 
+    #Gestion du panier en fonction de l'état de connexion de l'utilisateur :
     if current_user
       user_cart = current_user.cart || current_user.create_cart unless session[:cart_id].present?
       session[:cart_id] ||= user_cart.id if user_cart.present?
@@ -36,8 +36,6 @@ class JointTableCartBooksController < ApplicationController
 
 
   def update
-    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-    puts "Params ID: #{params[:id]}"
     @joint_table_cart_book = JointTableCartBook.find(params[:id])
     new_quantity = params.fetch(:quantity, 1).to_i
 
