@@ -1,0 +1,13 @@
+<h1>Resultat pour "<%= @query %>"</h1>
+
+<% if @results.present? %>
+  <ul>
+    <% @results.each do |book| %>
+      <li>
+        <%= link_to book.title, book_path(book) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No results found.</p>
+<% end %>

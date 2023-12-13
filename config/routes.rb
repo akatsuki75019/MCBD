@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search/show'
   root 'static_pages#index'
   
   namespace :admin do
@@ -15,6 +16,9 @@ Rails.application.routes.draw do
       root to: "books#index"
     end
   
+  get '/search', to: 'search#show', as: 'search'
+  resources :books, only: [:show]
+
   get 'static_pages/index'
   get 'static_pages/contact' 
   get 'static_pages/gdpr'
