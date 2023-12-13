@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :current_user, :current_cart
+  before_action :transfer_cart_items, if: :user_signed_in?
 
   def after_sign_in_path_for(resource)
     stored_location = stored_location_for(resource)
@@ -21,4 +22,14 @@ class ApplicationController < ActionController::Base
   def login?
     !!current_user
   end
+
+  private
+
+  def transfer_cart_items
+    return unless user_signed_in? && session[:cart_id].present?
+
+    cart_transfer_service = CartTransferService.new
+    cart_transfer_service.transfer_items(current_user, session[:cart_id], session)
+  end
+
 end

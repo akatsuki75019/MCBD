@@ -33,6 +33,8 @@ class JointTableCartBooksController < ApplicationController
     end
   end
 
+
+
   def update
     puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
     puts "Params ID: #{params[:id]}"
