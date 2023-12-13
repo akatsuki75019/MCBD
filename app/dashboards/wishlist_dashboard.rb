@@ -61,7 +61,7 @@ class WishlistDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(resource)
-    "#{resource.name}"
+    "Liste d'envies n°#{resource.id}"
   end
   # def display_resource(wishlist)
   #   "Wishlist ##{wishlist.id}"

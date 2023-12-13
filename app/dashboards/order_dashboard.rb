@@ -13,7 +13,7 @@ class OrderDashboard < Administrate::BaseDashboard
     joint_table_order_books: Field::HasMany,
     total_price: Field::Number.with_options(decimals: 2),
     user: Field::BelongsTo,
-    created_at: Field::DateTime,
+    created_at: Field::Date,
     updated_at: Field::DateTime,
   }.freeze
 
@@ -35,7 +35,6 @@ class OrderDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     books
-    joint_table_order_books
     total_price
     user
     created_at
@@ -46,10 +45,9 @@ class OrderDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    books
-    joint_table_order_books
-    total_price
     user
+    books
+    total_price
   ].freeze
 
   # COLLECTION_FILTERS
@@ -67,6 +65,9 @@ class OrderDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how orders are displayed
   # across all pages of the admin dashboard.
   #
+  def display_resource(resource)
+    "Commande n°#{resource.id}"
+  end
   # def display_resource(order)
   #   "Order ##{order.id}"
   # end

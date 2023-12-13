@@ -12,8 +12,8 @@ class CartDashboard < Administrate::BaseDashboard
     books: Field::HasMany,
     joint_table_cart_books: Field::HasMany,
     user: Field::BelongsTo,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    created_at: Field::Date,
+    updated_at: Field::Date,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -42,9 +42,8 @@ class CartDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    books
-    joint_table_cart_books
     user
+    books
   ].freeze
 
   # COLLECTION_FILTERS
