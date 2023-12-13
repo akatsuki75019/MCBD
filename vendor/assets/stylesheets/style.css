@@ -2459,10 +2459,10 @@ opacity: 0.8;
 	box-sizing: border-box;
   }
   
-  .container.contact-page h1,
-  .container.contact-page p {
+.container.contact-page h1,
+.container.contact-page p {
 	color: #ffffff;
-  }
+ }
   
   @media screen and (max-width: 600px) {
 	.container.contact-page {
@@ -2494,7 +2494,9 @@ opacity: 0.8;
 	box-sizing: border-box;
   }
   
-  
-  
-
-  
+.container_static_pages {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+	box-sizing: border-box;
+  }
