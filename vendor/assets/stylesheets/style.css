@@ -334,6 +334,13 @@ ol {
 	padding: 20px 0 17px;
 }
 
+.logo-img {
+	max-width: 60px; /* Ajustez la largeur maximale de votre logo selon vos besoins */
+	height: auto; /* Ajustez la hauteur automatiquement pour conserver les proportions */
+	display: block; /* Évite l'espace en bas que peuvent introduire les images en ligne */
+	margin: 0 auto; /* Centre l'image horizontalement */
+  }
+
 .header__logo a {
 	display: inline-block;
 }
@@ -2500,3 +2507,4 @@ opacity: 0.8;
 	padding: 20px;
 	box-sizing: border-box;
   }
+
