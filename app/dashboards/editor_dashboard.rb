@@ -32,20 +32,18 @@ class EditorDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    books
-    distributor
     name
-    created_at
-    updated_at
+    distributor
+    books
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    books
-    distributor
     name
+    distributor
+    books
   ].freeze
 
   # COLLECTION_FILTERS
