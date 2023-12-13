@@ -2452,24 +2452,24 @@ opacity: 0.8;
 /* Page contact */
 
 
-.container.contact-page {
+.container.static-page {
 	max-width: 800px;
 	margin: 0 auto;
 	padding: 20px;
 	box-sizing: border-box;
   }
   
-.container.contact-page h1,
-.container.contact-page p {
+.container.static-page h1,
+.container.static-page p {
 	color: #ffffff;
  }
   
   @media screen and (max-width: 600px) {
-	.container.contact-page {
+	.container.static-page {
 	  padding: 10px;
 	}
   
-	.container.contact-page h1 {
+	.container.static-page h1 {
 	  font-size: 1.5em;
 	}
   }
