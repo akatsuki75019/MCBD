@@ -8,16 +8,18 @@ class JointTableCartBooksController < ApplicationController
     book = Book.find(params.fetch(:book_id, nil))
     quantity = params.fetch(:quantity, 1).to_i
 
-    #Gestion du panier en fonction de l'état de connexion de l'utilisateur :
-    if current_user
-      user_cart = current_user.cart || current_user.create_cart unless session[:cart_id].present?
-      session[:cart_id] ||= user_cart.id if user_cart.present?
+    # Récupérer ou créer le panier de l'utilisateur actuel
+    user_cart = if user_signed_in?
+      current_user.cart || current_user.create_cart
     else
-      user_cart = Cart.find_or_create_by(id: session[:cart_id])
-      session[:cart_id] ||= user_cart.id
+      Cart.find_or_create_by(id: session[:cart_id])
     end
 
+    # Assurer que le panier est associé à l'utilisateur connecté (si disponible)
+    user_cart.update(user: current_user) if user_signed_in?
+
     result = user_cart.add_book_in_cart(book, quantity)
+
 
     case result
     when JointTableCartBook
