@@ -1096,6 +1096,19 @@ ol {
 	margin-right: 1px;
 }
 
+.express_purchase {
+	font-size: 13px;
+	color: #ffffff;
+	background: #FCEB2F;
+	display: inline-block;
+	font-weight: 700;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	padding: 14px 20px;
+	border-radius: 4px;
+	margin-right: 11px;
+}
+
 .anime__details__btn .watch-btn  {
 	font-size: 13px;
 	color: #ffffff;
