@@ -33,7 +33,6 @@ class CartDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     books
-    joint_table_cart_books
     user
     created_at
     updated_at

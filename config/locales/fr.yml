@@ -11,6 +11,11 @@ fr:
       price_code: "Code Prix"
       user: "Client"
       wishlist: "Articles mis en Favori"
+    attributes:
+      book:
+        category_id: "Catégorie"
+        editor_id: "Éditeur"
+        price_code_id: "Code prix"
 
   administrate:
     resources:
@@ -18,10 +23,7 @@ fr:
         attributes:
           title: "Titre"
           author: "Auteur"
-          editor: "Éditeur"
-          category: "Catégorie"
           image_url: "URL de l'image"
-          price_code: "Code prix"
           release_date: "Date de sortie"
       
   #to change table header in every index dashboard pages
@@ -34,10 +36,14 @@ fr:
         quantity: "Quantité"
         price_code: "Code Prix"
         release_date: "Date de sortie"
+        carts: "Nbr Paniers en cours"
+        orders: "Nbr Commandes"
+        wishlists: "Favoris"
       cart:
         user: "Client"
         books: "Nombre de livre.s"
         created_at: "Date de création"
+        updated_at: "Mis à jour le"
       category:
         books: "Livres concernés"
         name: "Nom"
@@ -59,6 +65,10 @@ fr:
         is_admin: "Admin"
         last_name: "Nom"
         orders: "Commande.s"
+        cart: "Panier"
+        wishlist: "Favoris"
+        created_at: "Créé le"
+        updated_at: "Mis à jour le"
 
   time:
     formats:

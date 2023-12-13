@@ -52,25 +52,20 @@ class BookDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-    id
-    author
-    carts
-    category
-    description
-    editor
-    image_url
     isbn
-    joint_table_cart_books
-    joint_table_order_books
-    orders
+    title
+    description
+    author
+    image_url
     price_code
+    tva
     quantity
     release_date
-    title
-    tva
+    editor
+    category
+    carts
+    orders
     wishlists
-    created_at
-    updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
