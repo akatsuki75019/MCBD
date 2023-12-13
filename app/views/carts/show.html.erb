@@ -6,7 +6,7 @@
         <th scope="col">Title</th>
         <th scope="col">Quantité</th>
         <th scope="col">Prix unitaire</th>
-        <th scope="col">Prix total du livre</th>
+        <th scope="col">Prix total</th>
         <th scope="col"></th>
       </tr>
     </thead>
@@ -14,8 +14,6 @@
       <%= render partial: 'cart_book', collection: @joint_table_cart_books %>
     </tbody>
   </table>
-
-  <h5 class="text-white d-flex justify-content-center mb-4">Total du Panier: <%= number_with_precision(@cart.total_price, precision: 2) %></h5>
 
   <%= render 'cart_total' %>
   <%= render 'carts/payment_button'%>

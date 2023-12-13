@@ -40,10 +40,14 @@ class JointTableCartBooksController < ApplicationController
   def update
     @joint_table_cart_book = JointTableCartBook.find(params[:id])
     new_quantity = params.fetch(:quantity, 1).to_i
+    puts "*****$************************************"
+    puts "Updating cart book quantity to #{new_quantity}"
+    puts "*****$************************************"
 
     if @joint_table_cart_book.update(quantity: new_quantity) #dans les cas ou les quantités peuvent seulement être modifiées depuis le panier
       redirect_to cart_path, notice: "La quantité a été mise à jour avec succès"
     else
+      errors = @joint_table_cart_book.errors.full_messages.join(', ')
       redirect_to cart_path, alert: "Erreur lors de la mise à jour de la quantité"
     end
   end
