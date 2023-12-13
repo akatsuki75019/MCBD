@@ -2421,6 +2421,10 @@ opacity: 0.8;
 
   /*<!-- Hero Section Begin end -->*/
 
+  h1.text-center {
+	text-align: center;
+  }
+
 .card-description {
 	max-height: 80px;
 	overflow: hidden;
@@ -2438,5 +2442,9 @@ opacity: 0.8;
 
 .btn-deconnect :hover{
 	color : black;
+}
+
+.color-nav {
+	background: #070720;
 }
 

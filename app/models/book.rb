@@ -23,8 +23,9 @@ class Book < ApplicationRecord
   end
 
   #In Administrate views to show only price code name and not only id
-  def price_code_name
-    price_code.name if price_code
+  def find_category_name(category_id)
+    category = Category.find_by(id: category_id)
+    return category.name if category
   end
 
   # Pour obtenir la date formatée sans l'heure

@@ -28,45 +28,49 @@ personas.shuffle.each do |persona|
   )
 end
 
-3.times do 
-  Category.create!(
-    name: ["Shonen", "Seinen", "Shojo"].sample
-  )
+#section categories
+categories = [["Shonen"], ["Seinen"], ["Shojo"]]
+
+categories.shuffle.each do |category|
+  name = category[0]
+  Category.create!( name: name )
 end
 
-10.times do
-  Editor.create!(
-    name: ["Kurokawa", "Ki-Oon", "Dargaud", "P’tit Glénat", "Delcourt"].sample,
-    distributor: "Interforum"
-  )
+#section editors
+editors = [["Kurokawa"], ["Ki-Oon"], ["Dargaud"], ["P’tit Glénat"], ["Delcourt"]]
+
+editors.shuffle.each do |editor|
+  name = editor[0]
+  Editor.create!( name: name, distributor: "Interforum")
 end
 
-10.times do
-  PriceCode.create!(
-    name: ["KURO20", "KN15", "KN25", "KN30"].sample,
-    price: rand(1.00..20.00)
-  )
+#section price
+price_codes = [["KURO20"], ["KN15"], ["KN25"], ["KN30"]]
+
+price_codes.shuffle.each do |price_code|
+  name = price_code[0]
+  PriceCode.create!( name: name, price: rand(1.00..20.00))
 end
 
 
 books = [
-  ["979-1042013370", "Skeleton DoubleT01", "15", "ao_ashi.jpg", "Eiichiro Oda", "2023-01-11"],
-  ["979-1032716205", "Jujutsu Kaisen T22", "25", "choujin_x_1959146.png", "Eiichiro Oda", "2023-01-04"],
-  ["979-1032716076", "Frieren T11", "20", "coq_de_baston.jpg", "Eiichiro Oda", "2023-01-04"],
-  ["979-1032718032", "#Drcl Midnight Children T01", "20", "db1.jpg", "Eiichiro Oda", "2023-01-25"],
-  ["979-1032716496", "Valkyrie Apocalypse T18", "20", "FX__8rvaAAEmYwi.jpg", "Eiichiro Oda", "2023-01-04"],
-  ["979-1032716519", "Valkyrie Apocalypse T18 - Édition Collector", "15", "kaguya-sama_-_love_is_war_26965636.jpg", "Eiichiro Oda", "2023-01-04"],
-  ["979-1032716588", "Valkyrie Apocalypse - La Légende De Lü Bu T01", "15", "kaiju.jpg", "Eiichiro Oda", "2023-01-04"],
-  ["979-1032716625", "Crescent Moon, Dance With The Monster T01", "15", "shonen_abyss.jpg", "Eiichiro Oda", "2023-01-25"],
-  ["978-2723488525", "One Piece T01", "7", "wind_breaker.png", "Eiichiro Oda", "2023-01-25"],
-  ["979-1042013371", "Skeleton DoubleT02", "15", "ao_ashi.jpg", "Eiichiro Oda", "2023-01-12"],
-  ["979-1032716206", "Jujutsu Kaisen T23", "25", "choujin_x_1959146.png", "Eiichiro Oda", "2023-01-05"],
-  ["979-1032716077", "Frieren T12", "20", "coq_de_baston.jpg", "Eiichiro Oda", "2023-01-05"],
-  ["979-1032718033", "#Drcl Midnight Children T02", "20", "db1.jpg", "Eiichiro Oda", "2023-01-26"],
-  ["979-1032716497", "Valkyrie Apocalypse T19", "20", "FX__8rvaAAEmYwi.jpg", "Eiichiro Oda", "2023-01-05"],
-  ["979-1032716520", "Valkyrie Apocalypse T19 - Édition Collector", "15", "kaguya-sama_-_love_is_war_26965636.jpg", "Eiichiro Oda", "2023-01-05"],
-  ["979-1032716589", "Valkyrie Apocalypse - La Légende De Lü Bu T02", "15", "kaiju.jpg", "Eiichiro Oda", "2023-01-05"],
-  ["979-1032716626", "Crescent Moon, Dance With The Monster T02", "15", "shonen_abyss.jpg", "Eiichiro Oda", "2023-01-26"]
+  ["979-1042013370", "Skeleton DoubleT01", "15", "ao_ashi.jpg", "Eiichiro Oda", "2023-01-11 19:30:00 UTC"],
+  ["979-1032716205", "Jujutsu Kaisen T22", "25", "choujin_x_1959146.png", "Eiichiro Oda", "2023-01-04 19:30:00 UTC"],
+  ["979-1032716076", "Frieren T11", "20", "coq_de_baston.jpg", "Eiichiro Oda", "2023-01-04 19:30:00 UTC"],
+  ["979-1032718032", "#Drcl Midnight Children T01", "20", "db1.jpg", "Eiichiro Oda", "2023-01-25 19:30:00 UTC"],
+  ["979-1032716496", "Valkyrie Apocalypse T18", "20", "FX__8rvaAAEmYwi.jpg", "Eiichiro Oda", "2023-01-0419:30:00 UTC"],
+  ["979-1032716519", "Valkyrie Apocalypse T18 - Édition Collector", "15", "kaguya-sama_-_love_is_war_26965636.jpg", "Eiichiro Oda", "2023-01-04 19:30:00 UTC"],
+  ["979-1032716588", "Valkyrie Apocalypse - La Légende De Lü Bu T01", "15", "kaiju.jpg", "Eiichiro Oda", "2023-01-04 19:30:00 UTC"],
+  ["979-1032716625", "Crescent Moon, Dance With The Monster T01", "15", "shonen_abyss.jpg", "Eiichiro Oda", "2023-01-25 19:30:00 UTC"],
+  ["978-2723488525", "One Piece T01", "7", "wind_breaker.png", "Eiichiro Oda", "2023-01-25 19:30:00 UTC"],
+  ["979-1042013371", "Skeleton DoubleT02", "15", "ao_ashi.jpg", "Eiichiro Oda", "2023-01-12 19:30:00 UTC"],
+  ["979-1032716206", "Jujutsu Kaisen T23", "25", "choujin_x_1959146.png", "Eiichiro Oda", "2023-01-05 19:30:00 UTC"],
+  ["979-1032716077", "Frieren T12", "20", "coq_de_baston.jpg", "Eiichiro Oda", "2023-01-05 19:30:00 UTC"],
+  ["979-1032718033", "#Drcl Midnight Children T02", "20", "db1.jpg", "Eiichiro Oda", "2023-01-26 19:30:00 UTC"],
+  ["979-1032716497", "Valkyrie Apocalypse T19", "20", "FX__8rvaAAEmYwi.jpg", "Eiichiro Oda", "2023-01-05 19:30:00 UTC"],
+  ["979-1032716520", "Valkyrie Apocalypse T19 - Édition Collector", "15", "kaguya-sama_-_love_is_war_26965636.jpg", "Eiichiro Oda", "2023-01-05 19:30:00 UTC"],
+  ["979-1032716589", "Valkyrie Apocalypse - La Légende De Lü Bu T02", "15", "kaiju.jpg", "Eiichiro Oda", "2023-01-05 19:30:00 UTC"],
+  ["979-1032716626", "Crescent Moon, Dance With The Monster T02", "15", "shonen_abyss.jpg", "Eiichiro Oda", "2023-01-26 19:30:00 UTC"]
 ]
 
 books.shuffle.each do |book|
