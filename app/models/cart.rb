@@ -5,11 +5,10 @@ class Cart < ApplicationRecord
 
   # Règles de métiers pour ajouter une entrée "cart-book" dans la BDD
   def add_book_in_cart(book, quantity)
-    user_cart = user&.cart || Cart.create
+    user_cart = user&.cart || self
     return "La quantité demandée n'est pas disponible" if quantity > book.quantity
     return "Le livre est en rupture de stock" if book.quantity.zero?
 
-  # Association entre Cart et JointTableCartBook
     cart_book = user_cart.joint_table_cart_books.find_by(book: book)
 
     if cart_book
@@ -26,6 +25,10 @@ class Cart < ApplicationRecord
 
   def total_price
     joint_table_cart_books.sum { |joint_table_cart_book| joint_table_cart_book.quantity * joint_table_cart_book.book.price_code.price }
+  end
+
+  def number_of_books_in_cart
+    joint_table_cart_books.sum(:quantity)
   end
 
 end
