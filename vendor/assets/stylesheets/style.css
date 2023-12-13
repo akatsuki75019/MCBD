@@ -193,6 +193,27 @@ ol {
 	padding: 12px 30px;
 }
 
+.site-btn:hover {
+  background-color: #a62828;
+}
+
+.site-btn-second {
+	font-size: 13px;
+	color: #ffffff;
+	background: #2b2b55;
+	font-weight: 700;
+	border: none;
+	border-radius: 2px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 12px 30px;
+}
+
+.site-btn-second:hover {
+  background-color: #1c1c36;
+}
+
 /* Preloder */
 
 #preloder {
