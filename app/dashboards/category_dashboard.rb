@@ -30,10 +30,8 @@ class CategoryDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    books
     name
-    created_at
-    updated_at
+    books
   ].freeze
 
   # FORM_ATTRIBUTES
