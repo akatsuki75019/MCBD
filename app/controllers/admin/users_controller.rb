@@ -18,7 +18,6 @@ module Admin
       end
 
       #réattribuer les attendances aux events
-
       if user.attendances.any?
         generic_user = User.find_by(email: 'generic-user@yopmail.com')
         user.attendances.update_all(user_id: generic_user.id)
@@ -26,8 +25,6 @@ module Admin
 
       # Supprimer l'utilisateur 
       user.destroy
-
-      redirect_to admin_users_path, notice: 'Utilisateur supprimé avec succès.'
     end
   end
 end
