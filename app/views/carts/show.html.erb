@@ -34,9 +34,8 @@
 
       <h5 class="text-white d-flex justify-content-center mb-4">Total du Panier: <%= number_with_precision(@cart.total_price, precision: 2) %></h5>
 
-      <div class="text-center">
-        <%= button_to "Confirmer la commande et payer", checkout_create_path(total: @joint_table_cart_books.sum { |joint_table_cart_book| joint_table_cart_book.book.price_code.price * joint_table_cart_book.quantity }), class: "site-btn btn btn-success", data: { turbo: false } %>
-      </div>
+        <%= render 'carts/payment_button'%>
+
     </div>
   </div>
 </div>
