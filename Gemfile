@@ -77,4 +77,5 @@ gem "dotenv-rails"
 gem "letter_opener"
 gem "administrate"
 gem "faker"
-
+gem 'googlebooks'
+gem 'csv'

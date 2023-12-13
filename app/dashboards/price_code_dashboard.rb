@@ -32,20 +32,18 @@ class PriceCodeDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    books
     name
     price
-    created_at
-    updated_at
+    books
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    books
     name
     price
+    books
   ].freeze
 
   # COLLECTION_FILTERS

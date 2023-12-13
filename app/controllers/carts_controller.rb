@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
 
   def show
-    @cart = Cart.find(params[:id])
+    @cart = current_user.cart
 
      # Vérifier si current user == cart user (pour enpecher affichage d'un autre panier)
      unless current_user == @cart.user

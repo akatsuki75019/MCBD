@@ -10,6 +10,11 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @books = Book.limit(4)
+    @book = Book.includes(:category).find(params[:id])
+    @book = Book.includes(:editor).find(params[:id])
+    @book = Book.includes(:price_code).find(params[:id])
+
+
   end
 
   # GET /books/new
