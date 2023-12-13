@@ -60,6 +60,9 @@ class WishlistDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how wishlists are displayed
   # across all pages of the admin dashboard.
   #
+  def display_resource(resource)
+    "#{resource.name}"
+  end
   # def display_resource(wishlist)
   #   "Wishlist ##{wishlist.id}"
   # end

@@ -33,6 +33,7 @@ fr:
         category: "Catégorie"
         quantity: "Quantité"
         price_code: "Code Prix"
+        release_date: "Date de sortie"
       cart:
         user: "Client"
         books: "Nombre de livre.s"
