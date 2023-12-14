@@ -2,6 +2,7 @@ class Order < ApplicationRecord
   belongs_to :user
   has_many :joint_table_order_books
   has_many :books, through: :joint_table_order_books
+  after_create :order_confirmation
 
 
   def self.create_order_with_books(user, joint_table_cart_book_ids)
@@ -28,6 +29,10 @@ class Order < ApplicationRecord
     order.total_price = total_price # Définition du total price
     order.save
     order
-  
   end
+
+  def order_confirmation
+      UserMailer.order_confirmation(self).deliver_now
+  end
+
 end

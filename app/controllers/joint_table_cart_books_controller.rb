@@ -5,22 +5,12 @@ class JointTableCartBooksController < ApplicationController
   end
 
   def create
-    book = Book.find(params.fetch(:book_id, nil))
-    quantity = params.fetch(:quantity, 1).to_i
-
-    #Gestion du panier en fonction de l'état de connexion de l'utilisateur :
-    if current_user
-      user_cart = current_user.cart || current_user.create_cart unless session[:cart_id].present?
-      session[:cart_id] ||= user_cart.id if user_cart.present?
-    else
-      user_cart = Cart.find_or_create_by(id: session[:cart_id])
-      session[:cart_id] ||= user_cart.id
-    end
-
-    result = user_cart.add_book_in_cart(book, quantity)
+    book = Book.find(params.fetch(:book_id, nil)) # .fetch = Si la clé :book_id n'est pas présente dans params, la valeur par défaut nil sera utilisée. 
+    quantity = params.fetch(:quantity, 1).to_i  # prendre la quantité fournie, sinon par défaut à 1
+    result = current_user.cart.add_book_in_cart(book, quantity) #la methode add_book_in_cart se trouve dans le model JointTableCartBook
 
     case result
-    when JointTableCartBook
+    when JointTableCartBook #dans les cas où l'ajout au panier se fait depuis le show_book
       redirect_to books_path, notice: "Le livre a été ajouté au panier avec succès"
     when "Quantité mise à jour dans le panier"
       redirect_to books_path, notice: "La quantité a été mise à jour dans le panier"
@@ -31,11 +21,12 @@ class JointTableCartBooksController < ApplicationController
     else
       redirect_to books_path, notice: "Erreur lors de l'ajout au panier"
     end
+
   end
 
-
-
   def update
+    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+    puts "Params ID: #{params[:id]}"
     @joint_table_cart_book = JointTableCartBook.find(params[:id])
     new_quantity = params.fetch(:quantity, 1).to_i
 

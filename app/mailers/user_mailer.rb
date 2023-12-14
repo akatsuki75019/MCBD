@@ -10,9 +10,9 @@ class UserMailer < ApplicationMailer
   end
 
 
-  def order_confirmation(user)
+  def order_confirmation(order)
     #Récupère l'instance pour la view
-    @user = user
+    @user = order.user
     @url  = 'https://mcbdapp-2089282d029d.herokuapp.com/'
 
     mail(to: @user.email, subject: "Merci votre achat.")
