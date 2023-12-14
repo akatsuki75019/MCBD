@@ -1,6 +1,5 @@
 // Script sur card event pour la description
 
-document.addEventListener('DOMContentLoaded', function() {
   const cardDescriptions = document.querySelectorAll('.card-description');
 
   cardDescriptions.forEach(description => {
@@ -16,7 +15,14 @@ document.addEventListener('DOMContentLoaded', function() {
       description.style.transition = 'max-height 0.3s ease-in-out';
       description.classList.remove('truncated');
       description.style.maxHeight = '80px'; 
+    
     });
   });
-});
 
+  const selectCategory = document.querySelector('#category_id')
+  if (selectCategory){
+    selectCategory.addEventListener('change',(e) => {
+      e.preventDefault();
+      selectCategory.form.submit();
+    });
+  };
