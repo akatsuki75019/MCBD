@@ -4,7 +4,16 @@ class BooksController < ApplicationController
   # GET /books or /books.json
   def index
     @books = Book.all
+    @categories = Category.all
+
+  end
+
+  def books_by_category
+    category_id = params[:category_id]|| Category.first.id
+    @books = Book.where(category_id: category_id)
+    @categories = Category.all
     
+
   end
 
   # GET /books/1 or /books/1.json
@@ -14,7 +23,7 @@ class BooksController < ApplicationController
     @book = Book.includes(:category).find(params[:id])
     @book = Book.includes(:editor).find(params[:id])
     @book = Book.includes(:price_code).find(params[:id])
-
+    @category = @book.category
 
   end
 
