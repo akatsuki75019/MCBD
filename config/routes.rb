@@ -25,7 +25,10 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :events, only: [:show, :index]
-  resources :books, only: [:show, :index]
+  
+  resources :books, only: [:show] 
+  match 'books'=>"books#books_by_category" ,via: [:get, :post]
+  
 
   resources :carts, except: [:index, :new, :edit]
   resources :joint_table_cart_books, only: [:index, :create, :update, :destroy]  
