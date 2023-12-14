@@ -138,13 +138,14 @@ ol {
 	background: #e53637;
 	content: "";
 }
+
 .section-title .selector {
   color: #ffffff;
   font-weight: 600;
-  font-size: 24px; /* This is an example size; adjust as needed */
+  font-size: 24px; /* Ceci est une taille d'exemple ; ajustez selon vos besoins */
   line-height: 21px;
   text-transform: uppercase;
-  padding: 10px 20px; /* Adjust padding to align text and make space for the dropdown arrow */
+  padding: 10px 40px 10px 20px; /* Ajoutez un padding supplémentaire à droite pour l'image */
   position: relative;
   font-family: "Oswald", sans-serif;
   background: #0b0c2a; 
@@ -152,23 +153,24 @@ ol {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-	
+  width: fit-content;
+  box-sizing: border-box; /* Assure que le padding n'ajoute pas à la largeur */
 }
 
-/* Positioning the custom dropdown arrow */
+/* Positionnement de la flèche de sélection personnalisée */
 .section-title .selector {
   background-image: url('https://popupfilmresidency.org/wp-content/uploads/2019/05/white-down-arrow-png-2.png');
   background-repeat: no-repeat;
-  background-position: right 10px center; /* Adjust as necessary */
-  background-size: 20px; /* Adjust as necessary */
+  background-position: right 10px center; /* Ajustez selon les besoins */
+  background-size: 20px; /* Ajustez selon les besoins */
 }
 
 /* Style focus state */
 .section-title .selector:focus ,
-.section-title :hover {
+.section-title .selector:hover {
   outline: none;
-  border-color: #66afe9;
-  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  border-color: #e53637;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(220, 16, 16, 0.8);
 	cursor: grab;
 }
 

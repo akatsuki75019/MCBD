@@ -10,7 +10,7 @@
             <div class="row">
               <%= form_with(url: books_path, method: :get, local: true) do |form| %>
                 <div class="section-title">
-                  <%= form.select(:category_id, options_for_select(@categories.collect { |category| [category.name, category.id] }, selected: params[:category_id]), {}, { class: "selector custom-select dropdown-item hover w-25" }) %>
+                  <%= form.select(:category_id, options_for_select(@categories.collect { |category| [category.name, category.id] }, selected: params[:category_id]), {}, { class: "selector custom-select dropdown-item hover" }) %>
                 </div>
               <% end %>
             </div>
