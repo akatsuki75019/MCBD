@@ -90,7 +90,7 @@ class CheckoutController < ApplicationController
       joint_table_cart_book_ids = @session.metadata.joint_table_cart_book_ids.split(',').map(&:to_i)
   
     #Création d'une nouvelle instance dans la BDD Order (voir dans le model Order)
-       Order.create_order_with_books(current_user, joint_table_cart_book_ids)
+       @order = Order.create_order_with_books(current_user, joint_table_cart_book_ids)
 
     #Gérer la màj des quantités après un paiement stripe:
        joint_table_cart_book_ids.each do |joint_table_cart_book_id| #conversion des identifiants des JointTableCartBook, on les diviseàchaque virgule, on converti en entiers
@@ -114,7 +114,7 @@ class CheckoutController < ApplicationController
       book = Book.find_by(id: book_id)
 
       #Création d'une nouvelle instance dans la BDD Order (voir dans le model Order)
-      Order.create_order_for_express_purchase(current_user, book, total_price)
+      @order = Order.create_order_for_express_purchase(current_user, book, total_price)
 
       #Gérer la màj des quantités après un paiement stripe:
       book.update_stock_quantity(1)
