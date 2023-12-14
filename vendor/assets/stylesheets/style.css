@@ -239,6 +239,27 @@ ol {
 	padding: 12px 30px;
 }
 
+.site-btn:hover {
+  background-color: #a62828;
+}
+
+.site-btn-second {
+	font-size: 13px;
+	color: #ffffff;
+	background: #2b2b55;
+	font-weight: 700;
+	border: none;
+	border-radius: 2px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 12px 30px;
+}
+
+.site-btn-second:hover {
+  background-color: #1c1c36;
+}
+
 /* Preloder */
 
 #preloder {
@@ -379,6 +400,13 @@ ol {
 .header__logo {
 	padding: 20px 0 17px;
 }
+
+.logo-img {
+	max-width: 60px; /* Ajustez la largeur maximale de votre logo selon vos besoins */
+	height: auto; /* Ajustez la hauteur automatiquement pour conserver les proportions */
+	display: block; /* Évite l'espace en bas que peuvent introduire les images en ligne */
+	margin: 0 auto; /* Centre l'image horizontalement */
+  }
 
 .header__logo a {
 	display: inline-block;

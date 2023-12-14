@@ -1,13 +1,24 @@
 class CartsController < ApplicationController
-  before_action :authenticate_user!
 
   def show
-    @cart = Cart.find(params[:id])
+    if user_signed_in?
+      @cart = current_user.cart
+      unless @cart
+        # Si l'utilisateur est connecté mais n'a pas de panier, vous pouvez créer un panier pour lui.
+        @cart = current_user.create_cart
+      end
 
-     # Vérifier si current user == cart user (pour enpecher affichage d'un autre panier)
-     unless current_user == @cart.user
-      redirect_to root_path, alert: "Vous n'avez pas les droits pour accéder à cette page."
-      return
+      # Vérifier si current user == cart user (pour enpecher affichage d'un autre panier)
+      unless current_user == @cart.user
+        redirect_to root_path, alert: "Vous n'avez pas les droits pour accéder à cette page."
+        return
+      end
+    else
+      @cart = Cart.find_by(id: params[:id])
+      unless @cart
+        redirect_to root_path, alert: "Panier non trouvé."
+        return
+      end
     end
 
     @total_price = @cart.total_price

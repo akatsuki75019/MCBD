@@ -10,7 +10,20 @@ fr:
       order: "Commande"
       price_code: "Code Prix"
       user: "Client"
-      wishlist: "Articles mis en Favori"
+      wishlist: "Liste d'Envies"
+    attributes:
+      book:
+        category_id: "Catégorie"
+        editor_id: "Éditeur"
+        price_code_id: "Code prix"
+      order:
+        user_id: "Client"
+      cart:
+        user_id: "Client"
+      wishlist:
+        book_id: "Contenu"
+        user_id: "Client"
+
 
   administrate:
     resources:
@@ -18,10 +31,7 @@ fr:
         attributes:
           title: "Titre"
           author: "Auteur"
-          editor: "Éditeur"
-          category: "Catégorie"
           image_url: "URL de l'image"
-          price_code: "Code prix"
           release_date: "Date de sortie"
       
   #to change table header in every index dashboard pages
@@ -32,20 +42,33 @@ fr:
         author: "Auteur"
         category: "Catégorie"
         quantity: "Quantité"
-        price_code: "Code Prix"
+        price_code: "Code prix"
         release_date: "Date de sortie"
+        carts: "Paniers en cours"
+        orders: "Commandes"
+        wishlists: "Liste d'envies"
       cart:
         user: "Client"
-        books: "Nombre de livre.s"
-        created_at: "Date de création"
+        books: "Contenu"
+        created_at: "Créé le"
+        updated_at: "Mis à jour le"
       category:
         books: "Livres concernés"
         name: "Nom"
+      editor:
+        name: "Nom"
+        distributor: "Distributeur"
+        books: "Livres concernés"
+      event:
+        title: "Titre"
+        start_date: "Date et Heure"
+        users: "Participants"
       order:
         user: "Client"
-        books: "Nombre de livre.s"
+        books: "Contenu"
         total_price: "Prix total"
-        created_at: "Date de création"
+        created_at: "Créée le"
+        updated_at: "Mise à jour le"
       price_code:
         books: "Livres concernés"
         name: "Sigle"
@@ -59,6 +82,16 @@ fr:
         is_admin: "Admin"
         last_name: "Nom"
         orders: "Commande.s"
+        cart: "Panier"
+        wishlist: "Liste d'envies"
+        created_at: "Créé le"
+        updated_at: "Mis à jour le"
+      wishlist:
+        user: "Client"
+        book: "Contenu"
+        created_at: "Créée le"
+        updated_at: "Mise à jour le"
+
 
   time:
     formats:

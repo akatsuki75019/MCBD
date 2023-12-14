@@ -34,8 +34,8 @@
             </li>
           <% end %>
         </ul>
-        <form class="d-flex mt-3" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex mt-3" action="<%= search_path %>" method="get" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
@@ -44,21 +44,37 @@
 
 
 
-    <a class="navbar-brand" href="/">LOGO</a>
+    <a class="header__logo" href="/">
+      <%= image_tag('logo2.png', alt: 'Description de l\'image', class: 'logo-img') %>
+    </a>
 
     
   
     <div class="navbar-brand">
       <ul class="navbar-nav d-flex flex-row gap-4 me-4">
-        <!-- Icons -->
-        <% if user_signed_in? %>
-          <li class="nav-item me-3 me-lg-0">
-            <%= link_to cart_path(current_user), class: "nav-link" do %>
-                <i class="fas fa-shopping-cart"></i>
+        <!-- Icons panier -->
+          <% if current_user %>
+            <% cart = current_user.cart %>
+            <%= link_to cart_path(cart), class: "nav-link" do %>
+              <i class="fas fa-shopping-cart"></i>
+              <span class="badge rounded-pill bg-danger">
+                <%= cart.number_of_books_in_cart %>
+              </span>
             <% end %>
-          </li>
-        <% end %>
-        <li class="nav-item me-3 me-lg-0">
+          <% elsif session[:cart_id].present? %>
+            <% cart = Cart.find(session[:cart_id]) %>
+            <%= link_to cart_path(cart), class: "nav-link" do %>
+              <i class="fas fa-shopping-cart"></i>
+              <span class="badge rounded-pill bg-danger">
+                <%= cart.number_of_books_in_cart %>
+              </span>
+            <% end %>
+          <% else %>
+            <%= link_to cart_path, class: "nav-link" do %>
+              <i class="fas fa-shopping-cart"></i>
+            <% end %>
+          <% end %>
+        <!------------------------>
           <a class="nav-link" href="#">
               <i class="fa-solid fa-magnifying-glass"></i>
           </a>

@@ -34,23 +34,19 @@ class EventDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    attendances
+    title
     description
     start_date
-    title
     users
-    created_at
-    updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    attendances
+    title
     description
     start_date
-    title
     users
   ].freeze
 
@@ -69,6 +65,9 @@ class EventDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how events are displayed
   # across all pages of the admin dashboard.
   #
+  def display_resource(resource)
+    "#{resource.title}"
+  end
   # def display_resource(event)
   #   "Event ##{event.id}"
   # end
