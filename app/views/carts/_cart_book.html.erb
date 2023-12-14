@@ -8,7 +8,9 @@
   </td>
   <td><%= number_with_precision(cart_book.book.price_code.price, precision: 2) %></td>
   <td><%= number_with_precision(cart_book.quantity * cart_book.book.price_code.price, precision: 2) %></td>
-  <td>
-    <%= button_to "Supprimer du panier", joint_table_cart_book_path(cart_book), class: "btn btn-danger", method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce livre du panier?" } %>
+   <td>
+    <%= button_to joint_table_cart_book_path(cart_book), class: "btn btn-notice", method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce livre du panier?" } do %>
+      <i class="fa-solid fa-trash" style="color: #a2a2a2;"></i>
+    <% end %>
   </td>
 </tr>
