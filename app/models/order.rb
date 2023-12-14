@@ -2,7 +2,7 @@ class Order < ApplicationRecord
   belongs_to :user
   has_many :joint_table_order_books
   has_many :books, through: :joint_table_order_books
-  after_create :order_confirmation
+  after_create :order_confirmation, :admin_order_confirmation
 
 
   def self.create_order_with_books(user, joint_table_cart_book_ids)
@@ -33,6 +33,14 @@ class Order < ApplicationRecord
 
   def order_confirmation
       UserMailer.order_confirmation(self).deliver_now
+  end
+
+  def admin_order_confirmation
+    admin_users = User.where(is_admin: true)
+
+    admin_users.each do |admin_user|
+      AdminMailer.admin_order_confirmation(self, admin_user).deliver_now
+    end
   end
 
 end
