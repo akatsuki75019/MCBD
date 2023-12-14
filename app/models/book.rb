@@ -73,8 +73,17 @@ class Book < ApplicationRecord
         self.author = json["volumeInfo"]["authors"]&.join || "anonymous"
         self.release_date = json["volumeInfo"]["publishedDate"]|| "on sait pas"
         self.description = json["volumeInfo"]["description"]|| "description"
-        self.image_url = json.dig("volumeInfo", "imageLinks", "large")|| "https://www.legrand.be/modules/custom/legrand_ecat/assets/img/no-image.png"
         self.editor = editor|| "anonymous"
+        # Prio a la cover la plus grande
+        self.image_url = json.dig("volumeInfo", "imageLinks", "large")
+        # sinon les autres
+        self.image_url ||= json.dig("volumeInfo", "imageLinks", "medium")
+        self.image_url ||= json.dig("volumeInfo", "imageLinks", "small")
+        self.image_url ||= json.dig("volumeInfo", "imageLinks", "thumbnail")
+
+        # sinon une image qui dis "pas d'image dispo"
+        self.image_url ||= "https://www.legrand.be/modules/custom/legrand_ecat/assets/img/no-image.png"
+
         
 
     end
