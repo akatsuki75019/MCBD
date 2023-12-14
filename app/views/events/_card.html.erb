@@ -4,7 +4,7 @@
       <%= link_to event_path(event) do %>
         <h4 class="mb-3" style="height: 80px; overflow: hidden;"><%= event.title %></h4>
         <%= image_tag(event.image_url, class: " set-bg", data: { setbg: event.image_url }, alt: "Description de l'image") %> 
-      <% end %>       
+      <% end %> 
       <div class="card-body px-0">
         <p class="card-text text-white text-start card-description" data-truncate="80"><%= event.description %></p>
         <div class="d-flex justify-content-around align-items-center mt-4">
