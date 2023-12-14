@@ -12,6 +12,7 @@
       <div>
         <%= button_to "Achat express", express_checkout_path(book_id: @book.id, quantity: params[:quantity], user_id: current_user.id, total: @book.price_code.price), method: :post, class: "btn site-btn", data: { turbo: false } %>
       </div>
+
     <% else %>
       <div>
         <%= link_to "Achat express : connectez-vous", new_user_session_path, class: "btn site-btn" %>
@@ -19,3 +20,4 @@
     <% end %>
   <% end %>
 </div>
+
