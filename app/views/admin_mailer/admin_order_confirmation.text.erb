@@ -1,13 +1,7 @@
 Bonjour, 
 
 Une commande a été passée et payée sur le site <%= @url %>.
-
-Nom :
-
-Prénom :
-
-Numéro de commande :
-
-Montant de la commande :
-
-Livres commandés :
+Vous pouvez retrouver le détail de cette commande à préparer dans l'Admin Dashboard du site. 
+Nom : <%= @order.user.last_name %>
+Prénom : <%= @order.user.first_name %>
+Numéro de commande : <%= @order.id %>

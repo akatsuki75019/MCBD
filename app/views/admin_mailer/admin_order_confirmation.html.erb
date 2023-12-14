@@ -4,12 +4,11 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-  <h1>Bonjour Admin, </h1>
-  <p> Une commande a été passée et payée sur le site <%= @url %>.</p>
-  <p> Nom : </p>
-  <p> Prénom : </p>
-  <p> Numéro de commande : </p>
-  <p> Montant de la commande : </p>
-  <p> Livres commandés : </p>
+  <h1>Bonjour <%= @name_to_display %>,</h1>
+  <p> Une commande a été passée et payée sur le site <%= @url %>. </p>
+  <p> Vous pouvez retrouver le détail de cette commande à préparer dans l'Admin Dashboard du site. </p>
+  <p> Nom : <%= @order.user.last_name %></p>
+  <p> Prénom : <%= @order.user.first_name %></p>
+  <p> Numéro de commande : <%= @order.id %></p>
   </body>
 </html>

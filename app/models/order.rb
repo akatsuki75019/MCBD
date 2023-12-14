@@ -39,7 +39,8 @@ class Order < ApplicationRecord
     admin_users = User.where(is_admin: true)
 
     admin_users.each do |admin_user|
-      AdminMailer.admin_order_confirmation(self, admin_user).deliver_now
+      name_to_display = admin_user&.first_name.present? ? admin_user.first_name : 'Admin'
+      AdminMailer.admin_order_confirmation(self, admin_user, name_to_display).deliver_now
     end
   end
 
