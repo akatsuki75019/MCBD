@@ -2588,3 +2588,11 @@ opacity: 0.8;
 	border-radius:10px;
 	outline: none;
 }
+
+.show-more {
+  color: blue; 
+  text-decoration: underline; 
+  cursor: pointer; 
+	margin-bottom: 10px;
+  display: inline-block; 
+}
