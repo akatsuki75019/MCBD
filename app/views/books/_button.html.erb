@@ -1,23 +1,20 @@
-<div class="anime__details__btn d-flex justify-content-start">
-  <%= form_tag(joint_table_cart_books_path, method: :post, class: "d-flex align-items-end text-white") do %>
-    <div class="me-2">
-      <%= hidden_field_tag :book_id, @book.id %>
-      <label for="quantity" class="form-label">Quantité:</label>
-      <%= number_field_tag :quantity, 1, min: 1, class: "form-control", style: "width: 75px;" %>
-    </div>
-    <div class="me-2">
-      <%= submit_tag "Ajouter au panier", class: "btn site-btn" %>
-    </div>
-    <% if user_signed_in? %>
-      <div>
-        <%= button_to "Achat express", express_checkout_path(book_id: @book.id, quantity: params[:quantity], user_id: current_user.id, total: @book.price_code.price), method: :post, class: "btn site-btn", data: { turbo: false } %>
+<div class="animedetailsbtn">
+  <div class="row mb-5">
+    <%= form_tag(joint_table_cart_books_path, method: :post, class: "d-flex align-items-end text-white") do %>
+      <div class="col-lg-2 mb-lg-0 mb-2">
+        <%= hidden_field_tag :book_id, @book.id %>
+        <label for="quantity" class="ml-2">Quantité:</label>
+        <%= number_field_tag :quantity, 1, min: 1, class: "form-control mb-2 ml-2 w-100" %>
       </div>
-
-    <% else %>
-      <div>
-        <%= link_to "Achat express : connectez-vous", new_user_session_path, class: "btn site-btn" %>
+      <div class="col-lg-3">
+        <%= submit_tag "Ajouter au panier", class: "add-to-cart-button btn add-to-cart-button:hover" %>
       </div>
     <% end %>
-  <% end %>
+    <div class="ml-3">
+      <% if user_signed_in? %>
+        <%= button_to "Achat express pour 1 livre", express_checkout_path(book_id: @book.id, quantity: params[:quantity], user_id: current_user.id, total: @book.price_code.price), method: :post, class: "add-to-cart-button btn add-to-cart-button:hover btn", data: { turbo: false } %>
+      <% else %>
+        <%= button_to "Achat express : connectez-vous", new_user_session_path, class: "btn btn-secondary" %>
+      <% end %>
+    </div>
 </div>
-

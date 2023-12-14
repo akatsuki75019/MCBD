@@ -10,8 +10,7 @@ class JointTableCartBooksController < ApplicationController
 
     #Gestion du panier en fonction de l'état de connexion de l'utilisateur :
     if current_user
-      user_cart = current_user.cart || current_user.create_cart unless session[:cart_id].present?
-      session[:cart_id] ||= user_cart.id if user_cart.present?
+      user_cart = current_user.cart 
     else
       user_cart = Cart.find_or_create_by(id: session[:cart_id])
       session[:cart_id] ||= user_cart.id
