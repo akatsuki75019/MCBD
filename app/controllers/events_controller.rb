@@ -8,18 +8,20 @@ class EventsController < ApplicationController
 
   def attend
     @event = Event.find(params[:id])
-
+    
     if current_user.attendances.create(event: @event)
       flash[:notice] = 'Inscription réussie! Vous allez recevoir une confirmation par email'
     else
       flash[:alert] = "Erreur lors de l'inscription"
     end
-
+    
     redirect_to @event
   end
-
+  
   # GET /events/1 or /events/1.json
   def show
+    @event = Event.find(params[:id])
+    @participants_count = @event.attendances.count
   end
 
   def new

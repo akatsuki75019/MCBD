@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
   <% if current_user.attendances.exists?(event_id: @event.id) %>
-    <%= button_to 'Déjà inscrit', '#', class: 'btn btn-secondary', disabled: true %>
+    <%= button_to "Déjà inscrit", "#", class: "site-btn", disabled: true %>
   <% else %>
-    <%= button_to 'Participer à cet évènement', attend_event_path(@event), method: :post, class: 'btn btn-primary' %>
+    <%= button_to "Participez", attend_event_path(@event), method: :post, class: "site-btn" %>
   <% end %>
 <% else %>
-  <%= button_to 'Connectez-vous pour vous inscrire', new_user_session_path, class: 'btn btn-secondary' %>
+  <%= button_to "Connectez-vous pour vous inscrire", new_user_session_path, class: "site-btn" %>
 <% end %>
