@@ -1,5 +1,14 @@
 require 'faker'
 
+puts "Remise à zéro des modèles existants..."
+Book.destroy_all
+Category.destroy_all
+Editor.destroy_all
+Event.destroy_all
+PriceCode.destroy_all
+User.destroy_all
+
+
 personas = [
   ["Alex", "Martin", "1985-04-13", "alexthp", "false"],
   ["Axel", "Leveque", "1973-11-07", "axelthp", "false"],
@@ -134,3 +143,5 @@ User.find_each do |user|
   event_to_attend = Event.all.sample
   Attendance.create(user: user, event: event_to_attend)
 end
+
+puts "Seed généré avec succès 🥳"
