@@ -79,6 +79,5 @@ gem "administrate"
 gem "faker"
 gem 'googlebooks'
 gem 'csv'
-gem 'turbo-rails'
 gem "rails-i18n"
 

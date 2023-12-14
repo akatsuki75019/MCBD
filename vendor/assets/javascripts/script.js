@@ -62,3 +62,42 @@
       selectCategory.form.submit();
     });
   };
+
+
+// Script pour la mise à jour des quantités du panier
+document.addEventListener('DOMContentLoaded', function () {
+  const updateCartButton = document.querySelector('.btn-update-cart');
+
+  if (updateCartButton) {
+    updateCartButton.addEventListener('click', function () {
+      const cartItems = document.querySelectorAll('.cart-item-form');
+
+      // Collectez les données pour la mise à jour du panier et envoyez-les au backend
+      const formData = new FormData();
+      cartItems.forEach(function (cartItem) {
+        const quantityInput = cartItem.querySelector('.cart-quantity-input');
+        formData.append(`cart_items[${quantityInput.dataset.cart_book_id}]`, quantityInput.value);
+
+        // Mettez à jour la quantité affichée dans la ligne du panier
+        const cartQuantityElement = cartItem.closest('.cart-book').querySelector('.cart-quantity');
+        cartQuantityElement.textContent = quantityInput.value;
+      });
+
+      // Utilisez une requête AJAX pour mettre à jour le panier
+      fetch('/carts/update_cart', {
+        method: 'PATCH',
+        body: formData,
+        headers: {
+          'X-CSRF-Token': Rails.csrfToken(),
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          // Mettez à jour les éléments de l'interface utilisateur en fonction de la réponse
+          const totalCartPriceElement = document.querySelector('.total-cart-price');
+          totalCartPriceElement.textContent = data.total_price;
+        })
+        .catch(error => console.error('Error updating cart:', error));
+    });
+  }
+});

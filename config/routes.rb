@@ -50,7 +50,14 @@ Rails.application.routes.draw do
   resources :events do
     member do
       post 'attend', to: 'events#attend'
-    end
+    end   
   end
+
+  resources :carts do
+    collection do
+      patch 'update_cart'
+    end
+  end 
+
   
 end
