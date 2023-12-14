@@ -1,7 +1,7 @@
 <%= render "static_pages/hero"%>
 
-<section class="product-page spad">
-  <div class="container">
+<section class="product-page spad pb-0 mt-3 ">
+  <div class="container product__page__title">
     <div class="row">
       <div class="col-lg-12">
         <div class="product__page__content">
@@ -14,9 +14,15 @@
               </div>
             </div>
           </div>
-          <%= render 'books/card_row'%>
+          <%= render 'last_book'%>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<%= render "hero_bis"%>
+
+<%=  render "carousel" %>
+
+
