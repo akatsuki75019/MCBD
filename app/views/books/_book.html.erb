@@ -14,7 +14,9 @@
                 <h3><%= book.title %></h3>
                   <span><%= book.author %></span>
               </div>
-              <p><%= book.description%></p>
+              <div class = "book" data-truncate="180">
+                <p id= "synopsis" class = ""><%= book.description%></p>
+              </div>
             </div>
             <div class="anime__details__widget">
               <div class="row">
@@ -79,23 +81,7 @@
                   <p>Samedi 11:00–19:00</p>  
                   <p>Dimanche fermé</p>                          
             </div>
-
-              
-              <div class="row flex">
-                <div class="col-lg-4 col-md-8 col-sm-4">
-                  <img class="blog__item small__item set-bg" data-setbg="https://m.media-amazon.com/images/I/71dwbtwA4SL._AC_UF1000,1000_QL80_.jpg" alt="Description de l'image" src="https://www.leparisien.fr/resizer/efCs6S_-rGdBhi2P0NQeijAEUws=/932x582/arc-anglerfish-eu-central-1-prod-leparisien.s3.amazonaws.com/public/5UAWECLJVFOXQS6RPEGA3XXU3M.jpg">
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                  <div class="anime__review__item__text">
-                    <h6>MCBD SHOP</h6>
-                    <p>27 rue des Taillandiers</p>
-                    <p>75011, Paris</p>
-                    <p>Ouvert du lundi au samedi de 11h a 19h</p>
-                  </div>
-                </div>
-              </div>
             </div>    
-
           </div>
         </div>
       </div>    
