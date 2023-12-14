@@ -23,29 +23,27 @@ class EditorDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    books
-    distributor
     name
+    distributor
+    books
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    books
-    distributor
     name
-    created_at
-    updated_at
+    distributor
+    books
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    books
-    distributor
     name
+    distributor
+    books
   ].freeze
 
   # COLLECTION_FILTERS
@@ -63,6 +61,9 @@ class EditorDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how editors are displayed
   # across all pages of the admin dashboard.
   #
+  def display_resource(resource)
+    "#{resource.name}"
+  end
   # def display_resource(editor)
   #   "Editor ##{editor.id}"
   # end

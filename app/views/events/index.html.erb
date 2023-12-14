@@ -1,12 +1,14 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Events</h1>
-
-<div id="events">
-  <% @events.each do |event| %>
-    <%= render event %>
-    <p>
-      <%= link_to "Show this event", event %>
-    </p>
-  <% end %>
+<div class="p-5 text-center bg-body-secondary">
+  <div class="container py-5">
+    <h1 class="text-body-emphasis">Évènements au M.C.B.D Shop</h1>
+  </div>
 </div>
+
+<div class="album py-5">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <%= render "card" %>
+    </div>
+  </div>
+</div>
+

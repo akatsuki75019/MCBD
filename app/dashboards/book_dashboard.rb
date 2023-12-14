@@ -11,7 +11,10 @@ class BookDashboard < Administrate::BaseDashboard
     id: Field::Number,
     author: Field::String,
     carts: Field::HasMany,
-    category: Field::BelongsTo,
+    category: Field::BelongsTo.with_options(
+      searchable: true,
+      searchable_fields: ['name'],
+      ),
     description: Field::Text,
     editor: Field::BelongsTo,
     image_url: Field::String,
@@ -19,11 +22,14 @@ class BookDashboard < Administrate::BaseDashboard
     joint_table_cart_books: Field::HasMany,
     joint_table_order_books: Field::HasMany,
     orders: Field::HasMany,
-    price_code: Field::BelongsTo,
+    price_code: Field::BelongsTo.with_options(
+      searchable: true,
+      searchable_fields: ['name'],
+      ),
     quantity: Field::Number,
-    release_date: Field::DateTime,
+    release_date: Field::Date,
     title: Field::String,
-    tva: Field::Number.with_options(decimals: 2),
+    tva: Field::Number.with_options(decimals: 1),
     wishlists: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -46,47 +52,36 @@ class BookDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-    id
-    author
-    carts
-    category
-    description
-    editor
-    image_url
     isbn
-    joint_table_cart_books
-    joint_table_order_books
-    orders
+    title
+    description
+    author
+    image_url
     price_code
+    tva
     quantity
     release_date
-    title
-    tva
+    editor
+    category
+    carts
+    orders
     wishlists
-    created_at
-    updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    author
-    carts
-    category
-    description
-    editor
-    image_url
     isbn
-    joint_table_cart_books
-    joint_table_order_books
-    orders
+    title
+    description
+    author
+    editor
+    category
+    image_url
     price_code
     quantity
     release_date
-    title
-    tva
-    wishlists
   ].freeze
 
   # COLLECTION_FILTERS
@@ -99,9 +94,16 @@ class BookDashboard < Administrate::BaseDashboard
   #   COLLECTION_FILTERS = {
   #     open: ->(resources) { resources.where(open: true) }
   #   }.freeze
+
+  
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how books are displayed
-  # across all pages of the admin dashboard.
-  #
+  #permit to display resource.name like for category the name of category
+  def display_resource(resource)
+    "#{resource.title}"
+  end
+  
+  # def display_resource(price_code)
+  #   "PriceCode ##{price_code.id}"
+  # end
 end

@@ -60,6 +60,9 @@ class AttendanceDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how attendances are displayed
   # across all pages of the admin dashboard.
   #
+  def display_resource(resource)
+    "#{resource.name}"
+  end
   # def display_resource(attendance)
   #   "Attendance ##{attendance.id}"
   # end

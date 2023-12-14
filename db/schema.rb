@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_08_145638) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_12_185558) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,7 +29,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_145638) do
     t.string "author"
     t.text "description"
     t.integer "quantity"
-    t.datetime "release_date"
+    t.date "release_date"
     t.float "tva"
     t.string "image_url"
     t.bigint "editor_id"
@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_145638) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_carts_on_user_id"
@@ -69,6 +69,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_145638) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_url"
+  end
+
+  create_table "google_book_infos", force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.string "google_id"
+    t.text "google_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_google_book_infos_on_book_id"
   end
 
   create_table "joint_table_cart_books", force: :cascade do |t|
@@ -137,6 +146,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_145638) do
   add_foreign_key "books", "editors"
   add_foreign_key "books", "price_codes"
   add_foreign_key "carts", "users"
+  add_foreign_key "google_book_infos", "books"
   add_foreign_key "joint_table_cart_books", "books"
   add_foreign_key "joint_table_cart_books", "carts"
   add_foreign_key "joint_table_order_books", "books"

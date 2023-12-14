@@ -1,2 +1,19 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<%= form_for(@user) do |f| %>
+  <!-- Champs pour first_name, last_name, email, birthday -->
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <!-- Autres champs -->
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :birthday %><br />
+    <%= f.date_field :birthday %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Mettre à jour" %>
+  </div>
+<% end %>

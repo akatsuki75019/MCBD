@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-auto">
+<html class="h-auto" lang="fr">
   <head>
     <title>MCBD | BOOKSHOW</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -38,6 +38,19 @@
     <%= yield %>
     <%= render 'layouts/footer'%>
 
+    <!-- Toast pour notifs -->
+    <% if notice != nil %>
+      <div class="toast border-none show position-fixed bottom-0 end-0 mb-3 me-3" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header header">
+          <strong class="me-auto text-white">MCBD</strong>
+          <small class="text-light">Il y a moins d'une minute</small>
+          <button type="button" class="btn-close btn-secondary" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body color-dropdown">
+          <%= notice %>
+        </div>
+      </div>
+    <% end %>
 
   <!-- Js Preloader (à intégrer correctement plus tard) -->
     <script>
@@ -49,6 +62,7 @@
 
     <!-- Js Plugins -->
     <%= javascript_include_tag 'manifest' %>
+    <%= javascript_include_tag 'script' %>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
   </body>

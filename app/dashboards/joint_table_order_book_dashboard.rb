@@ -63,6 +63,7 @@ class JointTableOrderBookDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how joint table order books are displayed
   # across all pages of the admin dashboard.
   #
+  
   # def display_resource(joint_table_order_book)
   #   "JointTableOrderBook ##{joint_table_order_book.id}"
   # end

@@ -4,12 +4,18 @@ class BooksController < ApplicationController
   # GET /books or /books.json
   def index
     @books = Book.all
+    
   end
 
   # GET /books/1 or /books/1.json
   def show
     @book = Book.find(params[:id])
     @books = Book.limit(4)
+    @book = Book.includes(:category).find(params[:id])
+    @book = Book.includes(:editor).find(params[:id])
+    @book = Book.includes(:price_code).find(params[:id])
+
+
   end
 
   # GET /books/new

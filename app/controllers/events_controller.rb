@@ -1,10 +1,24 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: [:attend]
 
   def index
     @events = Event.all
   end
 
+  def attend
+    @event = Event.find(params[:id])
+
+    if current_user.attendances.create(event: @event)
+      flash[:notice] = 'Inscription réussie! Vous allez recevoir une confirmation par email'
+    else
+      flash[:alert] = "Erreur lors de l'inscription"
+    end
+
+    redirect_to @event
+  end
+
+  # GET /events/1 or /events/1.json
   def show
   end
 

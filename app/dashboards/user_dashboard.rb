@@ -10,7 +10,7 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     attendances: Field::HasMany,
-    birthday: Field::DateTime,
+    birthday: Field::Date,
     cart: Field::HasOne,
     email: Field::String,
     encrypted_password: Field::String,
@@ -23,8 +23,8 @@ class UserDashboard < Administrate::BaseDashboard
     reset_password_sent_at: Field::DateTime,
     reset_password_token: Field::String,
     wishlist: Field::HasOne,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    created_at: Field::Date,
+    updated_at: Field::Date,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -34,29 +34,27 @@ class UserDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    attendances
+    last_name
+    first_name
     birthday
-    cart
+    email
+    orders
+    events
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    attendances
-    birthday
-    cart
-    email
-    encrypted_password
-    events
-    first_name
     is_admin
+    email
     last_name
+    first_name
+    birthday
     orders
-    remember_created_at
-    reset_password_sent_at
-    reset_password_token
+    cart
     wishlist
+    events
     created_at
     updated_at
   ].freeze
@@ -65,20 +63,13 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    attendances
-    birthday
-    cart
-    email
-    encrypted_password
-    events
-    first_name
     is_admin
+    email
     last_name
+    first_name
+    birthday
+    events
     orders
-    remember_created_at
-    reset_password_sent_at
-    reset_password_token
-    wishlist
   ].freeze
 
   # COLLECTION_FILTERS
@@ -96,6 +87,9 @@ class UserDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how users are displayed
   # across all pages of the admin dashboard.
   #
+  def display_resource(resource)
+    "#{resource.first_name} #{resource.last_name}"
+  end
   # def display_resource(user)
   #   "User ##{user.id}"
   # end
