@@ -55,7 +55,7 @@ Rails.application.routes.draw do
 
   resources :carts do
     collection do
-      patch 'update_cart'
+      match 'update_cart', via: [:patch, :post]
     end
   end 
 

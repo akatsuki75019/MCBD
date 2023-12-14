@@ -63,8 +63,7 @@
     });
   };
 
-
-// Script pour la mise à jour des quantités du panier
+// Script mise à jour des quantités dans le panier
 document.addEventListener('DOMContentLoaded', function () {
   const updateCartButton = document.querySelector('.btn-update-cart');
 
@@ -76,11 +75,17 @@ document.addEventListener('DOMContentLoaded', function () {
       const formData = new FormData();
       cartItems.forEach(function (cartItem) {
         const quantityInput = cartItem.querySelector('.cart-quantity-input');
-        formData.append(`cart_items[${quantityInput.dataset.cart_book_id}]`, quantityInput.value);
+        formData.append(`book_quantity[${quantityInput.dataset.cart_book_id}]`, quantityInput.value);
 
         // Mettez à jour la quantité affichée dans la ligne du panier
         const cartQuantityElement = cartItem.closest('.cart-book').querySelector('.cart-quantity');
         cartQuantityElement.textContent = quantityInput.value;
+
+        // Ajoutez le code pour mettre à jour le prix de la ligne du panier (prix * quantité)
+        const priceElement = cartItem.closest('.cart-book').querySelector('.total-price');
+        const unitPrice = parseFloat(cartItem.dataset.book_price);
+        const totalPrice = unitPrice * parseInt(quantityInput.value);
+        priceElement.textContent = totalPrice.toFixed(2); // Mettez à jour avec le nouveau prix total
       });
 
       // Utilisez une requête AJAX pour mettre à jour le panier
