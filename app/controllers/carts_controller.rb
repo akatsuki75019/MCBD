@@ -43,15 +43,16 @@ class CartsController < ApplicationController
   end
 
   def update_cart
-    book_quantity_params.each do |book_id, quantity|
+    book_quantities_params.each do |book_id, book_quantity_params|
       book = Book.find(book_id)
       cart_book = current_user.cart.find_by(book: book)
-      if cart_book && quantity.to_i > 0
-        cart_book.update(quantity: quantity)
+      if cart_book && book-quantity_params[:quantity].to_i > 0
+        cart_book.update(quantity: book_quantity_params[:quantity]
       elsif cart_book
         cart_book.destroy
       end
     end
+    
     total_price = current_user.cart.total_price
     # Renvoyer le prix total en format JSON
     render json: { total_price: total_price }
@@ -59,9 +60,8 @@ class CartsController < ApplicationController
 
   private
 
-  def book_quantity_params
-    # Exiger les paramètres de cart_books et permettre seulement l'attribut quantity pour chaque book_id
-    params.require(:book_quantity).permit(book_ids: [:quantity])
+  def book_quantities_params
+    params.require(:book_quantities).permit!
   end
 
 

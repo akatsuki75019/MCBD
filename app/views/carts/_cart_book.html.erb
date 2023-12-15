@@ -2,8 +2,8 @@
   <td><%= cart_book.book.title %></td>
   <td>
     <%= form_for(cart_book, url: joint_table_cart_book_path(cart_book), method: :patch, remote: true) do |f| %>
-      <%= f.number_field :quantity, value: cart_book.quantity, min: 1, class: "cart-quantity-input", data: { cart_book_id: cart_book.id } %>
-    <% end %>
+  <%= f.number_field :quantity, value: cart_book.quantity, min: 1, class: "cart-quantity-input", data: { book_id: cart_book.id } %>
+  <% end %>
   </td>
   <td><%= number_with_precision(cart_book.book.price_code.price, precision: 2) %></td>
   <td class="total-price"><%= number_with_precision(cart_book.quantity * cart_book.book.price_code.price, precision: 2) %></td>
