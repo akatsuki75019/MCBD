@@ -1,5 +1,6 @@
 class JointTableCartBooksController < ApplicationController
   before_action :set_cart_book, only: %i[update destroy]
+
   def index
     @cart_books = current_user.cart.cart_books
   end
@@ -33,21 +34,19 @@ class JointTableCartBooksController < ApplicationController
   end
 
   def update
-    if @cart_book.update(quantity: cart_book_params[:quantity]) #dans les cas ou les quantités peuvent seulement être modifiées depuis le panier
-      redirect_to cart_path, notice: "La quantité a été mise à jour avec succès"
-    else
-      redirect_to cart_path, alert: "Erreur lors de la mise à jour de la quantité"
-    end
+    @cart_book.update(quantity: cart_book_params[:quantity])
   end
 
   def destroy
     @cart_book.destroy
     redirect_back(fallback_location: cart_path, notice: "Le livre a été supprimé du panier avec succès")
   end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_cart_book
     @cart_book = JointTableCartBook.find(params[:id])
+    @cart = @cart_book.cart
   end
 
   # Only allow a list of trusted parameters through.

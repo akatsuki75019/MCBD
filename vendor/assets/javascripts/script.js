@@ -1,5 +1,4 @@
 // Script sur card event pour la description
-
   const cardDescriptions = document.querySelectorAll('.card-description');
 
   cardDescriptions.forEach(description => {
@@ -15,23 +14,22 @@
       description.style.transition = 'max-height 0.3s ease-in-out';
       description.classList.remove('truncated');
       description.style.maxHeight = '80px'; 
-    
+
     });
   });
 
   // Script sur book show pour le synopsis
-
   document.addEventListener('DOMContentLoaded', () => {
     const books = document.querySelectorAll(".book");
-  
+
     books.forEach(book => {
       const description = book.querySelector("#synopsis");
       const fullText = description.innerText;
-      
+
       if (fullText.length > 200) {
         const truncatedText = fullText.substring(0, 200) + '...';
         description.innerText = truncatedText;
-  
+
         const showMoreBtn = document.createElement('span');
         showMoreBtn.innerText = 'Voir Plus';
         showMoreBtn.className = 'show-more';
@@ -47,14 +45,13 @@
             showMoreBtn.innerText = 'Voir Plus';
           }
         });
-  
+
         book.appendChild(showMoreBtn);
       }
     });
   });
   
 // Script pour changer les catégories
-
   const selectCategory = document.querySelector('#category_id')
   if (selectCategory){
     selectCategory.addEventListener('change',(e) => {
@@ -64,45 +61,44 @@
   };
 
 // Script mise à jour des quantités dans le panier
-document.addEventListener('DOMContentLoaded', function () {
-  const updateCartButton = document.querySelector('.btn-update-cart');
+  const cartItems = document.querySelectorAll('.cart-quantity-input');
+  [...cartItems].forEach((cartItem) => {
+    cartItem.addEventListener('change', (e) => {
+      const target = e.target
+      target.form.submit();
+      const bookNumber = parseInt(target.value);
+      updateCartIcon()
+      updateTotalPrice(target, bookNumber)
+    })
+  })
 
-  if (updateCartButton) {
-    updateCartButton.addEventListener('click', function () {
-      const cartItems = document.querySelectorAll('.cart-item-form');
-
-      // Collectez les données pour la mise à jour du panier et envoyez-les au backend
-      const formData = new FormData();
-      cartItems.forEach(function (cartItem) {
-        const quantityInput = cartItem.querySelector('.cart-quantity-input');
-        formData.append(`book_quantity[${quantityInput.dataset.cart_book_id}]`, quantityInput.value);
-
-        // Mettez à jour la quantité affichée dans la ligne du panier
-        const cartQuantityElement = cartItem.closest('.cart-book').querySelector('.cart-quantity');
-        cartQuantityElement.textContent = quantityInput.value;
-
-        // Ajoutez le code pour mettre à jour le prix de la ligne du panier (prix * quantité)
-        const priceElement = cartItem.closest('.cart-book').querySelector('.total-price');
-        const unitPrice = parseFloat(cartItem.dataset.book_price);
-        const totalPrice = unitPrice * parseInt(quantityInput.value);
-        priceElement.textContent = totalPrice.toFixed(2); // Mettez à jour avec le nouveau prix total
-      });
-
-      // Utilisez une requête AJAX pour mettre à jour le panier
-      fetch('/carts/update_cart', {
-        method: 'PATCH',
-        body: formData,
-        headers: {
-          'X-CSRF-Token': Rails.csrfToken(),
-        },
-      })
-        .then(response => response.json())
-        .then(data => {
-          // Mettez à jour les éléments de l'interface utilisateur en fonction de la réponse
-          const totalCartPriceElement = document.querySelector('.total-cart-price');
-          totalCartPriceElement.textContent = data.total_price;
-        })
-        .catch(error => console.error('Error updating cart:', error));
-    });
+  const updateTotalCart = () => {
+    let sum = 0
+    const cartTotal = document.querySelector('.cart-total')
+    const allTotalPrice = document.querySelectorAll('.total-price');
+    [...allTotalPrice].forEach((totalPrice) => {
+      sum += parseFloat(totalPrice.textContent.replace(',', '.'))
+    })
+    cartTotal.textContent = sum.toFixed(2)
+    cartTotal.textContent = cartTotal.textContent.replace('.', ',')
   }
-});
+
+  const updateTotalPrice = (target, number) => {
+      let totalPrice = target.closest('tr')?.querySelector('.total-price');
+      const bookPrice = target.closest('tr')?.querySelector('.book-price');
+      if (bookPrice == null) return;
+
+      const newTotalPrice = parseFloat(bookPrice.textContent.replace(',', '.')) * number;
+      totalPrice.textContent = newTotalPrice.toFixed(2)
+      totalPrice.textContent = totalPrice.textContent.replace('.', ',')
+      updateTotalCart()
+  }
+
+  const updateCartIcon = () => {
+    const icon = document.querySelector('#cart-item-number')
+    let cartItemsNumber = 0;
+    cartItems.forEach(item => {
+        cartItemsNumber += parseFloat(item.value);
+    });
+    icon.textContent = cartItemsNumber
+  }
