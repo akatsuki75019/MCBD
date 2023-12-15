@@ -1,5 +1,5 @@
 // Script sur card event pour la description
-
+document.addEventListener('turbo:load', function() {
   const cardDescriptions = document.querySelectorAll('.card-description');
 
   cardDescriptions.forEach(description => {
@@ -15,43 +15,42 @@
       description.style.transition = 'max-height 0.3s ease-in-out';
       description.classList.remove('truncated');
       description.style.maxHeight = '80px'; 
-    
     });
   });
-
+});
   // Script sur book show pour le synopsis
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const books = document.querySelectorAll(".book");
-  
-    books.forEach(book => {
-      const description = book.querySelector("#synopsis");
-      const fullText = description.innerText;
-      
-      if (fullText.length > 200) {
-        const truncatedText = fullText.substring(0, 200) + '...';
-        description.innerText = truncatedText;
-  
-        const showMoreBtn = document.createElement('span');
-        showMoreBtn.innerText = 'Voir Plus';
-        showMoreBtn.className = 'show-more';
-        showMoreBtn.style.cursor = 'pointer';
-        showMoreBtn.addEventListener('click', () => {
-          if (showMoreBtn.innerText === 'Voir Plus') {
-            showMoreBtn.style.transition = '1s ease-in';
-            description.innerText = fullText;
-            showMoreBtn.innerText = 'Voir Moins';
-          } else {
-            showMoreBtn.style.transition = '1s ease-out';
-            description.innerText = truncatedText;
-            showMoreBtn.innerText = 'Voir Plus';
-          }
-        });
-  
-        book.appendChild(showMoreBtn);
-      }
-    });
+document.addEventListener('turbo:load', function() {
+  const books = document.querySelectorAll(".book");
+
+  books.forEach(book => {
+    const description = book.querySelector("#synopsis");
+    const fullText = description.innerText;
+    
+    if (fullText.length > 200) {
+      const truncatedText = fullText.substring(0, 200) + '...';
+      description.innerText = truncatedText;
+
+      const showMoreBtn = document.createElement('span');
+      showMoreBtn.innerText = 'Voir Plus';
+      showMoreBtn.className = 'show-more';
+      showMoreBtn.style.cursor = 'pointer';
+      showMoreBtn.addEventListener('click', () => {
+        if (showMoreBtn.innerText === 'Voir Plus') {
+          showMoreBtn.style.transition = '1s ease-in';
+          description.innerText = fullText;
+          showMoreBtn.innerText = 'Voir Moins';
+        } else {
+          showMoreBtn.style.transition = '1s ease-out';
+          description.innerText = truncatedText;
+          showMoreBtn.innerText = 'Voir Plus';
+        }
+      });
+
+      book.appendChild(showMoreBtn);
+    }
   });
+});
   
 // Script pour changer les catégories
 
