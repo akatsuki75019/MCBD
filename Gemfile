@@ -80,4 +80,5 @@ gem "faker"
 gem 'googlebooks'
 gem 'csv'
 gem "rails-i18n"
+gem 'cloudinary'
 
