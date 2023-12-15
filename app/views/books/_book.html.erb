@@ -38,7 +38,7 @@
                 <h2><%= number_to_currency(@book.price_code.price, unit: "€", separator: ",", delimiter: "", format: "%n %u") %><h2>
               </div>
             </div>
-            <%= render 'books/button'%>
+            <%= render 'button'%>
           </div>
         </div>
       </div>
@@ -55,8 +55,7 @@
           </div>
         </div>
       </div>
-      <%= render 'card_row'%>
-      <!-- DANS LE MEME GENRE end -->
+      <%= render 'same_category_section'%>
       
       <!-- OU NOUS TROUVER start -->
       <div class="col-lg-8 col-md-8 col-sm-8">
