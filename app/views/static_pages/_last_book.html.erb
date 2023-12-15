@@ -1,0 +1,18 @@
+<div class="trending__product">
+  <div class="row">
+    <% @books.last(4).each do |book| %>
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="product__item">
+          <%= link_to book_path(book) do %>
+            <div class="text-center">
+              <%= image_tag(book.image_url, class: "product__item__pic set-bg", data: { setbg: book.image_url }, alt: "Ceci est la couverture de : #{book.title}") %>           
+              <div class="product__item__text">
+                <h5><%= book.title %></h5>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

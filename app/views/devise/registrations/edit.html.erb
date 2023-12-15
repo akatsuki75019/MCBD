@@ -1,46 +1,54 @@
-<div class="m-5">
-  <h2>Mettre à jour mon profil</h2>
+<section class="container my-auto">
+  <div class="row">
+    <div class="col-sm-12 col-lg-8 col-xl-6 m-auto">
+      <div class="card border-0 shadow">
+        <div class="card-body header">
+          <div class="margin-top-sign text-center">
+            <h2 class="fw-bold text-white mb-5">Mettre à jour mon mot de passe</h2>
+          </div>
+          <div class="mb-4 product__page__title">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+            
+              <div class="margin-top-form form-floating my-5 w-75 mx-auto">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control", id:"floatingEmail" %>
+                <label for="floatingEmail">Email</label>
+              </div>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              <div class="form-floating mb-3 w-75 mx-auto">
+                <%= f.password_field :current_password, autocomplete: "current-password", placeholder:"Mot de passe actuel", class:"form-control", id:"floatingCurrentPassword" %>
+                <label for="floatingCurrentPassword">Mot de passe actuel</label>
+              </div>
+
+              <div class="form-floating mb-3 w-75 mx-auto">
+                <%= f.password_field :password, autocomplete: "new-password", placeholder:"Nouveau mot de passe", class:"form-control", id:"floatingNewPassord" %>
+                <label for="floatingNewPassword">Nouveau mot de passe</label>
+              </div>
+
+              <div class="form-floating mb-3 w-75 mx-auto">
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmer le nouveau mot de passe", class:"form-control", id:"floatingNewPasswordConfirm" %>
+              <label for="floatingNewPasswordConfirm" class="text-dark">Confirmer le mot de passe</label>
+              </div>
+
+              <div class="row mb-3">
+                <div class="d-flex justify-content-center mt-5 mb-4">
+                  <%= f.submit "Mettre à jour", class: "site-btn w-50 p-2 mx-auto d-block" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          
+        
+          <div class="d-flex gap-2 d-sm-flex justify-content-sm-center">
+            <%= button_to "Supprimer mon compte", registration_path(resource_name), class: "site-btn btn-lg px-4 gap-3", data: { confirm: "Êtes-vous certain.e ?", turbo_confirm: "Êtes-vous certain.e ?" }, method: :delete %>
+            <%= link_to "Revenir en arrière", :back, class:"site-btn-second btn-lg px-4 gap-3" %>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :password %> <i>(Laissez vide si mot de passe inchangé)</i><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> caractères minimum</em>
-      <% end %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :current_password %> <i>(Nous avons besoin de votre mot de passe actuel pour confirmer les modifications)</i><br />
-      <%= f.password_field :current_password, autocomplete: "current-password" %>
-    </div>
-
-    <br>
-    <div class="actions">
-      <%= f.submit "Mettre à jour" %>
-    </div>
-  <% end %>
-
-  <br>
-
-  <div>Unhappy? <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Êtes-vous certain.e ?", turbo_confirm: "Êtes-vous certain.e ?" }, method: :delete %></div>
-
-  <%= link_to "Retour", :back %>
-</div>
+  </div>
+</section>

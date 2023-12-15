@@ -1,5 +1,4 @@
 class CartsController < ApplicationController
-
   def show
     if user_signed_in?
       @cart = current_user.cart
@@ -8,13 +7,14 @@ class CartsController < ApplicationController
         @cart = current_user.create_cart
       end
 
-      # Vérifier si current user == cart user (pour enpecher affichage d'un autre panier)
+      # Vérifier si current user == cart user (pour empêcher l'affichage d'un autre panier)
       unless current_user == @cart.user
         redirect_to root_path, alert: "Vous n'avez pas les droits pour accéder à cette page."
         return
       end
     else
       @cart = Cart.find_by(id: params[:id])
+
       unless @cart
         redirect_to root_path, alert: "Panier non trouvé."
         return
@@ -33,6 +33,13 @@ class CartsController < ApplicationController
     end
   end
 
-
+  def update
+    @joint_table_cart_book.update(joint_table_cart_book_params)
+  
+    respond_to do |format|
+      format.html { redirect_to @cart, notice: "Quantité mise à jour dans le panier" }
+      format.turbo_stream { render turbo_stream: turbo_stream.replace(@joint_table_cart_book) }
+    end
+  end
 
 end

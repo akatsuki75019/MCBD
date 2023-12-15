@@ -1,17 +1,18 @@
 <% @events.each do |event| %>
   <div class="col">
-    <div class="card anime__review__item__text shadow-sm text-center">
+    <div class="card anime__review__item__text shadow-sm text-center" alt="" >
       <%= link_to event_path(event) do %>
-        <h4 class="mb-3" style="height: 80px; overflow: hidden;"><%= event.title %></h4>
-        <%= image_tag(event.image_url, class: " set-bg", data: { setbg: event.image_url }, alt: "Description de l'image") %> 
+        <h4 class="mb-3" style="height: 80px; overflow: hidden"><%= event.title %></h4>
+        <%= image_tag(event.image_url, class: " set-bg", data: { setbg: event.image_url }, alt: "Affiche faisant référence à lévénement : #{event.title}") %> 
       <% end %>       
       <div class="card-body px-0">
         <p class="card-text text-white text-start card-description" data-truncate="80"><%= event.description %></p>
         <div class="d-flex justify-content-around align-items-center mt-4">
           <%= link_to "Voir l'évènement", event_path(event), class:"btn btn-sm btn-outline-secondary"%>
-          <small class="text-light">Le <%= event.start_date %></small>
+          <small class="text-light ms-2">Le <%=  l(event.start_date, format: "%e %b %Y à %H:%M") %></small>
         </div>
       </div>
     </div>
   </div>
 <% end %>
+

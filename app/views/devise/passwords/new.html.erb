@@ -1,16 +1,27 @@
-<h2>Forgot your password?</h2>
+<section class="container my-auto">
+  <div class="row">
+    <div class="col-sm-12 col-lg-8 col-xl-6 m-auto">
+      <div class="card border-0 shadow">
+        <div class="card-body header">
+          <form class="custom-form" action="/users/password" method="POST">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <div class="margin-top-sign text-center">
+              <h2 class="fw-bold text-white">Mot de passe oublié ?</h2>
+              <p class="mt-1 mb-4 text-light">Ça arrive à tout le monde, nous allons te renvoyer un email pour réinitialiser ton mot de passe !</p>
+            </div>
+            <div class="margin-top-form form-floating mb-3 w-75 mx-auto">
+              <input id="email" name="user[email]" type="email" autocomplete="email" required class="form-control">
+              <label for="email" class="text-dark">Email</label>
+            </div>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <div class="d-flex justify-content-center mt-5">
+              <button type="submit" class="site-btn w-50 p-2 mx-auto d-block">Envoyez moi un email</button>
+            </div>
+            <p class="text-center text-muted mt-5 mb-0">Tu as retrouvé ton mot de passe ? <a href="/users/sign_in" class="fw-bold text-light"><u>Connecte-toi</u></a><br>
+            <a href="/users/sign_up" class="fw-bold text-light"><u>Inscris-toi</u></a> si tu n'as pas encore de compte ! </p></p>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>

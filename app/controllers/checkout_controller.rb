@@ -85,10 +85,13 @@ class CheckoutController < ApplicationController
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
     checkout_type = @session.metadata['checkout_type']
+    @total = @session.amount_total / 100.0
+
 
     if checkout_type == 'cart_checkout' #cas du paiement via le panier
       joint_table_cart_book_ids = @session.metadata.joint_table_cart_book_ids.split(',').map(&:to_i)
-  
+      @joint_table_cart_books = JointTableCartBook.where(id: joint_table_cart_book_ids).includes(:book)
+
     #Création d'une nouvelle instance dans la BDD Order (voir dans le model Order)
        @order = Order.create_order_with_books(current_user, joint_table_cart_book_ids)
 
