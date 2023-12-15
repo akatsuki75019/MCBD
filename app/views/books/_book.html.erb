@@ -34,8 +34,8 @@
                   </ul>
                 </div>
               </div>
-              <div class="row">
-                <h2><%= @book.price_code.price %>€<h2>
+              <div class="row">                 
+                <h2><%= number_to_currency(@book.price_code.price, unit: "€", separator: ",", delimiter: "", format: "%n %u") %><h2>
               </div>
             </div>
             <%= render 'books/button'%>

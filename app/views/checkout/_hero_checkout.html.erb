@@ -1,0 +1,15 @@
+<div class="position-relative text-center bg-image" style="background-image: url('https://cdn.shopify.com/s/files/1/0258/0434/1334/files/BANNER_OP_NO_DELETE_14_2048x2048.png?v=1607683791'); height: 400px; background-position: center; background-size: 100%">
+  <!-- Calque noir semi-transparent -->
+  <div class="position-absolute top-0 start-0 end-0 bottom-0" style="background-color: rgba(0, 0, 0, 0.7);"></div>
+
+  <div class="d-flex align-items-center justify-content-center h-100">
+    <div class="col-lg-6 text-white">
+      <h1 class="display-5 fw-bold mb-3">Merci pour votre achat !</h1>
+      <p class="lead mb-5 fw-bold d-lg-block d-none">Nous avons bien reçu votre paiement de <%= number_to_currency(@payment_intent.amount_received / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %>, Vous pouvez maintenant venir chercher votre commande au magasin !</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <a href="/" type="button" class="site-btn btn-lg px-4 gap-3">Retour a l'accueil</a>
+        <a href="/events" type="button" class="site-btn-second btn-lg px-4">Évènements</a>
+      </div>
+    </div>
+  </div>
+</div>
