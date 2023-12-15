@@ -16,16 +16,8 @@
       <li class="nav-item">
         <%= link_to "Événements", events_path, class:"nav-link"%>
       </li>
-      <% if user_signed_in? %>
-        <li><hr class="dropdown-divider" /></li>
-        <li class="nav-item">
-        <% if current_user.is_admin? &&  %>
-          <%= link_to "Dashboard Admin", admin_root_path(current_user), class:"nav-link"%>
-          <% end %>
-          <%= link_to "Mon compte", user_path(current_user), class:"nav-link"%>
-          <%= link_to "Mon panier", cart_path(current_user), class: "nav-link"%>
-        </li>
-      <% end %>
+      <li><hr class="dropdown-divider" /></li>
+      <%= render "layouts/navbar/user_sidebar" %>
     </ul>
   </div>
 </div>
