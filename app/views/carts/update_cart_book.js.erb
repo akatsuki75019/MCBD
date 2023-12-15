@@ -1,0 +1,2 @@
+<%= turbo_stream.replace(dom_id(@joint_table_cart_book), partial: 'cart_book', locals: { cart_book: @joint_table_cart_book }) %>
+<%= turbo_stream.replace(dom_id(@cart), partial: 'cart_total', locals: { cart: @cart }) %>

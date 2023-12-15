@@ -2563,7 +2563,6 @@ opacity: 0.8;
 	}
   }
   
- 
   .form-group {
 	margin-bottom: 15px;
   }
@@ -2580,13 +2579,6 @@ opacity: 0.8;
 	width: 100%;
 	max-width: 600px;
 	padding: 8px;
-	box-sizing: border-box;
-  }
-  
-.container_static_pages {
-	max-width: 800px;
-	margin: 0 auto;
-	padding: 20px;
 	box-sizing: border-box;
   }
 
