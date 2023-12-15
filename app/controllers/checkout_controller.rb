@@ -1,11 +1,12 @@
 class CheckoutController < ApplicationController
   def create
-    @total = params[:total].to_d
     @user_id = params[:user_id]
+    return if current_user != User.find(@user_id)
+
     @joint_table_cart_books = current_user.cart.joint_table_cart_books.includes(:book)
     total_price = @joint_table_cart_books.sum { |joint_table_cart_book| joint_table_cart_book.book.price_code.price }
-  
     joint_table_cart_book_ids = @joint_table_cart_books.pluck(:id)
+    @total = current_user.cart.joint_table_cart_books.sum { |joint_table_cart_book| joint_table_cart_book.book.price_code.price * joint_table_cart_book.quantity }
   
     @session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],

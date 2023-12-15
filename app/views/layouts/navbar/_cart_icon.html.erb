@@ -2,7 +2,7 @@
   <% cart = current_user.cart %>
   <%= link_to cart_path(cart), class: "nav-link" do %>
     <i class="fas fa-shopping-cart"></i>
-    <span class="badge rounded-pill bg-danger">
+    <span class="badge rounded-pill bg-danger cart-item-number">
       <%= cart.number_of_books_in_cart %>
     </span>
   <% end %>
@@ -10,7 +10,7 @@
   <% cart = Cart.find(session[:cart_id]) %>
   <%= link_to cart_path(cart), class: "nav-link" do %>
     <i class="fas fa-shopping-cart"></i>
-    <span class="badge rounded-pill bg-danger">
+    <span class="badge rounded-pill bg-danger cart-item-number">
       <%= cart.number_of_books_in_cart %>
     </span>
   <% end %>

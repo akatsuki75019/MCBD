@@ -1,10 +1,7 @@
 <div class="text-center">
   <% if user_signed_in? %>
-    <%= button_to "Confirmer la commande et payer", checkout_create_path(total: @joint_table_cart_books.sum { |joint_table_cart_book| joint_table_cart_book.book.price_code.price * joint_table_cart_book.quantity }), class: "site-btn btn btn-success", data: { turbo: false } %>
-    
-
+    <%= button_to "Confirmer la commande et payer", checkout_create_path(user_id: current_user.id), class: "site-btn btn btn-success", data: { turbo: false } %>
   <% else %>
     <%= button_to "Connectez-vous pour payer", new_user_session_path, class: "site-btn btn btn-warning" %>
-
   <% end %>
 </div>
