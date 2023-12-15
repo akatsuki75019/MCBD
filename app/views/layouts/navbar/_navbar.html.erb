@@ -1,15 +1,15 @@
 <nav class="navbar color-nav navbar-dark sticky-top">
   <div class="container-fluid d-flex justify-content-between">
-    <%= render "layouts/navbar_toggler" %>
-    <%= render "layouts/sidebar" %>
+    <%= render "layouts/navbar/navbar_toggler" %>
+    <%= render "layouts/navbar/sidebar" %>
     <div class="d-none d-md-flex">
       <div class="position-absolute top-50 start-50 translate-middle">
-        <%= render "layouts/logo"%>
+        <%= render "layouts/navbar/logo"%>
       </div>
       <div class="navbar-brand nav d-flex">
-        <%= render "layouts/cart_icon" %>
-        <%= render "layouts/searchbar" %>
-        <%= render "layouts/user_dropdown" %>
+        <%= render "layouts/navbar/cart_icon" %>
+        <%= render "layouts/navbar/searchbar" %>
+        <%= render "layouts/navbar/user_dropdown" %>
       </div>
     </div>
   </div>
