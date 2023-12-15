@@ -22,7 +22,7 @@ class CartsController < ApplicationController
     end
 
     @total_price = @cart.total_price
-    @joint_table_cart_books = @cart.joint_table_cart_books
+        @joint_table_cart_books = @cart.joint_table_cart_books.sort_by{|cart_book| cart_book.book.title}
   end
 
   def create
@@ -42,4 +42,24 @@ class CartsController < ApplicationController
     end
   end
 
+  def update_cart
+    book_quantities_params.each do |book_id, book_quantity_params|
+      book = Book.find(book_id)
+      cart_book = current_user.cart.find_by(book: book)
+      if cart_book && book_quantity_params[:quantity].to_i > 0
+        cart_book.update(quantity: book_quantity_params[:quantity])
+      else
+      end
+    end
+    
+    total_price = current_user.cart.total_price
+    # Renvoyer le prix total en format JSON
+    render json: { total_price: total_price }
+  end
+
+  private
+
+  def book_quantities_params
+    params.require(:book_quantities).permit(:book_id, :quan)
+  end
 end

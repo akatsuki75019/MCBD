@@ -16,21 +16,16 @@ class Cart < ApplicationRecord
       new_quantity = cart_book.quantity.to_i + quantity.to_i
   
       if new_quantity > book.quantity
-        puts "La quantité demandée n'est pas disponible"
         return "La quantité demandée n'est pas disponible"
       else
         cart_book.update(quantity: new_quantity)
-        puts "Quantité mise à jour dans le panier"
         return "Quantité mise à jour dans le panier"
       end
     else
       cart_book = joint_table_cart_books.create(book: book, quantity: quantity)
       if cart_book.persisted?
-        puts "Livre ajouté au panier"
         return "Livre ajouté au panier"
       else
-        puts "Erreur lors de l'ajout au panier"
-        return "Erreur lors de l'ajout au panier"
       end
     end
   end
