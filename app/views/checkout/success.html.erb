@@ -1,3 +1,28 @@
-<div class="container text-center my-5"> <h1>Succès</h1> 
-<p>Nous avons bien reçu votre paiement de <%= number_to_currency(@payment_intent.amount_received / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %>.</p> 
-<p>Le statut de votre paiement est : <%= @payment_intent.status %>.</p> </div>
+<%= render 'hero_checkout' %>
+<div class = "container" >
+  <h2 class = "mt-5">Récapitulatif de la commande :</h2>
+    <ul>
+      <%= @joint_table_cart_books.each do |joint_table_cart_book| %>
+        <li><%= joint_table_cart_book.book.title %> - Quantité : <%= joint_table_cart_book.quantity %> - Prix unitaire : <%= number_to_currency(joint_table_cart_book.book.price_code.price / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></li>
+      <% end %>
+    </ul>
+  <h5>Total : <%= number_to_currency(@total , unit: "€", separator: ",", delimiter: "", format: "%n %u") %></h5>
+  <h2 class = "mt-5">Revenez récupérer votre commande ici :<h2>
+  <div class="row d-flex my-5">
+    <div class="col-lg-2 col-md-8 col-sm-4 mr-auto">
+      <iframe width="600" height="450" style="border:0<>"Loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJt2lfewdy5kcRnc05-mzm3eQ&key=AIzaSyAI4Dte5N9sTmpRSdFpewT4teWGR5OEW6Q"></iframe>                    
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-4 m-auto p-2">
+      <div class="anime__review__item__text">
+        <h6>MCBD SHOP</h6>
+        <p>Horaires:</p>
+        <p>Lundi 11:00–19:00</p>
+        <p>Mardi 11:00–19:00</p>
+        <p>Mercredi 11:00–19:00</p>
+        <p>Jeudi 11:00–19:00</p>
+        <p>Vendredi 11:00–19:00</p>            
+        <p>Samedi 11:00–19:00</p>  
+        <p>Dimanche fermé</p>                          
+      </div>
+    </div>    
+  </div>
