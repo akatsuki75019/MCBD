@@ -1,4 +1,32 @@
-<p style="color: green"><%= notice %></p>
+<%= render 'breadcrumb' %>
+<!-- Anime Section Begin -->
+<section class="anime-details spad">
+  <div class="container">
+    <div class="anime__details__content">
 
-<%= render @book %>
+      <%= render "book" %>
 
+      <section class="product-page spad pb-0 mt-3 ">
+        <div class="container product__page__title">
+          <div class="row">
+            <div class="col-lg-12">
+              <!--Same Category section-->
+              <%= render 'same_category_section'%>
+              <!--Map section-->
+              <div class="product__page__content">
+                <%= render partial: "title", locals: {title_contents: "Où nous trouver" } %>
+                <div class="container">
+                  <div class="row">
+                    <%= render "layouts/maps" %>
+                    <%= render "layouts/shop_infos"%>
+                  </div>
+                </div>
+              </div>
+            </div>    
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</section>
