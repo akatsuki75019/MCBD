@@ -2596,3 +2596,11 @@ opacity: 0.8;
 	margin-bottom: 10px;
   display: inline-block; 
 }
+
+#scrollToTopButton {
+  transition: color 0.5s ease;
+}
+
+#scrollToTopButton:hover {
+  color: #070720; 
+}

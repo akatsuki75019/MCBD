@@ -61,3 +61,15 @@ books.forEach(book => {
       selectCategory.form.submit();
     });
   };
+
+
+// Script pour afficher la flèche du page up ou non si pas de scroll
+
+window.addEventListener('scroll', function() {
+  var scrollToTopButton = document.getElementById('scrollToTopButton');
+  if (window.pageYOffset > 0) {
+    scrollToTopButton.classList.add('show');
+  } else {
+    scrollToTopButton.classList.remove('show');
+  }
+});
