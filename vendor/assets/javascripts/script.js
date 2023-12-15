@@ -4,7 +4,6 @@ const cardDescriptions = document.querySelectorAll('.card-description');
 cardDescriptions.forEach(description => {
   const originalHeight = description.scrollHeight;
 
-
     description.addEventListener('mouseenter', function() {
       description.style.transition = 'max-height 0.3s ease-in-out';
       description.classList.add('truncated');
@@ -62,41 +61,10 @@ cardDescriptions.forEach(description => {
         });
 
         book.appendChild(showMoreBtn);
+        }
+    })
+  });
 
-
-
-const books = document.querySelectorAll(".book");
-
-books.forEach(book => {
-  const description = book.querySelector("#synopsis");
-  const fullText = description.innerText;
-  
-  if (fullText.length > 200) {
-    const truncatedText = fullText.substring(0, 200) + '...';
-    description.innerText = truncatedText;
-
-    const showMoreBtn = document.createElement('span');
-    showMoreBtn.innerText = 'Voir Plus';
-    showMoreBtn.className = 'show-more';
-    showMoreBtn.style.cursor = 'pointer';
-    showMoreBtn.addEventListener('click', () => {
-      if (showMoreBtn.innerText === 'Voir Plus') {
-        showMoreBtn.style.transition = '1s ease-in';
-        description.innerText = fullText;
-        showMoreBtn.innerText = 'Voir Moins';
-      } else {
-        showMoreBtn.style.transition = '1s ease-out';
-        description.innerText = truncatedText;
-        showMoreBtn.innerText = 'Voir Plus';
-
-      }
-    });
-
-    book.appendChild(showMoreBtn);
-  }
-});
-
-  
 // Script pour changer les catégories
   const selectCategory = document.querySelector('#category_id')
   if (selectCategory){
@@ -106,13 +74,12 @@ books.forEach(book => {
     });
   };
 
-
 // Script mise à jour des quantités dans le panier
   const cartItems = document.querySelectorAll('.cart-quantity-input');
   [...cartItems].forEach((cartItem) => {
     cartItem.addEventListener('change', (e) => {
       const target = e.target
-      target.form.submit();
+      target.form?.submit();
       const bookNumber = parseInt(target.value);
       updateCartIcon()
       updateTotalPrice(target, bookNumber)
@@ -123,6 +90,8 @@ books.forEach(book => {
     let sum = 0
     const cartTotal = document.querySelector('.cart-total')
     const allTotalPrice = document.querySelectorAll('.total-price');
+    if (cartTotal == null || allTotalPrice ==null) return;
+
     [...allTotalPrice].forEach((totalPrice) => {
       sum += parseFloat(totalPrice.textContent.replace(',', '.'))
     })
@@ -133,7 +102,7 @@ books.forEach(book => {
   const updateTotalPrice = (target, number) => {
       let totalPrice = target.closest('tr')?.querySelector('.total-price');
       const bookPrice = target.closest('tr')?.querySelector('.book-price');
-      if (bookPrice == null) return;
+      if (bookPrice == null && totalPrice == null) return;
 
       const newTotalPrice = parseFloat(bookPrice.textContent.replace(',', '.')) * number;
       totalPrice.textContent = newTotalPrice.toFixed(2)
@@ -142,7 +111,9 @@ books.forEach(book => {
   }
 
   const updateCartIcon = () => {
-    const icon = document.querySelector('#cart-item-number')
+    const icon = document.querySelector('.cart-item-number')
+    if(icon == null) return;
+
     let cartItemsNumber = 0;
     cartItems.forEach(item => {
         cartItemsNumber += parseFloat(item.value);
@@ -150,15 +121,13 @@ books.forEach(book => {
     icon.textContent = cartItemsNumber
   }
 
-
 // Script pour afficher la flèche du page up ou non si pas de scroll
 
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', () => {
   var scrollToTopButton = document.getElementById('scrollToTopButton');
-  if (window.pageYOffset > 0) {
+  if (window.scrollY > 0) {
     scrollToTopButton.classList.add('show');
   } else {
     scrollToTopButton.classList.remove('show');
   }
 });
-
