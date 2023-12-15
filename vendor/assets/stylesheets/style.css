@@ -2597,10 +2597,15 @@ opacity: 0.8;
   display: inline-block; 
 }
 
-#scrollToTopButton {
-  transition: color 0.5s ease;
-}
-
 #scrollToTopButton:hover {
   color: #070720; 
+}
+
+#scrollToTopButton {
+  display: none;
+}
+
+#scrollToTopButton.show {
+  display: block;
+	transition: color 0.5s ease;
 }
