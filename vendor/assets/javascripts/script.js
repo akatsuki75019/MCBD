@@ -67,7 +67,7 @@ books.forEach(book => {
 
 window.addEventListener('scroll', function() {
   var scrollToTopButton = document.getElementById('scrollToTopButton');
-  if (window.pageYOffset > 0) {
+  if (window.scrollY > 0) {
     scrollToTopButton.classList.add('show');
   } else {
     scrollToTopButton.classList.remove('show');
