@@ -114,10 +114,11 @@ ol {
 
 .section-title {
 	margin-bottom: 30px;
+	position: relative;
 }
 
 .section-title h4,
-.section-title h5 {
+.section-title h5{
 	color: #ffffff;
 	font-weight: 600;
 	line-height: 21px;
@@ -136,6 +137,53 @@ ol {
 	width: 4px;
 	background: #e53637;
 	content: "";
+}
+
+.section-title .selector {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 24px; /* Ceci est une taille d'exemple ; ajustez selon vos besoins */
+  line-height: 21px;
+  text-transform: uppercase;
+  padding: 10px 40px 10px 20px; /* Ajoutez un padding supplémentaire à droite pour l'image */
+  position: relative;
+  font-family: "Oswald", sans-serif;
+  background: #0b0c2a; 
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: fit-content;
+  box-sizing: border-box; /* Assure que le padding n'ajoute pas à la largeur */
+}
+
+/* Positionnement de la flèche de sélection personnalisée */
+.section-title .selector {
+  background-image: url('https://popupfilmresidency.org/wp-content/uploads/2019/05/white-down-arrow-png-2.png');
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* Ajustez selon les besoins */
+  background-size: 20px; /* Ajustez selon les besoins */
+}
+
+/* Style focus state */
+.section-title .selector:focus ,
+.section-title .selector:hover {
+  outline: none;
+  border-color: #e53637;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(220, 16, 16, 0.8);
+	cursor: grab;
+}
+
+/* red bar */
+.section-title::after {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 32px;
+  width: 4px;
+  background: #e53637;
+  content: "";
 }
 
 .set-bg {
@@ -2515,7 +2563,6 @@ opacity: 0.8;
 	}
   }
   
- 
   .form-group {
 	margin-bottom: 15px;
   }
@@ -2534,11 +2581,26 @@ opacity: 0.8;
 	padding: 8px;
 	box-sizing: border-box;
   }
-  
-.container_static_pages {
-	max-width: 800px;
-	margin: 0 auto;
-	padding: 20px;
-	box-sizing: border-box;
-  }
 
+.selector {
+	width: 100%;
+	padding:10px;
+	border-radius:10px;
+	outline: none;
+}
+
+.show-more {
+  color: blue; 
+  text-decoration: underline; 
+  cursor: pointer; 
+	margin-bottom: 10px;
+  display: inline-block; 
+}
+
+#scrollToTopButton {
+  transition: color 0.5s ease;
+}
+
+#scrollToTopButton:hover {
+  color: #070720; 
+}

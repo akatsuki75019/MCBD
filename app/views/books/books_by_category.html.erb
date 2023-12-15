@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+
+    <!-- Product Section Begin -->
+<section class="product-page spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="product__page__content">
+          <div class="product__page__title">
+            <div class="row">
+              <%= form_with(url: books_path, method: :get, local: true) do |form| %>
+                <div class="section-title">
+                  <%= form.select(:category_id, options_for_select(@categories.collect { |category| [category.name, category.id] }, selected: params[:category_id]), {}, { class: "selector custom-select dropdown-item hover" }) %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <%= render partial: 'books/range' %>
+      </div>
+    </div>
+  </div>
+</section>
+
+

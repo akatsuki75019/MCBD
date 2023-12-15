@@ -1,4 +1,4 @@
-<div class="anime__details__btn">
+<div class="animedetailsbtn">
   <div class="row mb-5">
     <%= form_tag(joint_table_cart_books_path, method: :post, class: "d-flex align-items-end text-white") do %>
       <div class="col-lg-2 mb-lg-0 mb-2">
@@ -14,7 +14,9 @@
       <% if user_signed_in? %>
         <%= button_to "Achat express pour 1 livre", express_checkout_path(book_id: @book.id, quantity: params[:quantity], user_id: current_user.id, total: @book.price_code.price), method: :post, class: "site-btn-second", data: { turbo: false } %>
       <% else %>
-        <%= link_to "Achat express : connectez-vous", new_user_session_path%>
+
+        <%= button_to "Achat express : connectez-vous", new_user_session_path, class: "site-btn-second" %>
+
       <% end %>
     </div>
 </div>

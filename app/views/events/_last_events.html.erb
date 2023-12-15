@@ -1,0 +1,29 @@
+<div class="product__page__content">
+  <div class="product__page__title">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-6">
+        <div class="section-title">
+          <h4>Nos derniers événements</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="trending__product">
+    <div class="row">
+      <% @events.last(4).each do |event| %>
+        <div class="col-lg-3 col-md-3 col-sm-6">
+          <div class="product__item">
+            <%= link_to event_path(event) do %>
+              <div class="text-center">
+                <%= image_tag(event.image_url, class: "product__item__pic set-bg", data: { setbg: event.image_url }, alt: "Affiche faisant référence à lévénement : #{event.title}") %>           
+                <div class="product__item__text">
+                  <h5><%= event.title %></h5>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
