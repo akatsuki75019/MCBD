@@ -1,19 +1,38 @@
-<%= form_for(@user) do |f| %>
-  <!-- Champs pour first_name, last_name, email, birthday -->
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+<section class="container my-auto">
+  <div class="row">
+    <div class="col-sm-12 col-lg-8 col-xl-6 m-auto">
+      <div class="card border-0 shadow">
+        <div class="card-body header">
+          <div class="margin-top-sign text-center">
+            <h2 class="fw-bold text-white">Modifier son profil</h2>
+              <p class="mt-1 mb-4 text-light">Remplis tes informations personnelles à l'aide de ce formulaire</p>
+          </div>
+          <div class="mb-4">
+            <%= form_for(@user) do |f| %>
+
+              <div class="form-floating mb-3 w-75 mx-auto">
+                <%= f.text_field :first_name, placeholder:"Prénom", class:"form-control", id:"floatingNewFirstName" %>
+                <label for="floatingNewFirstName">Prénom</label>
+              </div>
+
+              <div class="form-floating mb-3 w-75 mx-auto">
+                <%= f.text_field :last_name, placeholder:"Nom", class:"form-control", id:"floatingNewLastName" %>
+                <label for="floatingNewLastName">Nom</label>
+              </div>
+
+              <div class="form-floating mb-3 w-75 mx-auto">
+                <%= f.date_field :birthday, placeholder:"Date de naissance", class:"form-control", id:"floatingNewBirthDate" %>
+                <label for="floatingNewBirthDate">Date de naissance</label>
+              </div>
+
+
+              <div class="d-flex justify-content-center mt-5 mb-4">
+                <%= f.submit "Mettre à jour", class: "site-btn w-50 p-2 mx-auto d-block" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <!-- Autres champs -->
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :birthday %><br />
-    <%= f.date_field :birthday %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Mettre à jour" %>
-  </div>
-<% end %>
+</section>
