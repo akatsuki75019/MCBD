@@ -79,6 +79,6 @@ gem "administrate"
 gem "faker"
 gem 'googlebooks'
 gem 'csv'
-gem "rails-i18n"
+gem 'pg_search'
 gem 'cloudinary'
 
