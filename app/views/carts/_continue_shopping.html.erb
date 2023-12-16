@@ -1,3 +1,10 @@
+<% if @joint_table_cart_books.present? %>
+  <div class="text-center mt-2">
+    <%= button_to "Continuer mes achats", books_path(@category), class: "site-btn-second", data: { turbo: false } %>
+  </div>
+<% else %>
 <div class="text-center mt-2">
-  <%= button_to "Continuer mes achats", books_path(@category), class: "site-btn-second", data: { turbo: false } %>
-</div>
+    <%= button_to "Continuer mes achats", books_path(@category), class: "site-btn", data: { turbo: false } %>
+  </div>
+<% end %>
+
