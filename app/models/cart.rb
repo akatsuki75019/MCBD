@@ -7,8 +7,8 @@ class Cart < ApplicationRecord
   def add_book_in_cart(book, quantity)
     user_cart = user&.cart || self # Si l'utilisateur est connecté, utilise son panier, sinon utilise le panier actuel
   
-    return "La quantité demandée n'est pas disponible" if quantity > book.quantity
-    return "Le livre est en rupture de stock" if book.quantity.zero?
+    return "La quantité demandée n'est pas disponible" if quantity <= 0
+    return "Le livre est en rupture de stock" if book.quantity < quantity
   
     cart_book = user_cart.joint_table_cart_books.find_by(book: book)
   
@@ -44,5 +44,3 @@ class Cart < ApplicationRecord
 
   
 end
-
-  
