@@ -7,7 +7,7 @@ class AdminMailer < ApplicationMailer
     @order = order
     @url  = 'https://mcbdapp-2089282d029d.herokuapp.com/'
     @name_to_display = name_to_display
-    puts "****Total Price NELLY****: #{total_price}" # Ajoutez cette ligne pour le débogage
+    @books = order.joint_table_order_books.map(&:book)
 
 
     mail(to:admin_user.email, subject: "Une commande a été passée sur le site.")

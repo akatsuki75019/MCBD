@@ -5,3 +5,9 @@ Vous pouvez retrouver le détail de cette commande à préparer dans l'Admin Das
 Nom : <%= @order.user.last_name %>
 Prénom : <%= @order.user.first_name %>
 Numéro de commande : <%= @order.id %>
+Montant de la commande : <%= @order.total_price %>
+Contenu du panier : 
+<% @books.each do |book| %>
+  <%= book.title %> - Quantité : <%= book.joint_table_order_books.find_by(order: @order).quantity %> - Prix total : <%= book.price_code.price * book.joint_table_order_books.find_by(order: @order).quantity %>
+<% end %>
+    

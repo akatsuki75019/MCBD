@@ -11,5 +11,13 @@
   <p> Prénom : <%= @order.user.first_name %></p>
   <p> Numéro de commande : <%= @order.id %></p>
   <p> Montant de la commande : <%= @order.total_price %></p>
+  <p> Contennu du panier: <%= @order.total_price %></p>
+
+  <ul>
+    <% @books.each do |book| %>
+      <li><%= book.title %> - Quantité : <%= book.joint_table_order_books.find_by(order: @order).quantity %> - Prix total : <%= book.price_code.price * book.joint_table_order_books.find_by(order: @order).quantity %></li>
+    <% end %>
+  </ul>
+
   </body>
 </html>
