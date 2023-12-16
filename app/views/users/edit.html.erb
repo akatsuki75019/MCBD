@@ -29,6 +29,9 @@
               <div class="d-flex justify-content-center mt-5 mb-4">
                 <%= f.submit "Mettre à jour", class: "site-btn w-50 p-2 mx-auto d-block" %>
               </div>
+              <div class="d-flex justify-content-center mt-5 mb-4">
+                <%= link_to "Modifier mon mot de passe", edit_user_registration_path(@user), class:"site-btn-second text-center" %>
+              </div>
             <% end %>
           </div>
         </div>

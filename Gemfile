@@ -80,6 +80,5 @@ gem "faker"
 gem 'googlebooks'
 gem 'csv'
 gem 'pg_search'
-
 gem 'cloudinary'
 
