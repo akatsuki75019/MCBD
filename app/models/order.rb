@@ -2,7 +2,8 @@ class Order < ApplicationRecord
   belongs_to :user
   has_many :joint_table_order_books
   has_many :books, through: :joint_table_order_books
-  after_create :order_confirmation, :admin_order_confirmation
+  before_save :calculate_total_price
+  after_save :send_confirmation_emails
 
 
   def self.create_order_with_books(user, joint_table_cart_book_ids)
@@ -31,16 +32,28 @@ class Order < ApplicationRecord
     order
   end
 
+  private
+
+  def calculate_total_price
+    self.total_price = joint_table_order_books.sum { |jtocb| jtocb.book.price_code.price * jtocb.quantity }
+  end
+
+  def send_confirmation_emails
+    order_confirmation
+    admin_order_confirmation
+  end
+
   def order_confirmation
       UserMailer.order_confirmation(self).deliver_now
   end
 
   def admin_order_confirmation
     admin_users = User.where(is_admin: true)
+    total_price = self.total_price
 
     admin_users.each do |admin_user|
       name_to_display = admin_user&.first_name.present? ? admin_user.first_name : 'Admin'
-      AdminMailer.admin_order_confirmation(self, admin_user, name_to_display).deliver_now
+      AdminMailer.admin_order_confirmation(self, admin_user, name_to_display, total_price).deliver_now
     end
   end
 
