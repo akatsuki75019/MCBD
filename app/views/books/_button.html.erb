@@ -1,13 +1,13 @@
 <div class="animedetailsbtn">
   <div class="row mb-5">
-    <%= form_(joint_table_cart_books_path, method: :post, class: "d-flex align-items-end text-white") do %>
+    <%= form_with(url: joint_table_cart_books_path, method: :post, class: "d-flex align-items-end text-white") do |form| %>
       <div class="col-lg-2 mb-lg-0 mb-2">
-        <%= hidden_field_tag :book_id, @book.id %>
+        <%= form.hidden_field :book_id, value: @book.id %>
         <label for="quantity" class="ml-2">Quantité:</label>
-        <%= number_field_tag :quantity, 1, min: 1, class: "form-control mb-2 ml-2 w-100" %>
+        <%= form.number_field :quantity, value: 1, min: 1, class: "form-control mb-2 ml-2 w-100", as: :hidden %>
       </div>
       <div class="col-lg-3">
-        <%= submit_tag "Ajouter au panier", class: "site-btn" %>
+        <%= form.submit "Ajouter au panier", class: "site-btn" %>
       </div>
     <% end %>
     
