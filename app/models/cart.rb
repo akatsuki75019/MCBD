@@ -22,7 +22,7 @@ class Cart < ApplicationRecord
         return "Quantité mise à jour dans le panier"
       end
     else
-      cart_book = joint_table_cart_books.create(book: book, quantity: quantity)
+      cart_book = user_cart.joint_table_cart_books.create(book: book, quantity: quantity)
       if cart_book.persisted?
         return "Livre ajouté au panier"
       else
