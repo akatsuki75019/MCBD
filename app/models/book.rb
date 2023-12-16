@@ -1,6 +1,10 @@
 require 'net/http'
 require 'uri'
+require 'pg_search'
 class Book < ApplicationRecord
+
+  include PgSearch::Model
+  pg_search_scope :search_book, against: [:title, :author, :description]
 
   includes :BooksHelper
 
