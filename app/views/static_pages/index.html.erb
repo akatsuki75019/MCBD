@@ -1,29 +1,35 @@
-<%= render "hero"%>
+<!DOCTYPE html>
+<html class="h-auto" lang="fr">
+  <head>
+    <title>MCBD | Acceuil</title>
+  </head>  
 
-<section class="product-page spad pb-0 mt-3 ">
-  <div class="container product__page__title">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="product__page__content">
-          <div class="product__page__title">
-            <div class="row">
-              <div class="col-lg-8 col-md-8 col-sm-6">
-                <div class="section-title">
-                  <h4>Mangas du moment</h4>
+  <%= render "hero"%>
+
+  <section class="product-page spad pb-0 mt-3 ">
+    <div class="container product__page__title">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="product__page__content">
+            <div class="product__page__title">
+              <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-6">
+                  <div class="section-title">
+                    <h4>Mangas du moment</h4>
+                  </div>
                 </div>
               </div>
             </div>
+            <%= render "last_book" %>
           </div>
-          <%= render "last_book" %>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<%= render "reinforcement_section"%>
+  <%= render "reinforcement_section"%>
 
-<%=  render "carousel" %>
+  <%=  render "carousel" %>
 
 <section class="product-page spad pb-0 mb-5">
   <div class="container product__page__title">
