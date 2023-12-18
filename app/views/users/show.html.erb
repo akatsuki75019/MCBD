@@ -15,7 +15,7 @@
                 <div class="col-12 col-md-8 text-start text-md-start">
                   <h5 class="pe-none"><span class="text-light">Nom : </span><%= @user.first_name %> <%= @user.last_name %></h5>
                   <h5 class="pe-none mt-2"><span class="text-light"> Email : </span><%= @user.email %></h5>
-                  <h5 class="pe-none mt-2"><span class="text-light">Date de naissance : </span><%= @user.birthday %></h5>
+                  <h5 class="pe-none mt-2"><span class="text-light">Date de naissance : </span><%= l(@user.birthday, format: "%A %e %B %Y") %></h5>
                   <div class="text-start">
                     <%= link_to "Modifier mon profil", edit_user_path(@user), class:"site-btn mt-4" %>
                   </div>
