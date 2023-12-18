@@ -30,7 +30,7 @@
 
     <!-- librairie de Stripe --> 
     <script src="https://js.stripe.com/v3/"></script>
-   </head>
+  </head>
 
   <body class="d-flex flex-column h-auto min-vh-100 text-white">
 
@@ -39,18 +39,8 @@
     <%= render 'layouts/footer'%>
 
     <!-- Toast pour notifs -->
-    <% if notice != nil %>
-      <div class="toast border-none show position-fixed bottom-0 end-0 mb-3 me-3" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header header">
-          <strong class="me-auto text-white">MCBD</strong>
-          <small class="text-light">Il y a moins d'une minute</small>
-          <button type="button" class="btn-close btn-secondary" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body color-dropdown">
-          <%= notice %>
-        </div>
-      </div>
-    <% end %>
+    <%= render 'layouts/toast_notice' %>
+
 
     <!-- Js Plugins -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

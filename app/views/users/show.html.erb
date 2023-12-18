@@ -3,45 +3,6 @@
   <head>
     <title>MCBD| Mon profil</title>
   </head> 
-  <div class="container my-auto">
-    <h1 class="anime__details__title d-flex justify-content-center my-5">Mon Profil</h1>
-    <div class="row">
-      <div class="col-lg-4 ">
-        <h2 class="blog__details__title d-flex align-items-start">Mes infos</h2>
-        <div class="anime__details__text">
-          <div class="anime__details__title ">
-            <h5><%= @user.first_name %> <%= @user.last_name %></h5>
-            <h5><%= @user.email %></h5>
-            <span><%= @user.birthday %></span>
-          </div>
-          <div>
-            <%= link_to "Editer mon mot de passe", edit_user_registration_path(@user) %>
-            <br>
-            <%= link_to "Editer mon profil", edit_user_path(@user) %>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 ">
-        <h2 class="blog__details__title d-flex align-items-start">Mes derniers achats</h2>
-        <% @recent_purchases.each do |order| %>
-          <div class="product__item d-flex align-items-center ">
-            <!-- Affichage des détails de la commande -->
-            <ol class ="list-style-position-inside" >
-              <% order.books.each do |book| %>
-                <li ><%= book.title %></li>
-              <% end %>
-            </ol>
-          </div>
-        <% end %>
-      </div>
-      <div class="col-lg-4">
-        <h2 class="blog__details__title ">Evénements</h2>
-        <!-- Ajoutez le contenu des événements ici -->
-      </div>
-    </div>
-  </div>
-
-
   <section class="gradient-custom-2">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -59,7 +20,7 @@
                   <div class="col-12 col-md-8 text-start text-md-start">
                     <h5 class="pe-none"><span class="text-light">Nom : </span><%= @user.first_name %> <%= @user.last_name %></h5>
                     <h5 class="pe-none mt-2"><span class="text-light"> Email : </span><%= @user.email %></h5>
-                    <h5 class="pe-none mt-2"><span class="text-light">Date de naissance : </span><%= @user.birthday %></h5>
+                    <h5 class="pe-none mt-2"><span class="text-light">Date de naissance : </span><%= l(@user.birthday, format: "%A %e %B %Y") %></h5>
                     <div class="text-start">
                       <%= link_to "Modifier mon profil", edit_user_path(@user), class:"site-btn mt-4" %>
                     </div>
@@ -68,42 +29,12 @@
               </div>
             </div>
             <div class="card-body p-4 color-dropdown">
-              <div class="mb-5">
-                <p class="lead fw-normal mb-1">Mes derniers achats</p>
-                <div class="p-4 color-nav rounded">
-                  <p class="font-italic mb-1">Une merguez</p>
-                  <p class="font-italic mb-1">Des frites</p>
-                  <p class="font-italic mb-0">Du ketchup</p>
-                </div>
-              </div>
-              <div class="d-flex justify-content-between align-items-center mb-4">
-                <p class="lead fw-normal mb-0">Mes évènements</p>
-                <p class="mb-0"><a href="#!" class="text-muted">Show all</a></p>
-              </div>
-              <div class="row g-2">
-                <div class="col mb-2">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
-                    alt="image 1" class="w-100 rounded-3">
-                </div>
-                <div class="col mb-2">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
-                    alt="image 1" class="w-100 rounded-3">
-                </div>
-              </div>
-              <div class="row g-2">
-                <div class="col">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
-                    alt="image 1" class="w-100 rounded-3">
-                </div>
-                <div class="col">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
-                    alt="image 1" class="w-100 rounded-3">
-                </div>
-              </div>
+              <%= render 'buyed_books' %>
+              <%= render 'subscribed_events' %>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </section>  
 </html>

@@ -2609,3 +2609,14 @@ opacity: 0.8;
   display: block;
 	transition: color 0.5s ease;
 }
+
+#carouselExampleCaptions {
+	width: 90%;
+	margin: auto;
+}
+
+	.carousel-item img {
+		object-fit: cover;
+		width: 100%;
+		height: 350px;
+	}
