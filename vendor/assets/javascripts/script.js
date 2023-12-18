@@ -56,8 +56,8 @@ books.forEach(book => {
 
   const selectCategory = document.querySelector('#category_id')
   if (selectCategory){
-    selectCategory.addEventListener('change',(e) => {
-      e.preventDefault();
+    selectCategory.addEventListener('change',(event) => {
+      event.preventDefault();
       selectCategory.form.submit();
     });
   };
@@ -72,6 +72,12 @@ window.addEventListener('scroll', function() {
   } else {
     scrollToTopButton.classList.remove('show');
   }
+});
+
+
+document.getElementById('search-link').addEventListener('click', function(event) {
+  event.preventDefault();
+  document.getElementById('search-form').classList.toggle('d-none');
 });
 
 
@@ -122,3 +128,4 @@ const updateCartIcon = () => {
   });
   icon.textContent = cartItemsNumber
 }
+

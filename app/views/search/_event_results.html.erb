@@ -16,7 +16,8 @@
             <% if @events.any? %>
               <ul>
                 <% @events.each do |event| %>
-                  <li><%= event.title %></li>
+                  <%= link_to "#{event.title} le #{event.start_date}", event_path(event) %>
+                  
                 <% end %>
               </ul>
             <% else %>

@@ -88,7 +88,6 @@ class CheckoutController < ApplicationController
     checkout_type = @session.metadata['checkout_type']
     @total = @session.amount_total / 100.0
 
-
     if checkout_type == 'cart_checkout' #cas du paiement via le panier
       joint_table_cart_book_ids = @session.metadata.joint_table_cart_book_ids.split(',').map(&:to_i)
       @joint_table_cart_books = JointTableCartBook.where(id: joint_table_cart_book_ids).includes(:book)
@@ -97,7 +96,7 @@ class CheckoutController < ApplicationController
        @order = Order.create_order_with_books(current_user, joint_table_cart_book_ids)
 
     #Gérer la màj des quantités après un paiement stripe:
-       joint_table_cart_book_ids.each do |joint_table_cart_book_id| #conversion des identifiants des JointTableCartBook, on les diviseàchaque virgule, on converti en entiers
+      joint_table_cart_book_ids.each do |joint_table_cart_book_id| #conversion des identifiants des JointTableCartBook, on les diviseàchaque virgule, on converti en entiers
         joint_table_cart_book = JointTableCartBook.find(joint_table_cart_book_id) #on chercheun id specifique
       # Mettre à jour la quantité en stock du livre
         book = joint_table_cart_book.book 
