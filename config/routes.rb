@@ -17,7 +17,6 @@ Rails.application.routes.draw do
     end
   
   get '/search', to: 'search#show', as: 'search'
-  resources :books, only: [:show]
 
   get 'static_pages/index'
   get 'static_pages/contact' 
