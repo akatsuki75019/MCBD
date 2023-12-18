@@ -1,12 +1,7 @@
 <%= render 'hero_checkout' %>
 <div class = "container" >
   <h2 class = "mt-5">Vous retrouverez le detail de votre commande dans le mail qui vous a été envoyé</h2>
-    <ul>
-      <%= @joint_table_cart_books.each do |joint_table_cart_book| %>
-        <li><%= joint_table_cart_book.book.title %> - Quantité : <%= joint_table_cart_book.quantity %> - Prix unitaire : <%= number_to_currency(joint_table_cart_book.book.price_code.price / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></li>
-      <% end %>
-    </ul>
-  <h5>Total : <%= number_to_currency(@total , unit: "€", separator: ",", delimiter: "", format: "%n %u") %></h5>
+
   <h2 class = "mt-5">Revenez récupérer votre commande ici :<h2>
   <div class="row d-flex my-5">
     <div class="col-lg-2 col-md-8 col-sm-4 mr-auto">
