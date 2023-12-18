@@ -88,7 +88,6 @@ class CheckoutController < ApplicationController
     checkout_type = @session.metadata['checkout_type']
     @total = @session.amount_total / 100.0
     @order = order
-    @books = order. joint table order books.map (&:book)
 
     if checkout_type == 'cart_checkout' #cas du paiement via le panier
       joint_table_cart_book_ids = @session.metadata.joint_table_cart_book_ids.split(',').map(&:to_i)
