@@ -1,22 +1,26 @@
 <div class="animedetailsbtn">
   <div class="row mb-5">
-    <%= form_tag(joint_table_cart_books_path, method: :post, class: "d-flex align-items-end text-white") do %>
+    <%= form_with(url: joint_table_cart_books_path, method: :post, class: "d-flex align-items-end text-white") do |form| %>
       <div class="col-lg-2 mb-lg-0 mb-2">
-        <%= hidden_field_tag :book_id, @book.id %>
+        <%= form.hidden_field :book_id, value: @book.id %>
         <label for="quantity" class="ml-2">Quantité:</label>
-        <%= number_field_tag :quantity, 1, min: 1, class: "form-control mb-2 ml-2 w-100" %>
+        <%= form.number_field :quantity, value: 1, min: 1, class: "form-control mb-2 ml-2 w-100", as: :hidden %>
       </div>
       <div class="col-lg-3">
-        <%= submit_tag "Ajouter au panier", class: "site-btn" %>
+        <%= form.submit "Ajouter au panier", class: "site-btn", disabled: @book.quantity.zero? %>
       </div>
     <% end %>
-    <div class="ml-3">
+    
+    <div class="d-flex mt-2 ml-3">
       <% if user_signed_in? %>
-        <%= button_to "Achat express pour 1 livre", express_checkout_path(book_id: @book.id, quantity: params[:quantity], user_id: current_user.id, total: @book.price_code.price), method: :post, class: "site-btn-second", data: { turbo: false } %>
+        <% button_classes = "site-btn-second"
+           button_classes += " disabled-button" if @book.quantity.zero?
+        %>
+        <%= button_to "Achat express pour 1 livre", express_checkout_path(book_id: @book.id, quantity: params[:quantity], user_id: current_user.id, total: @book.price_code.price), method: :post, class: button_classes, data: { turbo: false }, disabled: @book.quantity.zero? %>
       <% else %>
-
         <%= button_to "Achat express : connectez-vous", new_user_session_path, class: "site-btn-second" %>
-
       <% end %>
-    </div>
+    </div>  
+  </div>
 </div>
+

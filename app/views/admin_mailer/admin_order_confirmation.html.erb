@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  <h1>Bonjour <%= @name_to_display %>,</h1>
+  <p> Une commande a été passée et payée sur le site <%= @url %>. </p>
+  <p> Vous pouvez retrouver le détail de cette commande à préparer dans l'Admin Dashboard du site. </p>
+  <p> Nom : <%= @order.user.last_name %></p>
+  <p> Prénom : <%= @order.user.first_name %></p>
+  <p> Numéro de commande : <%= @order.id %></p>
+  <p> Montant de la commande : <%= @order.total_price %></p>
+  <p> Contennu du panier: <%= @order.total_price %></p>
+
+  <ul>
+    <% @books.each do |book| %>
+      <li><%= book.title %> - Quantité : <%= book.joint_table_order_books.find_by(order: @order).quantity %> - Prix total : <%= book.price_code.price * book.joint_table_order_books.find_by(order: @order).quantity %></li>
+    <% end %>
+  </ul>
+
+  </body>
+</html>

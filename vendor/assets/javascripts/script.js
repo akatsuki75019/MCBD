@@ -67,7 +67,7 @@ books.forEach(book => {
 
 window.addEventListener('scroll', function() {
   var scrollToTopButton = document.getElementById('scrollToTopButton');
-  if (window.pageYOffset > 0) {
+  if (window.scrollY > 0) {
     scrollToTopButton.classList.add('show');
   } else {
     scrollToTopButton.classList.remove('show');
@@ -79,3 +79,53 @@ document.getElementById('search-link').addEventListener('click', function(event)
   event.preventDefault();
   document.getElementById('search-form').classList.toggle('d-none');
 });
+
+
+
+// Script mise à jour des quantités dans le panier
+const cartItems = document.querySelectorAll('.cart-quantity-input');
+[...cartItems].forEach((cartItem) => {
+  cartItem.addEventListener('change', (e) => {
+    const target = e.target
+    target.form?.submit();
+    const bookNumber = parseInt(target.value);
+    updateCartIcon()
+    updateTotalPrice(target, bookNumber)
+  })
+})
+
+const updateTotalCart = () => {
+  let sum = 0
+  const cartTotal = document.querySelector('.cart-total')
+  const allTotalPrice = document.querySelectorAll('.total-price');
+  if (cartTotal == null || allTotalPrice ==null) return;
+
+  [...allTotalPrice].forEach((totalPrice) => {
+    sum += parseFloat(totalPrice.textContent.replace(',', '.'))
+  })
+  cartTotal.textContent = sum.toFixed(2)
+  cartTotal.textContent = cartTotal.textContent.replace('.', ',')
+}
+
+const updateTotalPrice = (target, number) => {
+    let totalPrice = target.closest('tr')?.querySelector('.total-price');
+    const bookPrice = target.closest('tr')?.querySelector('.book-price');
+    if (bookPrice == null && totalPrice == null) return;
+
+    const newTotalPrice = parseFloat(bookPrice.textContent.replace(',', '.')) * number;
+    totalPrice.textContent = newTotalPrice.toFixed(2)
+    totalPrice.textContent = totalPrice.textContent.replace('.', ',')
+    updateTotalCart()
+}
+
+const updateCartIcon = () => {
+  const icon = document.querySelector('.cart-item-number')
+  if(icon == null) return;
+
+  let cartItemsNumber = 0;
+  cartItems.forEach(item => {
+      cartItemsNumber += parseFloat(item.value);
+  });
+  icon.textContent = cartItemsNumber
+}
+
