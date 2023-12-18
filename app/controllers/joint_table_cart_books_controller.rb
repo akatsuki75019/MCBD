@@ -19,7 +19,7 @@ class JointTableCartBooksController < ApplicationController
 
     result = user_cart.add_book_in_cart(book, quantity)
     case result
-    when JointTableCartBook #dans les cas où l'ajout au panier se fait depuis le show_book
+    when "Livre ajouté au panier"
       message = "Le livre a été ajouté au panier avec succès"
     when "Quantité mise à jour dans le panier"
       message = "La quantité a été mise à jour dans le panier"

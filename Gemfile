@@ -77,8 +77,8 @@ gem "dotenv-rails"
 gem "letter_opener"
 gem "administrate"
 gem "faker"
-gem 'googlebooks'
-gem 'csv'
-gem 'pg_search'
-gem 'cloudinary'
-
+gem "rails-i18n"
+gem "googlebooks"
+gem "csv"
+gem "pg_search"
+gem "cloudinary"
