@@ -30,7 +30,6 @@ class Cart < ApplicationRecord
     end
   end
 
-
   #parcourt les articles du panier temporaire, les ajoute au panier de l'utilisateur connecté s'ils sont en stock, et les supprime du panier temporaire. 
   #Si un article n'est plus en stock dans le panier de l'utilisateur connecté =message d'alerte 
   def total_price
@@ -41,6 +40,4 @@ class Cart < ApplicationRecord
   def number_of_books_in_cart
     joint_table_cart_books.sum(:quantity)
   end
-
-  
 end
