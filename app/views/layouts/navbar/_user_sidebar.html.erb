@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <li class="nav-item">
     <% if current_user.is_admin? &&  %>
-      <%= link_to "Dashboard Admin", admin_root_path(current_user), class:"nav-link"%>
+      <%= link_to "Tableau de bord (Admin)", admin_root_path(current_user), class:"nav-link"%>
     <% end %>
   </li>
   <li class="nav-item">
@@ -9,6 +9,9 @@
   </li>
   <li class="nav-item">
     <%= link_to "Mon panier", cart_path(current_user), class: "nav-link"%>
+  </li>
+  <li class="nav-item">
+    <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, data: {turbo_method: :delete}, :class=>"nav-link" %>
   </li>
 <% else %>
   <li class="nav-item">

@@ -24,7 +24,6 @@ fr:
         book_id: "Contenu"
         user_id: "Client"
 
-
   administrate:
     resources:
       book:
