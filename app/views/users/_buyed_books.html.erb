@@ -1,0 +1,15 @@
+<div class="mb-5">
+  <p class="lead fw-normal mb-1">Mes livres achetés</p>
+  <div class="p-4 color-nav rounded">
+    <% @recent_purchases.each do |order| %>
+      <div class="product__item d-flex align-items-center ">
+<!-- Affichage des détails de la commande -->
+        <ol class ="list-style-position-inside" >
+          <% order.books.each do |book| %>
+            <li class="font-italic mb-1"><%= book.title %></li>
+          <% end %>
+        </ol>
+      </div>
+    <% end %>
+  </div>
+</div>

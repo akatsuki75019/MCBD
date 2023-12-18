@@ -1,0 +1,30 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <p class="lead fw-normal mb-0">Mes inscriptions aux évènements</p>
+  <p class="mb-0"><a href="/events" class="text-muted">Voir tous les events</a></p>
+</div>
+<div class="row g-2">
+  <% @user.events.each do |event| %>
+    <div class="col mb-2">
+      <h2><%= event.title %></h2>
+      <%= image_tag(event.image_url) %>
+    </div>
+  <% end %>
+  <div class="col mb-2">
+    <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
+      alt="image 1" class="w-100 rounded-3">
+  </div>
+  <div class="col mb-2">
+    <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
+      alt="image 1" class="w-100 rounded-3">
+  </div>
+</div>
+<div class="row g-2">
+  <div class="col">
+    <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
+      alt="image 1" class="w-100 rounded-3">
+  </div>
+  <div class="col">
+    <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
+      alt="image 1" class="w-100 rounded-3">
+  </div>
+</div>
