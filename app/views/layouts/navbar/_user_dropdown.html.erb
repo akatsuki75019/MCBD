@@ -10,7 +10,7 @@
       </li>
       <% if current_user.is_admin? &&  %>
         <li>
-          <%= link_to "Dashboard Admin", admin_root_path(current_user), class:"dropdown-item"%>
+          <%= link_to "Tableau de bord (Admin)", admin_root_path(current_user), class:"dropdown-item"%>
         </li>
       <% end %>
       <li><hr class="dropdown-divider" /></li>
