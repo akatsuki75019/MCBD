@@ -1,32 +1,47 @@
-<h1 class="text-white d-flex justify-content-center mb-5">Détails du Panier</h1>
-<% if @joint_table_cart_books.present? %>
-  <div class="table-responsive-md">
-    <table class="table table-striped table-hover">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Quantité</th>
-          <th scope="col">Prix unitaire</th>
-          <th scope="col">Prix total</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody class="table-group-divider">
-        <%= render partial: 'cart_book', collection: @joint_table_cart_books %>
-      </tbody>
-    </table>
+<div class="mt-5">
+  <h1 class="text-white d-flex justify-content-center product__page__title">Détails du Panier</h1>
 
-    <%= render 'cart_total' %>
+  <% if @joint_table_cart_books.present? %>
+  <section class="h-100">
+    <div class="container h-100 py-5">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
 
-    <%= render 'carts/payment_button'%>
-   
-    <%= render 'carts/continue_shopping'%>
-  </div>
-<% else %>
-  <div class="text-center">
-    <p>Votre panier est vide.</p>
-    <%= render 'carts/continue_shopping' %>
-  </div>
-<% end %>
+          <div class="table-responsive"  style="border-radius: 16px;" >
+            <table class="table table-dark">
+              <thead>
+                <tr>
+                  <th scope="col" class="h5 color-title-table py-4">Articles dans ton panier</th>
+                  <th scope="col" class="color-title-table py-4">Prix à l'unité</th>
+                  <th scope="col" class="color-title-table py-4">Quantité</th>
+                  <th scope="col" class="color-title-table py-4">Prix total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%= render partial: 'cart_book', collection: @joint_table_cart_books %>
+              </tbody>
+            </table>
+          </div>
 
-        
+          <div class="shadow-2-strong mb-5 mb-lg-0 color-dropdown" style="border-radius: 16px;">
+            <h1 class="text-center">Résumé</h1>
+          </h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+      <%= render 'cart_total' %>
+
+      <%= render 'carts/payment_button'%>
+    
+      <%= render 'carts/continue_shopping'%>
+    </div>
+  <% else %>
+    <div class="text-center">
+      <p>Votre panier est vide.</p>
+      <%= render 'carts/continue_shopping' %>
+    </div>
+  <% end %>
+</div>
+

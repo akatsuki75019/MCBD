@@ -1,15 +1,44 @@
-<tr id="<%= dom_id(cart_book) %>">
-  <td><%= cart_book.book.title %></td>
-  <td>
-    <%= form_with(model: cart_book, url: joint_table_cart_book_path(cart_book), method: :patch) do |f| %>
-      <%= f.number_field :quantity, value: cart_book.quantity, min: 1, class: "cart-quantity-input", data: { book_id: cart_book.id } %>
-  <% end %>
+<style>
+.border-custom {
+  border-bottom: solid;
+  border-color: #0b0c2a;
+}
+</style>
+
+<tr class="border-custom" id="<%= dom_id(cart_book) %>">
+  <th scope="row" class="color-item-table">
+    <%= link_to book_path(cart_book.book) do %>
+    <div class="d-flex align-items-center">
+      <div class="d-none d-md-flex zoom-hover">
+        <%= image_tag(cart_book.book.image_url, class: "img-fluid rounded-3 zoom-hover", style: "width: 120px;", alt: "kitten hiding into a jean") %>
+      </div>
+      <div class="flex-column ms-4 mx-auto mx-md-3">
+        <p class="mb-2"><%= cart_book.book.title %></p>
+        <p class="mb-0"><%= cart_book.book.author %></p>
+      </div>
+    </div>
+    <% end %>
+  </th>
+
+  <td class="book-price align-middle color-item-table">
+    <%= number_with_precision(cart_book.book.price_code.price, precision: 2) %>
   </td>
-  <td class="book-price"><%= number_with_precision(cart_book.book.price_code.price, precision: 2) %></td>
-  <td class="total-price"><%= number_with_precision(cart_book.quantity * cart_book.book.price_code.price, precision: 2) %></td>
-  <td>
-  <%= button_to joint_table_cart_book_path(cart_book), class: "btn btn-notice remove-cart-item", method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce livre du panier?" } do %>
-    <i class="fa-solid fa-trash" style="color: #a2a2a2;"></i>
-  <% end %>
+
+  <td class="color-item-table align-middle">
+    <div class="d-flex align-items-center gap-2">
+      <%= form_with(model: cart_book, url: joint_table_cart_book_path(cart_book), method: :patch, html: { class: 'form-inline test-counter' }) do |f| %>
+        <%= f.number_field :quantity, value: cart_book.quantity, min: 1, class: "form-control form-control-sm cart-quantity-input w-100", data: { book_id: cart_book.id } %>
+      <% end %>
+
+
+      <%= button_to joint_table_cart_book_path(cart_book), class: "btn btn-notice remove-cart-item", method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce livre du panier?" } do %>
+      <i class="fa-solid fa-trash" style="color: #a2a2a2;"></i>
+      <% end %>
+    </div>
+  </td>
+
+  <td class="total-price align-middle color-item-table">
+    <%= number_with_precision(cart_book.quantity * cart_book.book.price_code.price, precision: 2) %>
   </td>
 </tr>
+
