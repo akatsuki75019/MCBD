@@ -7,27 +7,25 @@ class Order < ApplicationRecord
 
 
   def self.create_order_with_books(user, joint_table_cart_book_ids)
-    order = create(user: user) # Crée une nouvelle instance de Order avec l'utilisateur spécifié
+    order = create(user: user) 
     total_price = 0
 
     joint_table_cart_book_ids.each do |joint_table_cart_book_id|
       joint_table_cart_book = JointTableCartBook.find(joint_table_cart_book_id)
       quantity = joint_table_cart_book.quantity
 
-      order.joint_table_order_books.create(book: joint_table_cart_book.book, quantity: quantity) #Cela associe le livre à la commande et crée une nouvelle entrée dans la table de jointure 
-
-      total_price += joint_table_cart_book.book.price_code.price * quantity # Ajoute le prix total de l'article au montant total de la commande
-
-
+      order.joint_table_order_books.create(book: joint_table_cart_book.book, quantity: quantity) 
+      total_price += joint_table_cart_book.book.price_code.price * quantity 
     end
-    order.update(total_price: total_price) # Mise à jour du montant total de la commande
+
+    order.update(total_price: total_price) 
     order
   end 
 
   def self.create_order_for_express_purchase(current_user, book, total_price)
-    order = create(user: current_user) # Crée une nouvelle instance de Order avec le current user
-    order.joint_table_order_books.create(book: book, quantity: 1) # Ajoute le livre avec une quantité de 1
-    order.total_price = total_price # Définition du total price
+    order = create(user: current_user) 
+    order.joint_table_order_books.create(book: book, quantity: 1) 
+    order.total_price = total_price 
     order.save
     order
   end

@@ -2,7 +2,6 @@ class UserMailer < ApplicationMailer
   default from: "mcbd.production@gmail.com"
 
   def welcome_email(user)
-    #Récupère l'instance pour la view
     @user = user
     @url  = 'https://mcbdapp-2089282d029d.herokuapp.com/'
     
@@ -11,7 +10,6 @@ class UserMailer < ApplicationMailer
 
 
   def order_confirmation(order)
-    #Récupère l'instance pour la view
     @user = order.user
     @order = order
     @url  = 'https://mcbdapp-2089282d029d.herokuapp.com/'
