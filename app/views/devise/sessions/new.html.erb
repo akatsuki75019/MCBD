@@ -14,7 +14,11 @@
             </div>
             <div class="mb-4">
               <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-              <%= render "devise/shared/error_messages", resource: resource %>
+              <% flash.each do |message_type, message| %>
+                <div class="text-center text-error alert alert-<%= message_type %>">
+                  <%= message %>
+                </div>
+              <% end %>
                 <div class="margin-top-form form-floating my-3 w-75 mx-auto">
                   <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control", id:"floatingEmail"  %>
                   <label for="floatingEmail">Email</label>

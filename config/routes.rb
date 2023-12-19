@@ -24,10 +24,10 @@ Rails.application.routes.draw do
   get 'static_pages/legal_notice'
   get 'static_pages/terms_and_conditions'
 
-
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions' }
   resources :users
   resources :events, only: [:show, :index]
+
   
   resources :books, only: [:show] 
   match 'books'=>"books#books_by_category" ,via: [:get, :post]

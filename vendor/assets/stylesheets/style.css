@@ -2647,3 +2647,7 @@ opacity: 0.8;
   border-bottom: solid;
   border-color: #0b0c2a;
 }
+
+.text-error {
+	color: #e53637 !important;
+}
