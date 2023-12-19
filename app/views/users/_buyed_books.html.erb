@@ -1,9 +1,3 @@
-<style>
-.hidden {
-  display: none;
-}
-</style>
-
 <div class="my-3 pl-3">
   <p class="lead fw-normal mb-1">Mes livres achetés</p>
   <div class="p-4 color-nav rounded">
@@ -24,15 +18,3 @@
     <% end %>
   </div>
 </div>
-
-<script>
-  document.querySelectorAll('.view-more').forEach(function(link) {
-  link.addEventListener('click', function(event) {
-    event.preventDefault();
-    this.previousElementSibling.querySelectorAll('.hidden').forEach(function(item) {
-      item.classList.remove('hidden');
-    });
-    this.style.display = 'none';
-  });
-});
-</script>

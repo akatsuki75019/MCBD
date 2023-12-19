@@ -2651,3 +2651,7 @@ opacity: 0.8;
 .text-error {
 	color: #e53637 !important;
 }
+
+.hidden {
+  display: none;
+}

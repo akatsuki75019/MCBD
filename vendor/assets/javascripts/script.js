@@ -127,3 +127,15 @@ const updateCartIcon = () => {
   });
   icon.textContent = cartItemsNumber
 }
+
+
+// Show des livres achetés dans le profil User
+document.querySelectorAll('.view-more').forEach(function(link) {
+  link.addEventListener('click', function(event) {
+    event.preventDefault();
+    this.previousElementSibling.querySelectorAll('.hidden').forEach(function(item) {
+      item.classList.remove('hidden');
+    });
+    this.style.display = 'none';
+  });
+});
