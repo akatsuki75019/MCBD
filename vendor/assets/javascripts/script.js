@@ -1,5 +1,4 @@
 // Script sur card event pour la description
-
 const cardDescriptions = document.querySelectorAll('.card-description');
 
 cardDescriptions.forEach(description => {
