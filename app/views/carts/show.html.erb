@@ -1,42 +1,61 @@
-<div class="container product">
-  <div class="row ">
-    <h1 class="text-white d-flex justify-content-center mb-5">Détails du Panier</h1>
-    <div class="table-responsive-md">
-      <table class="table table-striped table-hover" >
-        <thead class >
-          <tr class="thead-dark">
-            <th scope="col">Title</th>
-            <th scope="col">Quantité</th>
-            <th scope="col">Prix unitaire</th>
-            <th scope="col">Prix total du livre</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody class="table-group-divider">
-          <% @cart.joint_table_cart_books.each do |joint_table_cart_book| %>
-            <tr>
-              <td><%= joint_table_cart_book.book.title %></td>
-              <td>
-                <%= form_for(joint_table_cart_book, url: joint_table_cart_book_path(joint_table_cart_book), method: :put) do |f| %>
-                  <%= f.number_field :quantity, value: joint_table_cart_book.quantity, min: 1 %>
-                  <%= f.submit "Mettre à jour", class: "btn " %>
-                <% end %>
-              </td>
-              <td><%= number_with_precision(joint_table_cart_book.book.price_code.price, precision: 2) %></td>
-              <td><%= number_with_precision(joint_table_cart_book.quantity * joint_table_cart_book.book.price_code.price, precision: 2) %></td>
-              <td>
-                <%= button_to "Supprimer du panier", joint_table_cart_book_path(joint_table_cart_book), class: "btn btn-danger", method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce livre du panier?" } %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+<!DOCTYPE html>
+<html class="h-auto" lang="fr">
+  <head>
+    <title>MCBD | Mon panier</title>
+  </head>  
 
-      <h5 class="text-white d-flex justify-content-center mb-4">Total du Panier: <%= number_with_precision(@cart.total_price, precision: 2) %></h5>
+  <div class="mt-5 container">
+    <h1 class="text-white d-flex justify-content-center product__page__title">Mon panier</h1>
 
+    <% if @joint_table_cart_books.present? %>
+      <section class="h-100">
+        <div class="container h-100 py-5">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+
+              <div class="table-responsive"  style="border-radius: 16px;" >
+                <table class="table table-dark">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="h5 color-title-table py-4 pl-4">Articles dans mon panier</th>
+                      <th scope="col" class="color-title-table py-4">Prix à l'unité</th>
+                      <th scope="col" class="color-title-table py-4">Quantité</th>
+                      <th scope="col" class="color-title-table py-4">Prix total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <%= render partial: 'cart_book', collection: @joint_table_cart_books %>
+                  </tbody>
+                </table>
+              </div>
+
+
+              <div class="color-dropdown mb-5 pb-4">
+                <div class="card-body p-4">
+
+                  <div class="float-end">
+                    <p class="mb-0 me-5 d-flex align-items-center">
+                      <span class="small text-white text-muted me-2">Montant de votre panier:</span> 
+                      <span class="lead fw-normal cart-total"><%= number_with_precision(@cart.total_price, precision: 2) + "€" %></span>
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+              <div class="d-flex justify-content-end gap-3">
+                <%= render 'carts/continue_shopping'%>
+                <%= render 'carts/payment_button'%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <% else %>
       <div class="text-center">
-        <%= button_to "Confirmer la commande et payer", checkout_create_path(total: @joint_table_cart_books.sum { |joint_table_cart_book| joint_table_cart_book.book.price_code.price * joint_table_cart_book.quantity }), class: "site-btn btn btn-success", data: { turbo: false } %>
+        <p>Votre panier est vide.</p>
+        <%= render 'carts/continue_shopping' %>
       </div>
-    </div>
+    <% end %>
   </div>
-</div>
+</html>
+

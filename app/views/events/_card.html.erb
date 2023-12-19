@@ -1,17 +1,25 @@
 <% @events.each do |event| %>
   <div class="col">
-    <div class="card anime__review__item__text shadow-sm text-center">
+    <div class="text-center mb-5" alt="" >
       <%= link_to event_path(event) do %>
-        <h4 class="mb-3" style="height: 80px; overflow: hidden;"><%= event.title %></h4>
-        <%= image_tag(event.image_url, class: " set-bg", data: { setbg: event.image_url }, alt: "Description de l'image") %> 
-      <% end %>       
-      <div class="card-body px-0">
+        <%= image_tag(event.image_url, class: " set-bg rounded-3 img-fluid", data: { setbg: event.image_url }, alt: "Affiche faisant référence à lévénement : #{event.title}") %>      
+        <div class="card-body px-0 d-flex flex-column justify-content-center">
+        <h4 class="mb-3 d-flex justify-content-center align-items-center" style="height: 70px; overflow: hidden"><%= event.title %></h4>
         <p class="card-text text-white text-start card-description" data-truncate="80"><%= event.description %></p>
         <div class="d-flex justify-content-around align-items-center mt-4">
-          <%= link_to "Voir l'évènement", event_path(event), class:"btn btn-sm btn-outline-secondary"%>
-          <small class="text-light">Le <%= event.start_date %></small>
+          <% if user_signed_in? %>
+            <% if current_user.attendances.exists?(event_id: event.id) %>
+              <%= button_to "Déjà inscrit", "#", class: "site-btn-second", disabled: true %>
+            <% else %>
+              <%= button_to "Je m'inscris", attend_event_path(event), method: :post, class: "site-btn" %>
+            <% end %>
+          <% else %>
+            <%= button_to "Connectez-vous pour vous inscrire", new_user_session_path, class: "site-btn-second" %>
+          <% end %>
+          <small class="text-light ms-2">Le <%=  l(event.start_date, format: "%e %b %Y à %H:%M") %></small>
         </div>
       </div>
+      <% end %>     
     </div>
   </div>
 <% end %>

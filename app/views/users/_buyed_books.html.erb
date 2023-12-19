@@ -1,0 +1,20 @@
+<div class="my-3 pl-3">
+  <p class="lead fw-normal mb-1">Mes livres achetés</p>
+  <div class="p-4 color-nav rounded">
+    <% @recent_purchases.each do |order| %>
+      <div class="product__item d-flex align-items-start flex-column text-start">
+        <h5 class="mb-2">Commande n°<%= order.id %></h5>
+        <ul class="list-style-position-inside">
+          <% order.books.each_with_index do |book, index| %>
+            <li class="font-italic mb-1 <%= 'hidden' if index < order.books.size - 1 %>">
+              <%= link_to book.title, book_path(book) %>
+            </li>
+          <% end %>
+        </ul>
+        <% if order.books.size > 1 %>
+          <%= link_to 'Voir plus', '#', class: 'view-more text-light mt-2' %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

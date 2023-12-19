@@ -1,0 +1,21 @@
+<% if current_user %>
+  <% cart = current_user.cart %>
+  <%= link_to cart_path(cart), class: "nav-link" do %>
+    <i class="fas fa-shopping-cart"></i>
+    <span class="badge rounded-pill bg-danger cart-item-number">
+      <%= cart.number_of_books_in_cart %>
+    </span>
+  <% end %>
+<% elsif session[:cart_id].present? %>
+  <% cart = Cart.find(session[:cart_id]) %>
+  <%= link_to cart_path(cart), class: "nav-link" do %>
+    <i class="fas fa-shopping-cart"></i>
+    <span class="badge rounded-pill bg-danger cart-item-number">
+      <%= cart.number_of_books_in_cart %>
+    </span>
+  <% end %>
+<% else %>
+  <%= link_to cart_path, class: "nav-link" do %>
+    <i class="fas fa-shopping-cart"></i>
+  <% end %>
+<% end %>

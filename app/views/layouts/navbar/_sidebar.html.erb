@@ -1,0 +1,23 @@
+<div class="offcanvas color-nav offcanvas-start" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+  <div class="offcanvas-header">
+    <div id="offcanvasWithBothOptionsLabel"></div>
+    <button type="button" class="btn shadow-none" data-bs-dismiss="offcanvas" aria-label="Close">
+      <i class="fa-solid fa-xmark fa-xl" style="color: #ffffff;"></i>
+    </button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 ">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/">Accueil</a>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Librairie", books_path, class:"nav-link"%>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Événements", events_path, class:"nav-link"%>
+      </li>
+      <li><hr class="dropdown-divider" /></li>
+      <%= render "layouts/navbar/user_sidebar" %>
+    </ul>
+  </div>
+</div>

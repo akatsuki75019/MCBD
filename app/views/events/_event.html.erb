@@ -1,32 +1,31 @@
-<!-- Anime Section Begin -->
-<section class="anime-details spad">
-  <div class="container">
-    <div class="anime__details__content">
-      <div class="row">
-        <div class="col-lg-3">
-          <%= image_tag(event.image_url, class: "img-fluid rounded set-bg", data: { setbg: event.image_url }, alt: "Description de l'image") %> 
-        </div>
-        <div class="col-lg-9 color-dropdown">
-          <div class="anime__details__text mt-3">
-            <div class="anime__details__title">
-              <h3><%= event.title %></h3>
-            </div>
-            <p class="lead"><%= event.description %></p>
-          </div>
-          <div class="anime__details__widget mt-4">
-            <div class="row">
-              <div class="col-lg-6 col-md-6">
-                <ul class="list-unstyled">
-                  <li><span class="fw-bold">Date:</span> <%= event.start_date.strftime("%A %e %B %Y à %H:%M") %> </li> <!-- Utilisation de la localisation pour le format de date -->
-                </ul>
-              </div>
-            </div>
-            <div class="row">
-              <button class="btn"></button>
-            </div>
-          </div>
-        </div>
+<!-- Illustration Section -->
+<div class="col-lg-3 order-md-1">
+  <%= image_tag(event.image_url, class: "img-fluid rounded set-bg", data: { setbg: event.image_url }, alt: "Affiche faisant référence à lévénement : #{event.title}") %> 
+</div>
+
+<!-- Infos Section -->
+<div class="col-lg-9 order-md-2">
+  <!-- Title and description-->
+  <div class="anime__details__text mt-3 text-center text-lg-left">
+    <div class="anime__details__title">
+      <h3><%= event.title %></h3>
+    </div>
+    <p class="lead"><%= event.description %></p>
+  </div>
+
+  <!-- Date, Attendees & CTAs -->
+  <div class="anime__details__widget mt-4">
+    <div class="row">
+      <div class="col-lg-6 col-md-6">
+        <ul class="list-unstyled">
+          <li><span class="fw-bold">Date :</span><%= l(event.start_date, format: "%A %e %B %Y à %H:%M") %></li>
+          <li><span class="fw-bold">Participants :</span><%= @participants_count %></li>
+        </ul>
       </div>
     </div>
+    <div class="me-2 d-flex justify-content-center justify-content-lg-start">
+      <%= render "attendance_button" %>
+      <%= link_to "Retour", events_path, class:"site-btn-second ms-2"%>
+    </div>
   </div>
-</section>
+</div>

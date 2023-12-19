@@ -52,25 +52,20 @@ class BookDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-    id
-    author
-    carts
-    category
-    description
-    editor
-    image_url
     isbn
-    joint_table_cart_books
-    joint_table_order_books
-    orders
+    title
+    description
+    author
+    image_url
     price_code
+    tva
     quantity
     release_date
-    title
-    tva
+    editor
+    category
+    carts
+    orders
     wishlists
-    created_at
-    updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -105,8 +100,9 @@ class BookDashboard < Administrate::BaseDashboard
 
   #permit to display resource.name like for category the name of category
   def display_resource(resource)
-    "#{resource.name}"
+    "#{resource.title}"
   end
+  
   # def display_resource(price_code)
   #   "PriceCode ##{price_code.id}"
   # end

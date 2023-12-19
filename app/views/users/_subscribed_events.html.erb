@@ -1,0 +1,20 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <p class="lead fw-normal mb-0">Mes inscriptions aux évènements</p>
+  <p class="mb-0"><a href="/events" class="text-muted">Voir tous les events</a></p>
+</div>
+
+<div class="album">
+  <div class="container">
+    <div class="row row-cols-2 row-cols-md-3 g-3">
+      <% @user.events.each do |event| %>
+        <div class="col">
+          <div class=" text-center">
+            <%= link_to event_path(event) do %>
+              <%= image_tag(event.image_url, class: " set-bg rounded-3", data: { setbg: event.image_url }, alt: "Affiche faisant référence à lévénement : #{event.title}") %> 
+            <% end %>       
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

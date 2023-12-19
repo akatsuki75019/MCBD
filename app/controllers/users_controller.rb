@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     else
       @user = current_user
       @recent_purchases = @user.orders.includes(:books).order(created_at: :desc).limit(4)
-
     end
   end
 
@@ -36,14 +35,29 @@ class UsersController < ApplicationController
     
   
     if @user.errors.empty?
-      redirect_to root_path, notice: 'Profil mis à jour avec succès.'
+      redirect_to @user, notice: 'Profil mis à jour avec succès.'
     else
       render :edit
     end
   end
 
-
   def destroy
+    user = User.find(params[:id])
+
+      # Attribuer les commandes à l'utilisateur générique
+      if user.orders.any?
+        generic_user = User.find_by(email: 'generic-user@yopmail.com')
+        user.orders.update_all(user_id: generic_user.id)
+      end
+
+      #réattribuer les attendances aux events
+      if user.attendances.any?
+        generic_user = User.find_by(email: 'generic-user@yopmail.com')
+        user.attendances.update_all(user_id: generic_user.id)
+      end
+
+      # Supprimer l'utilisateur 
+      user.destroy
   end
 
   private 

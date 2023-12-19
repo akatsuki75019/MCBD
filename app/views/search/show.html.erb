@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html class="h-auto" lang="fr">
+  <head>
+    <title>MCBD | Resultats de la recherche </title>
+  </head>  
+  <div class="container text-center mt-5 ">
+    <h2> Resultats de la recherche : <%= @query %></h2>
+  </div> 
+
+  <%= render 'book_results' %>
+  <%= render 'event_results' %>
+  <div class="d-flex justify-content-center">
+    <form class="form-floating my-lg-0 d-md-none" action="/search" method="get" role="search" >
+      <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search" name="query">
+      <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Chercher</button>
+    </form>
+  </div>
+</html>

@@ -1,25 +1,41 @@
-<h2>Modifier son Mot de Passe</h2>
+<!DOCTYPE html>
+<html class="h-auto" lang="fr">
+  <head>
+    <title>MCBD | Réinitialisation du mot de passe</title>
+  </head>
+  <section class="container my-auto py-5">
+    <div class="row">
+      <div class="col-sm-12 col-lg-8 col-xl-6 m-auto">
+        <div class="card border-0 shadow">
+          <div class="card-body header">
+            <div class="margin-top-sign text-center">
+              <h2 class="fw-bold text-white">Modifier son mot de passe</h2>
+                <p class="mt-1 mb-4 text-light">Tu as oublié ton mot de passe ? Pas de problème, tu peux le réinitialiser ici.</p>
+            </div>
+            <div class="mb-4">
+              <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+                <%= render "devise/shared/error_messages", resource: resource %>
+                <%= f.hidden_field :reset_password_token %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+                <div class="form-floating mb-3 w-75 mx-auto">
+                  <%= f.password_field :password, autofocus: true, autocomplete: "new-password", placeholder:"Nouveau mot de passe", class:"form-control", id:"floatingNewPassword" %>
+                  <label for="floatingNewPassword">Nouveau mot de passe</label>
+                </div>
 
-  <div class="field">
-    <%= f.label :password, "Nouveau mot de passe" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> charactères minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirmer le nouveau mot de passe" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sauvegarder" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+                <div class="form-floating mb-3 w-75 mx-auto">
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirmer le nouveau mot de passe", class:"form-control", id:"floatingConfirmNewPassword" %>
+                  <label for="floatingConfirmNewPassword">Confirmer le mot de passe</label>
+                </div>
+                <div class="d-flex justify-content-center mt-5 mb-4">
+                  <%= f.submit "Sauvegarder", class: "site-btn w-50 p-2 mx-auto d-block" %>
+                </div>
+                <p class="text-center text-muted mt-5 mb-0">Tu as déjà un compte ? <a href="/users/sign_in" class="fw-bold text-light"><u>Connecte-toi</u></a><br>
+                <a href="/users/sign_up" class="fw-bold text-light"><u>Inscris-toi</u></a> si tu n'as pas encore de compte ! </p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</html>

@@ -1,5 +1,9 @@
+require 'pg_search'
 class Event < ApplicationRecord
-  has_many :attendances
+  include PgSearch::Model
+  pg_search_scope :search_event, against: [:title, :description]
+
+  has_many :attendances, dependent: :destroy
   has_many :users, through: :attendances
 
 

@@ -112,12 +112,17 @@ ol {
   Helper CSS
 -----------------------*/
 
+.dyslexic-font {
+  font-family: "OpenDyslexic", sans-serif;
+}
+
 .section-title {
 	margin-bottom: 30px;
+	position: relative;
 }
 
 .section-title h4,
-.section-title h5 {
+.section-title h5{
 	color: #ffffff;
 	font-weight: 600;
 	line-height: 21px;
@@ -136,6 +141,53 @@ ol {
 	width: 4px;
 	background: #e53637;
 	content: "";
+}
+
+.section-title .selector {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 24px; /* Ceci est une taille d'exemple ; ajustez selon vos besoins */
+  line-height: 21px;
+  text-transform: uppercase;
+  padding: 10px 40px 10px 20px; /* Ajoutez un padding supplémentaire à droite pour l'image */
+  position: relative;
+  font-family: "Oswald", sans-serif;
+  background: #0b0c2a; 
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: fit-content;
+  box-sizing: border-box; /* Assure que le padding n'ajoute pas à la largeur */
+}
+
+/* Positionnement de la flèche de sélection personnalisée */
+.section-title .selector {
+  background-image: url('https://popupfilmresidency.org/wp-content/uploads/2019/05/white-down-arrow-png-2.png');
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* Ajustez selon les besoins */
+  background-size: 20px; /* Ajustez selon les besoins */
+}
+
+/* Style focus state */
+.section-title .selector:focus ,
+.section-title .selector:hover {
+  outline: none;
+  border-color: #e53637;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(220, 16, 16, 0.8);
+	cursor: grab;
+}
+
+/* red bar */
+.section-title::after {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 32px;
+  width: 4px;
+  background: #e53637;
+  content: "";
 }
 
 .set-bg {
@@ -191,6 +243,27 @@ ol {
 	text-transform: uppercase;
 	display: inline-block;
 	padding: 12px 30px;
+}
+
+.site-btn:hover {
+  background-color: #a62828;
+}
+
+.site-btn-second {
+	font-size: 13px;
+	color: #ffffff;
+	background: #2b2b55;
+	font-weight: 700;
+	border: none;
+	border-radius: 2px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 12px 30px;
+}
+
+.site-btn-second:hover {
+  background-color: #1c1c36;
 }
 
 /* Preloder */
@@ -333,6 +406,13 @@ ol {
 .header__logo {
 	padding: 20px 0 17px;
 }
+
+.logo-img {
+	max-width: 60px; /* Ajustez la largeur maximale de votre logo selon vos besoins */
+	height: auto; /* Ajustez la hauteur automatiquement pour conserver les proportions */
+	display: block; /* Évite l'espace en bas que peuvent introduire les images en ligne */
+	margin: 0 auto; /* Centre l'image horizontalement */
+  }
 
 .header__logo a {
 	display: inline-block;
@@ -1094,6 +1174,19 @@ ol {
 	padding: 14px 20px;
 	border-radius: 4px;
 	margin-right: 1px;
+}
+
+.express_purchase {
+	font-size: 13px;
+	color: #ffffff;
+	background: #FCEB2F;
+	display: inline-block;
+	font-weight: 700;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	padding: 14px 20px;
+	border-radius: 4px;
+	margin-right: 11px;
 }
 
 .anime__details__btn .watch-btn  {
@@ -2423,6 +2516,7 @@ opacity: 0.8;
 
   h1.text-center {
 	text-align: center;
+	margin-bottom: 20px;
   }
 
 .card-description {
@@ -2448,3 +2542,120 @@ opacity: 0.8;
 	background: #070720;
 }
 
+/* Page contact */
+
+
+.container.static-page {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+	box-sizing: border-box;
+  }
+  
+.container.static-page h1,
+.container.static-page p {
+	color: #ffffff;
+ }
+  
+  @media screen and (max-width: 600px) {
+	.container.static-page {
+	  padding: 10px;
+	}
+  
+	.container.static-page h1 {
+	  font-size: 1.5em;
+	}
+  }
+  
+  .form-group {
+	margin-bottom: 15px;
+  }
+  
+  label {
+	display: block;
+	margin-bottom: 8px;
+	font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  textarea {
+	width: 100%;
+	max-width: 600px;
+	padding: 8px;
+	box-sizing: border-box;
+  }
+
+.selector {
+	width: 100%;
+	padding:10px;
+	border-radius:10px;
+	outline: none;
+}
+
+.show-more {
+  color: blue; 
+  text-decoration: underline; 
+  cursor: pointer; 
+	margin-bottom: 10px;
+  display: inline-block; 
+}
+
+#scrollToTopButton:hover {
+  color: #070720; 
+}
+
+#scrollToTopButton {
+  display: none;
+}
+
+#scrollToTopButton.show {
+  display: block;
+	transition: color 0.5s ease;
+}
+
+#carouselExampleCaptions {
+	width: 90%;
+	margin: auto;
+}
+
+	.carousel-item img {
+		object-fit: cover;
+		width: 100%;
+		height: 350px;
+	}
+
+.color-title-table {
+	background-color: #070720 !important;
+	border: none !important;
+}
+
+.color-item-table {
+	background-color: #1d1e39 !important;
+	border: none !important;
+}
+
+.test-counter {
+	width: 50px;
+}
+
+.zoom-hover {
+	transition: all 0.3s;
+}
+
+.zoom-hover :hover{
+	transform: scale(1.07);
+}
+
+.border-custom {
+  border-bottom: solid;
+  border-color: #0b0c2a;
+}
+
+.text-error {
+	color: #e53637 !important;
+}
+
+.hidden {
+  display: none;
+}

@@ -10,7 +10,19 @@ fr:
       order: "Commande"
       price_code: "Code Prix"
       user: "Client"
-      wishlist: "Articles mis en Favori"
+      wishlist: "Liste d'Envies"
+    attributes:
+      book:
+        category_id: "Catégorie"
+        editor_id: "Éditeur"
+        price_code_id: "Code prix"
+      order:
+        user_id: "Client"
+      cart:
+        user_id: "Client"
+      wishlist:
+        book_id: "Contenu"
+        user_id: "Client"
 
   administrate:
     resources:
@@ -18,10 +30,7 @@ fr:
         attributes:
           title: "Titre"
           author: "Auteur"
-          editor: "Éditeur"
-          category: "Catégorie"
           image_url: "URL de l'image"
-          price_code: "Code prix"
           release_date: "Date de sortie"
       
   #to change table header in every index dashboard pages
@@ -32,19 +41,33 @@ fr:
         author: "Auteur"
         category: "Catégorie"
         quantity: "Quantité"
-        price_code: "Code Prix"
+        price_code: "Code prix"
+        release_date: "Date de sortie"
+        carts: "Paniers en cours"
+        orders: "Commandes"
+        wishlists: "Liste d'envies"
       cart:
         user: "Client"
-        books: "Nombre de livre.s"
-        created_at: "Date de création"
+        books: "Contenu"
+        created_at: "Créé le"
+        updated_at: "Mis à jour le"
       category:
         books: "Livres concernés"
         name: "Nom"
+      editor:
+        name: "Nom"
+        distributor: "Distributeur"
+        books: "Livres concernés"
+      event:
+        title: "Titre"
+        start_date: "Date et Heure"
+        users: "Participants"
       order:
         user: "Client"
-        books: "Nombre de livre.s"
+        books: "Contenu"
         total_price: "Prix total"
-        created_at: "Date de création"
+        created_at: "Créée le"
+        updated_at: "Mise à jour le"
       price_code:
         books: "Livres concernés"
         name: "Sigle"
@@ -58,6 +81,16 @@ fr:
         is_admin: "Admin"
         last_name: "Nom"
         orders: "Commande.s"
+        cart: "Panier"
+        wishlist: "Liste d'envies"
+        created_at: "Créé le"
+        updated_at: "Mis à jour le"
+      wishlist:
+        user: "Client"
+        book: "Contenu"
+        created_at: "Créée le"
+        updated_at: "Mise à jour le"
+
 
   time:
     formats:
@@ -65,12 +98,76 @@ fr:
 
   date:
     day_names:
-      - lundi
-      - mardi
-      - mercredi
-      - jeudi
-      - vendredi
-      - samedi
-      - dimanche
+      - Lundi
+      - Mardi
+      - Mercredi
+      - Jeudi
+      - Vendredi
+      - Samedi
+      - Dimanche
     formats:
       default: "%d/%m/%Y"
+
+
+  devise:
+    confirmations:
+      confirmed: "Votre email a bien été confirmé."
+      send_instructions: "Vous recevrez un email avec des instructions pour confirmer votre adresse email dans quelques minutes."
+      send_paranoid_instructions: "Si votre adresse email existe dans notre base de données, vous recevrez un email avec des instructions pour confirmer votre adresse email dans quelques minutes."
+    failure:
+      already_authenticated: "Vous êtes déjà connecté."
+      inactive: "Votre compte n'est pas encore activé."
+      invalid: "Identifiant ou mot de passe invalide."
+      locked: "Votre compte est verrouillé."
+      last_attempt: "Vous avez encore une tentative avant que votre compte ne soit verrouillé."
+      not_found_in_database: "Identifiant ou mot de passe invalide."
+      timeout: "Votre session a expiré. Veuillez vous reconnecter pour continuer."
+      unauthenticated: "Vous devez vous connecter ou vous inscrire avant de continuer."
+      unconfirmed: "Vous devez confirmer votre adresse email avant de continuer."
+    mailer:
+      confirmation_instructions:
+        subject: "Instructions de confirmation"
+      reset_password_instructions:
+        subject: "Instructions de réinitialisation du mot de passe"
+      unlock_instructions:
+        subject: "Instructions de déverrouillage"
+      email_changed:
+        subject: "Email modifié"
+      password_change:
+        subject: "Mot de passe modifié"
+    omniauth_callbacks:
+      failure: "Impossible de vous authentifier avec %{kind} pour la raison suivante : \"%{reason}\"."
+      success: "Authentification réussie avec le compte %{kind}."
+    passwords:
+      no_token: "Vous ne pouvez pas accéder à cette page sans venir d'un email de réinitialisation de mot de passe. Si vous venez d'un email de réinitialisation de mot de passe, assurez-vous d'avoir utilisé l'URL complète fournie."
+      send_instructions: "Vous recevrez un email avec des instructions pour réinitialiser votre mot de passe dans quelques minutes."
+      send_paranoid_instructions: "Si votre adresse email existe dans notre base de données, vous recevrez un lien de récupération de mot de passe à votre adresse email dans quelques minutes."
+      updated: "Votre mot de passe a été modifié avec succès. Vous êtes maintenant connecté."
+      updated_not_active: "Votre mot de passe a été modifié avec succès."
+    registrations:
+      destroyed: "Au revoir ! Votre compte a été supprimé avec succès. Nous espérons vous revoir bientôt."
+      signed_up: "Bienvenue ! Vous vous êtes inscrit avec succès."
+      signed_up_but_inactive: "Vous vous êtes inscrit avec succès. Cependant, nous ne pouvons pas vous connecter car votre compte n'est pas encore activé."
+      signed_up_but_locked: "Vous vous êtes inscrit avec succès. Cependant, nous ne pouvons pas vous connecter car votre compte est verrouillé."
+      signed_up_but_unconfirmed: "Un message avec un lien de confirmation a été envoyé à votre adresse email. Veuillez suivre le lien pour activer votre compte."
+      update_needs_confirmation: "Vous avez mis à jour votre compte avec succès, mais nous devons vérifier votre nouvelle adresse email. Veuillez vérifier votre email et suivre le lien de confirmation pour confirmer votre nouvelle adresse email."
+      updated: "Votre compte a été mis à jour avec succès."
+      updated_but_not_signed_in: "Votre compte a été mis à jour avec succès, mais comme votre mot de passe a été modifié, vous devez vous reconnecter."
+    sessions:
+      signed_in: "Connexion réussie."
+      signed_out: "Déconnexion réussie."
+      already_signed_out: "Déconnexion réussie."
+    unlocks:
+      send_instructions: "Vous recevrez un email avec des instructions pour déverrouiller votre compte dans quelques minutes."
+      send_paranoid_instructions: "Si votre compte existe, vous recevrez un email avec des instructions pour le déverrouiller dans quelques minutes."
+      unlocked: "Votre compte a été déverrouillé avec succès. Veuillez vous connecter pour continuer."
+  errors:
+    messages:
+      already_confirmed: "a déjà été confirmé, veuillez essayer de vous connecter"
+      confirmation_period_expired: "doit être confirmé dans les %{period}, veuillez en demander un nouveau"
+      expired: "a expiré, veuillez en demander un nouveau"
+      not_found: "non trouvé"
+      not_locked: "n'était pas verrouillé"
+      not_saved:
+        one: "1 erreur a empêché l'enregistrement de ce %{resource}"
+        other: "%{count} erreurs ont empêché l'enregistrement de ce %{resource}"

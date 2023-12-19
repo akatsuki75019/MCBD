@@ -67,7 +67,6 @@ group :test do
 end
 
 group :development do
-  
   gem "table_print"
 end
 
@@ -77,4 +76,8 @@ gem "dotenv-rails"
 gem "letter_opener"
 gem "administrate"
 gem "faker"
-
+gem "rails-i18n"
+gem "googlebooks"
+gem "csv"
+gem "pg_search"
+gem "cloudinary"

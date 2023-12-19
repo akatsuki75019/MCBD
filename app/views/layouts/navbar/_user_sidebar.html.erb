@@ -1,0 +1,29 @@
+<% if user_signed_in? %>
+  <li class="nav-item">
+    <% if current_user.is_admin? &&  %>
+      <%= link_to "Tableau de bord (Admin)", admin_root_path(current_user), class:"nav-link"%>
+    <% end %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Mon compte", user_path(current_user), class:"nav-link"%>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Mon panier", cart_path(current_user), class: "nav-link"%>
+  </li>
+  <li class="nav-item">
+    <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, data: {turbo_method: :delete}, :class=>"nav-link" %>
+  </li>
+<% else %>
+  <li class="nav-item">
+    <%= link_to "Se connecter", new_user_session_path, class:"nav-link"%>
+  </li>
+  <li class="nav-item">
+    <%= link_to "S'inscrire", new_user_registration_path, class:"nav-link"%>
+  </li>
+<% end %>
+  <li>
+    <form class="form-inline my-2 my-lg-0 d-md-none" action="/search" method="get" role="search" >
+      <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search" name="query">
+      <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Chercher</button>
+    </form>
+  </li>

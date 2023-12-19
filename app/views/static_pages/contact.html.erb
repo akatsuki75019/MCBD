@@ -1,2 +1,30 @@
-<h1>StaticPages#contact</h1>
-<p>Find me in app/views/static_pages/contact.html.erb</p>
+<!DOCTYPE html>
+<html class="h-auto" lang="fr">
+  <head>
+    <title>MCBD | Contact</title>
+  </head>  
+  <div class="container static-page">
+    <h1>Contactez-nous</h1>
+  
+    <p>Pour toute question ou préoccupation, n'hésitez pas à nous contacter en utilisant le formulaire ci-dessous :</p>
+  
+    <%= form_tag('/contact_submit', method: 'post', class: 'contact-form') do %>
+      <div class="form-group">
+        <%= label_tag 'name', 'Nom :' %>
+        <%= text_field_tag 'name', nil, class: 'form-control', required: true %>
+      </div>
+  
+      <div class="form-group">
+        <%= label_tag 'email', 'Adresse e-mail :' %>
+        <%= email_field_tag 'email', nil, class: 'form-control', required: true %>
+      </div>
+  
+      <div class="form-group">
+        <%= label_tag 'message', 'Message :' %>
+        <%= text_area_tag 'message', nil, class: 'form-control', required: true %>
+      </div>
+  
+      <%= submit_tag 'Envoyer', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</html>

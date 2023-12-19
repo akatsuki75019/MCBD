@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Bonjour <%= @user.first_name %> , </h1>
+    <p> Nous vous confirmons votre paiement de <%= @order.total_price %> euros pour votre commande numéro : <%= @order.id %> . </p>
+    <p> Celle-ci est actuellement en préparation. Vous pouvez venir la récupérer dès que possible à notre boutique.</p>
+    <p> Contenu du panier : </p>
+    <ul>
+      <% @books.each do |book| %>
+        <li><%= book.title %> - Quantité : <%= book.joint_table_order_books.find_by(order: @order).quantity %> - Prix Total : <%= book.price_code.price * book.joint_table_order_books.find_by(order: @order).quantity %></li>
+      <% end %>
+    </ul>
+
+    <p>
+      Pour accéder à votre espace client, connectez- via : <%= @url %>.
+    </p>
+    <p>
+      A très vite !
+    </p>
+  </body>
+</html>

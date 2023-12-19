@@ -1,11 +1,12 @@
 class CheckoutController < ApplicationController
   def create
-    @total = params[:total].to_d
     @user_id = params[:user_id]
+    return if current_user != User.find(@user_id)
+
     @joint_table_cart_books = current_user.cart.joint_table_cart_books.includes(:book)
     total_price = @joint_table_cart_books.sum { |joint_table_cart_book| joint_table_cart_book.book.price_code.price }
-  
     joint_table_cart_book_ids = @joint_table_cart_books.pluck(:id)
+    @total = current_user.cart.joint_table_cart_books.sum { |joint_table_cart_book| joint_table_cart_book.book.price_code.price * joint_table_cart_book.quantity }
   
     @session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
@@ -32,17 +33,12 @@ class CheckoutController < ApplicationController
       success_url: checkout_success_url + '?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: checkout_cancel_url
     )
-    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-    puts "Session: #{@session.inspect}"
-    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+
     redirect_to @session.url, allow_other_host: true
   
   end
 
   def express_checkout
-    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-    puts "Params: #{params.inspect}"
-    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
 
     @user_id = params[:user_id]
     @book = Book.find_by(id: params[:book_id])
@@ -75,9 +71,7 @@ class CheckoutController < ApplicationController
       success_url: checkout_success_url + '?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: checkout_cancel_url
     )
-    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-    puts "Session: #{@session.inspect}"
-    puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+
     redirect_to @session.url, allow_other_host: true
   end
 
@@ -85,23 +79,22 @@ class CheckoutController < ApplicationController
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
     checkout_type = @session.metadata['checkout_type']
+    @total = @session.amount_total / 100.0
 
-    if checkout_type == 'cart_checkout' #cas du paiement via le panier
+    if checkout_type == 'cart_checkout' 
       joint_table_cart_book_ids = @session.metadata.joint_table_cart_book_ids.split(',').map(&:to_i)
-  
-    #Création d'une nouvelle instance dans la BDD Order (voir dans le model Order)
-       Order.create_order_with_books(current_user, joint_table_cart_book_ids)
+      @joint_table_cart_books = JointTableCartBook.where(id: joint_table_cart_book_ids).includes(:book)
+
+      @order = Order.create_order_with_books(current_user, joint_table_cart_book_ids)
 
     #Gérer la màj des quantités après un paiement stripe:
-       joint_table_cart_book_ids.each do |joint_table_cart_book_id| #conversion des identifiants des JointTableCartBook, on les diviseàchaque virgule, on converti en entiers
-        joint_table_cart_book = JointTableCartBook.find(joint_table_cart_book_id) #on chercheun id specifique
-      # Mettre à jour la quantité en stock du livre
+      joint_table_cart_book_ids.each do |joint_table_cart_book_id| 
+        joint_table_cart_book = JointTableCartBook.find(joint_table_cart_book_id) 
         book = joint_table_cart_book.book 
-        new_stock_quantity = book.quantity - joint_table_cart_book.quantity #new stock = quantité actuelle du livre - qté commandée
-        book.update(quantity: new_stock_quantity) #mise à jour de la qté en stock
+        new_stock_quantity = book.quantity - joint_table_cart_book.quantity 
+        book.update(quantity: new_stock_quantity) 
       end
 
-    # Effacer les articles du panier après la commande
       current_user.cart.joint_table_cart_books.destroy_all
 
 
@@ -109,14 +102,10 @@ class CheckoutController < ApplicationController
       book_id = @session.metadata['book_id']
       user_id = @session.metadata.user_id
       total_price = @session.amount_total / 100.0
-
-       # Récupérer le livre associé à l'achat express
       book = Book.find_by(id: book_id)
 
-      #Création d'une nouvelle instance dans la BDD Order (voir dans le model Order)
-      Order.create_order_for_express_purchase(current_user, book, total_price)
+      @order = Order.create_order_for_express_purchase(current_user, book, total_price)
 
-      #Gérer la màj des quantités après un paiement stripe:
       book.update_stock_quantity(1)
     end
   end
