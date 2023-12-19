@@ -14,8 +14,9 @@ class UserMailer < ApplicationMailer
     @order = order
     @url  = 'https://mcbdapp-2089282d029d.herokuapp.com/'
     @books = order.joint_table_order_books.map(&:book)
-
-    mail(to: @user.email, subject: "Merci votre achat.")
+    if order.total_price != 0
+      mail(to: @user.email, subject: "Merci votre achat.")
+    end
   end
 
 end
