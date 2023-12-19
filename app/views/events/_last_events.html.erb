@@ -9,7 +9,9 @@
           <div class="product__item">
             <%= link_to event_path(event) do %>
               <div class="text-center">
-                <%= image_tag(event.image_url, class: "product__item__pic set-bg", data: { setbg: event.image_url }, alt: "Affiche faisant référence à lévénement : #{event.title}") %>           
+                <div class="zoom-hover">
+                  <%= image_tag(event.image_url, class: "product__item__pic set-bg zoom-hover", data: { setbg: event.image_url }, alt: "Affiche faisant référence à lévénement : #{event.title}") %>           
+                </div>
                 <div class="product__item__text">
                   <h5><%= event.title %></h5>
                 </div>

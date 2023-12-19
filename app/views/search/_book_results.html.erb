@@ -13,14 +13,12 @@
             </div>
           </div>
           <% if @books %>
-            <% if @books.any? %>
-              <ul>
-                <% @books.each do |book| %>
-                  <li>
-                    <%= link_to "#{book.title} de #{book.author}", book_path(book) %>
-                  </li>
-                <% end %>
-              </ul>
+            <% if @books.any? %>            
+              <% @books.each do |book| %>
+                <div class ="row d-flex">
+                  <%= link_to "#{book.title} de #{book.author}", book_path(book) %>
+                </div>
+              <% end %>
             <% else %>
               <p>Pas de livre(s) trouvé(s)</p>
             <% end %>

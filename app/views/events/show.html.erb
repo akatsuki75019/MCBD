@@ -1,34 +1,37 @@
-<%= render "breadcrumb" %>
 
-<section class="anime-details spad">
-  <div class="container">
-    <div class="anime__details__content">
+<!DOCTYPE html>
+<html class="h-auto" lang="fr">
+  <head>
+    <title>MCBD| <%= @event.title%> </title>
+  </head>
+  <%= render "breadcrumb" %>
 
-      <!--Event sheet-->
-      <div class="row">
-        <%= render @event %>
-      </div>
-
-      <section class="product-page spad pb-0 mt-3 ">
-        <div class="container product__page__title">
-          <div class="row">
-            <div class="col-lg-12">
-              <%= render 'last_events'%>
-              <!--Map section-->
-              <div class="product__page__content">
-                <%= render partial: "title", locals: {title_contents: "Se rendre aux événements" } %>
-                <div class="container" >
-                  <div class="row">
-                    <%= render "layouts/maps" %>
-                    <%= render "layouts/shop_infos"%>
+  <section class="anime-details spad">
+    <div class="container">
+      <div class="anime__details__content">
+        <div class="row">
+          <%= render @event %>
+        </div>
+        <section class="product-page spad pb-0 mt-3 ">
+          <div class="container product__page__title">
+            <div class="row">
+              <div class="col-lg-12">
+                <%= render 'last_events'%>
+                <!--Map section-->
+                <div class="product__page__content">
+                  <%= render partial: "title", locals: {title_contents: "Se rendre aux événements" } %>
+                  <div class="container" >
+                    <div class="row">
+                      <%= render "layouts/maps" %>
+                      <%= render "layouts/shop_infos"%>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    
+        </section>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</html>

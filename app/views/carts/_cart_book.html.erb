@@ -10,7 +10,7 @@
     <%= link_to book_path(cart_book.book) do %>
     <div class="d-flex align-items-center">
       <div class="d-none d-md-flex zoom-hover">
-        <%= image_tag(cart_book.book.image_url, class: "img-fluid rounded-3 zoom-hover", style: "width: 120px;", alt: "kitten hiding into a jean") %>
+        <%= image_tag(cart_book.book.image_url, class: "img-fluid rounded-3 zoom-hover", style: "width: 80px;", alt: "kitten hiding into a jean") %>
       </div>
       <div class="flex-column ms-4 mx-auto mx-md-3">
         <p class="mb-2"><%= cart_book.book.title %></p>
@@ -21,7 +21,7 @@
   </th>
 
   <td class="book-price align-middle color-item-table">
-    <%= number_with_precision(cart_book.book.price_code.price, precision: 2) %>
+    <span><%= number_with_precision(cart_book.book.price_code.price, precision: 2) %></span><span>€</span>
   </td>
 
   <td class="color-item-table align-middle">
@@ -38,7 +38,7 @@
   </td>
 
   <td class="total-price align-middle color-item-table">
-    <%= number_with_precision(cart_book.quantity * cart_book.book.price_code.price, precision: 2) %>
+    <span><%= number_with_precision(cart_book.quantity * cart_book.book.price_code.price, precision: 2) + "€" %></span>
   </td>
 </tr>
 
