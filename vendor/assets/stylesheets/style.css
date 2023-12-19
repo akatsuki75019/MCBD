@@ -112,6 +112,10 @@ ol {
   Helper CSS
 -----------------------*/
 
+.dyslexic-font {
+  font-family: "OpenDyslexic", sans-serif;
+}
+
 .section-title {
 	margin-bottom: 30px;
 	position: relative;

@@ -67,7 +67,6 @@ group :test do
 end
 
 group :development do
-  
   gem "table_print"
 end
 
