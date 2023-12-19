@@ -64,12 +64,13 @@ class Book < ApplicationRecord
   end
 
   def scrap_google
-
+        # Recupere les infos de google books via l'isbn du livre
     google_book = GoogleBooks.search("isbn:#{isbn}").first
     if google_book
       url = URI.parse(google_book.instance_variable_get("@item")["selfLink"])
       json = scrap_json(url)
       p json
+      # Crée l'editeur si il n'est pas en BDD sinon lui attribut un existant
       editor =  Editor.find_or_create_by(name: json["volumeInfo"]["publisher"]) 
 
         
@@ -79,11 +80,12 @@ class Book < ApplicationRecord
         self.description = json["volumeInfo"]["description"]|| "description"
         self.editor = editor|| "anonymous"
         # Prio a la cover la plus grande
-        self.image_url = json.dig("volumeInfo", "imageLinks", "large")
+        self.image_url = json.dig("volumeInfo", "imageLinks", "thumbnail")
+
         # sinon les autres
+        self.image_url ||= json.dig("volumeInfo", "imageLinks", "large")
         self.image_url ||= json.dig("volumeInfo", "imageLinks", "medium")
         self.image_url ||= json.dig("volumeInfo", "imageLinks", "small")
-        self.image_url ||= json.dig("volumeInfo", "imageLinks", "thumbnail")
 
         # sinon une image qui dis "pas d'image dispo"
         self.image_url ||= "https://www.legrand.be/modules/custom/legrand_ecat/assets/img/no-image.png"
