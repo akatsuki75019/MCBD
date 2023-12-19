@@ -20,7 +20,6 @@ cardDescriptions.forEach(description => {
 
   // Script sur book show pour le synopsis
 
-
 const books = document.querySelectorAll(".book");
 
 books.forEach(book => {
@@ -37,11 +36,11 @@ books.forEach(book => {
     showMoreBtn.style.cursor = 'pointer';
     showMoreBtn.addEventListener('click', () => {
       if (showMoreBtn.innerText === 'Voir Plus') {
-        showMoreBtn.style.transition = '1s ease-in';
+        description.style.transition = '0.3s ease-in';
         description.innerText = fullText;
         showMoreBtn.innerText = 'Voir Moins';
       } else {
-        showMoreBtn.style.transition = '1s ease-out';
+        description.style.transition = '0.3s ease-out';
         description.innerText = truncatedText;
         showMoreBtn.innerText = 'Voir Plus';
       }

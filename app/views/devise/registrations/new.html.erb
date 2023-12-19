@@ -1,55 +1,61 @@
 <!DOCTYPE html>
 <html class="h-auto" lang="fr">
   <head>
-    <title>MCBD| Inscription</title>
+    <title>MCBD | Inscription</title>
   </head>
-  <section class="container my-auto">
+
+  <section class="container my-auto py-5">
     <div class="row">
       <div class="col-sm-12 col-lg-8 col-xl-6 m-auto">
         <div class="card border-0 shadow">
           <div class="card-body header">
-            <form class="custom-form" action="/users" method="POST">
-              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-              <div class="margin-top-sign text-center">
-                <h2 class="fw-bold text-white">Inscription</h2>
-                <p class="mt-1 mb-4 text-light">Pour pouvoir faire tes achats sur MCBD !</p>
-              </div>
-              <div class="margin-top-form form-floating mb-3 w-75 mx-auto">
-                <input id="email" name="user[email]" type="email" autocomplete="email" required class="form-control">
-                <label for="email" class="text-dark">Email</label>
-              </div>
+            <div class="margin-top-sign text-center">
+              <h2 class="fw-bold text-white">Inscription</h2>
+              <p class="mt-1 mb-4 text-light">Pour pouvoir faire tes achats sur MCBD !</p>
+            </div>
+            <div class="mb-4">
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= render "devise/shared/error_messages", resource: resource %>
 
-              <div class="form-floating mb-3 w-75 mx-auto">
-                <input id="password" name="user[password]" type="password" autocomplete="current-password" required class="form-control">
-                <label for="password" class="text-dark">Mot de passe</label>
-              </div>
+                <div class="margin-top-form form-floating my-5 w-75 mx-auto">
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control", id:"floatingEmail" %>
+                  <label for="floatingEmail">Email</label>
+                </div>
 
-              <div class="form-floating mb-3 w-75 mx-auto">
-                <input id="password_confirm" name="user[password_confirmation]" type="password" autocomplete="current-password" required class="form-control">
-                <label for="password_confirm" class="text-dark">Confirmer le mot de passe</label>
-              </div>
+                <div class="form-floating mb-3 w-75 mx-auto">
+                  <%= f.password_field :password, autocomplete: "password", placeholder:"Mot de passe", class:"form-control", id:"floatingPassword" %>
+                  <label for="floatingPassword">Mot de passe</label>
+                </div>
 
-              <div class="row mb-3">
-                <div class="col-6">
-                  <div class="custom-control custom-checkbox d-flex align-items-center text-muted">
-                    <input id="terms" type="checkbox" value="" class="custom-control-input mx-2" required>
-                    <label for="terms" class="custom-control-label text-white">J'accepte les <a href="/static_pages/gdpr" target="_blank" class="text-light">conditions d'utilisation</a></label>
+                <div class="form-floating mb-3 w-75 mx-auto">
+                  <%= f.password_field :password_confirmation, autocomplete: "password", placeholder:"Confirmer le mot de passe", class:"form-control", id:"floatingPasswordConfirm" %>
+                  <label for="floatingPasswordConfirm" class="text-dark">Confirmer le mot de passe</label>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-6">
+                    <div class="custom-control custom-checkbox d-flex align-items-center text-muted">
+                      <input id="terms" type="checkbox" value="" class="custom-control-input mx-2" required>
+                      <label for="terms" class="custom-control-label text-white">J'accepte les <a href="/static_pages/gdpr" target="_blank" class="text-light">conditions d'utilisation</a></label>
+                    </div>
+                  </div>
+
+                  <div class="col-6 text-end">
+                    <a class="float-right" href="/users/password/new">Mot de passe oublié?</a>
                   </div>
                 </div>
-
-                <div class="col-6 text-end">
-                  <a class="float-right" href="/users/password/new">Mot de passe oublié?</a>
+                <div class="row mb-3">
+                  <div class="d-flex justify-content-center mt-5 mb-4">
+                    <%= f.submit "S'inscrire", class: "site-btn w-50 p-2 mx-auto d-block"%>
+                  </div>
                 </div>
-              </div>
-
-              <div class="d-flex justify-content-center mt-5">
-                <button type="submit" class="site-btn w-50 p-2 mx-auto d-block">S'inscrire</button>
-              </div>
-              <p class="text-center text-muted mt-5 mb-0">Tu as déjà un compte ? <a href="/users/sign_in" class="fw-bold text-light"><u>Connecte-toi</u></a></p>
-            </form>
+                <p class="text-center text-muted mt-4 mb-0">Tu as déjà un compte ? <a href="/users/sign_in" class="fw-bold text-light"><u>Connecte-toi</u></a></p>
+              </form>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 </html>
+

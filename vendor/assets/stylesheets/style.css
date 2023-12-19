@@ -2642,3 +2642,8 @@ opacity: 0.8;
 .zoom-hover :hover{
 	transform: scale(1.07);
 }
+
+.border-custom {
+  border-bottom: solid;
+  border-color: #0b0c2a;
+}

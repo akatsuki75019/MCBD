@@ -98,13 +98,13 @@ fr:
 
   date:
     day_names:
-      - lundi
-      - mardi
-      - mercredi
-      - jeudi
-      - vendredi
-      - samedi
-      - dimanche
+      - Lundi
+      - Mardi
+      - Mercredi
+      - Jeudi
+      - Vendredi
+      - Samedi
+      - Dimanche
     formats:
       default: "%d/%m/%Y"
 
