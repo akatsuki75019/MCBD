@@ -3,9 +3,8 @@ class Cart < ApplicationRecord
   has_many :books, through: :joint_table_cart_books
   belongs_to :user, optional: true
 
-  # Règles de métiers pour ajouter une entrée "cart-book" dans la BDD
   def add_book_in_cart(book, quantity)
-    user_cart = user&.cart || self # Si l'utilisateur est connecté, utilise son panier, sinon utilise le panier actuel
+    user_cart = user&.cart || self 
   
     return "La quantité demandée n'est pas disponible" if quantity <= 0
     return "Le livre est en rupture de stock" if book.quantity < quantity
@@ -30,13 +29,12 @@ class Cart < ApplicationRecord
     end
   end
 
-  #parcourt les articles du panier temporaire, les ajoute au panier de l'utilisateur connecté s'ils sont en stock, et les supprime du panier temporaire. 
-  #Si un article n'est plus en stock dans le panier de l'utilisateur connecté =message d'alerte 
+
   def total_price
     joint_table_cart_books.sum { |joint_table_cart_book| joint_table_cart_book.quantity * joint_table_cart_book.book.price_code.price }
   end
 
-  #pour l'affichage du compteur dans la navbar
+  
   def number_of_books_in_cart
     joint_table_cart_books.sum(:quantity)
   end

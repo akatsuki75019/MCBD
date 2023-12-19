@@ -9,7 +9,7 @@ class JointTableCartBooksController < ApplicationController
     book = Book.find(params.fetch(:book_id, nil))
     quantity = params.fetch(:quantity, 1).to_i
 
-    #Gestion du panier en fonction de l'état de connexion de l'utilisateur :
+   
     if current_user
       user_cart = current_user.cart 
     else
@@ -43,13 +43,13 @@ class JointTableCartBooksController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
+
   def set_cart_book
     @cart_book = JointTableCartBook.find(params[:id])
     @cart = @cart_book.cart
   end
 
-  # Only allow a list of trusted parameters through.
+
   def cart_book_params
     params.require(:joint_table_cart_book).permit(:book_id, :cart_id, :quantity)
   end
