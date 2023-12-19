@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="breadcrumb__links">
-          <%= link_to '<i class="fa fa-home"></i> Acceuil'.html_safe, root_path %>
+          <%= link_to '<i class="fa fa-home"></i> Accueil'.html_safe, root_path %>
           <% if @category.present? %>
             <%= link_to @category.name, books_path(@category) %>
           <% end %>

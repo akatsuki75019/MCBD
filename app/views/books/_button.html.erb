@@ -1,20 +1,22 @@
 <div class="animedetailsbtn">
-  <div class="row mb-5">
-    <%= form_with(url: joint_table_cart_books_path, method: :post, class: "d-flex align-items-end text-white") do |form| %>
-      <div class="col-lg-2 mb-lg-0 mb-2">
-        <%= form.hidden_field :book_id, value: @book.id %>
-        <label for="quantity" class="ml-2">Quantité:</label>
-        <%= form.number_field :quantity, value: 1, min: 1, class: "form-control mb-2 ml-2 w-100", as: :hidden %>
-      </div>
-      <div class="col-lg-3">
-        <%= form.submit "Ajouter au panier", class: "site-btn", disabled: @book.quantity.zero? %>
-      </div>
-    <% end %>
+  <div class="row mb-5 align-items-end gap-2">
+    <div class="col-lg-5 d-flex align-items-end">
+      <%= form_with(url: joint_table_cart_books_path, method: :post, class: "d-flex text-white align-items-end") do |form| %>
+        <div class="col-lg-4 mb-lg-0 mb-2">
+          <%= form.hidden_field :book_id, value: @book.id %>
+          <label for="quantity" class="ml-2">Quantité:</label>
+          <%= form.number_field :quantity, value: 1, min: 1, class: "form-control mb-2 ml-2 w-100", as: :hidden %>
+        </div>
+        <div class="col-lg-8">
+          <%= form.submit "Ajouter au panier", class: "site-btn mb-1", disabled: @book.quantity.zero? %>
+        </div>
+      <% end %>
+    </div>
     
-    <div class="d-flex mt-2 ml-3">
+    <div class="col-lg-6 d-flex align-items-center mb-1">
       <% if user_signed_in? %>
         <% button_classes = "site-btn-second"
-           button_classes += " disabled-button" if @book.quantity.zero?
+        button_classes += " disabled-button" if @book.quantity.zero?
         %>
         <%= button_to "Achat express pour 1 livre", express_checkout_path(book_id: @book.id, quantity: params[:quantity], user_id: current_user.id, total: @book.price_code.price), method: :post, class: button_classes, data: { turbo: false }, disabled: @book.quantity.zero? %>
       <% else %>
@@ -23,4 +25,3 @@
     </div>  
   </div>
 </div>
-

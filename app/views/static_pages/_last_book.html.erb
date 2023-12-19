@@ -5,7 +5,9 @@
         <div class="product__item">
           <%= link_to book_path(book) do %>
             <div class="text-center">
-              <%= image_tag(book.image_url, class: "product__item__pic set-bg", data: { setbg: book.image_url }, alt: "Ceci est la couverture de : #{book.title}") %>           
+              <div class="zoom-hover">
+                <%= image_tag(book.image_url, class: "product__item__pic set-bg zoom-hover", data: { setbg: book.image_url }, alt: "Ceci est la couverture de : #{book.title}") %>           
+              </div>
               <div class="product__item__text">
                 <h5><%= book.title %></h5>
               </div>

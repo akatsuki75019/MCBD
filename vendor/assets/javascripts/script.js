@@ -20,7 +20,6 @@ cardDescriptions.forEach(description => {
 
   // Script sur book show pour le synopsis
 
-
 const books = document.querySelectorAll(".book");
 
 books.forEach(book => {
@@ -37,11 +36,11 @@ books.forEach(book => {
     showMoreBtn.style.cursor = 'pointer';
     showMoreBtn.addEventListener('click', () => {
       if (showMoreBtn.innerText === 'Voir Plus') {
-        showMoreBtn.style.transition = '1s ease-in';
+        description.style.transition = '0.3s ease-in';
         description.innerText = fullText;
         showMoreBtn.innerText = 'Voir Moins';
       } else {
-        showMoreBtn.style.transition = '1s ease-out';
+        description.style.transition = '0.3s ease-out';
         description.innerText = truncatedText;
         showMoreBtn.innerText = 'Voir Plus';
       }
@@ -88,7 +87,7 @@ const cartItems = document.querySelectorAll('.cart-quantity-input');
   cartItem.addEventListener('change', (e) => {
     const target = e.target
     target.form?.submit();
-    const bookNumber = parseInt(target.value);
+    const bookNumber = parseInt(target.value.replace('€', ''));
     updateCartIcon()
     updateTotalPrice(target, bookNumber)
   })
@@ -101,9 +100,9 @@ const updateTotalCart = () => {
   if (cartTotal == null || allTotalPrice ==null) return;
 
   [...allTotalPrice].forEach((totalPrice) => {
-    sum += parseFloat(totalPrice.textContent.replace(',', '.'))
+    sum += parseFloat(totalPrice.textContent.replace(',', '.').replace('€', ''))
   })
-  cartTotal.textContent = sum.toFixed(2)
+  cartTotal.textContent = sum.toFixed(2) + '€'
   cartTotal.textContent = cartTotal.textContent.replace('.', ',')
 }
 
@@ -112,8 +111,8 @@ const updateTotalPrice = (target, number) => {
     const bookPrice = target.closest('tr')?.querySelector('.book-price');
     if (bookPrice == null && totalPrice == null) return;
 
-    const newTotalPrice = parseFloat(bookPrice.textContent.replace(',', '.')) * number;
-    totalPrice.textContent = newTotalPrice.toFixed(2)
+    const newTotalPrice = parseFloat(bookPrice.textContent.replace(',', '.').replace('€', '')) * number;
+    totalPrice.textContent = newTotalPrice.toFixed(2) + '€'
     totalPrice.textContent = totalPrice.textContent.replace('.', ',')
     updateTotalCart()
 }
@@ -124,8 +123,19 @@ const updateCartIcon = () => {
 
   let cartItemsNumber = 0;
   cartItems.forEach(item => {
-      cartItemsNumber += parseFloat(item.value);
+      cartItemsNumber += parseFloat(item.value.replace('€', ''));
   });
   icon.textContent = cartItemsNumber
 }
 
+
+// Show des livres achetés dans le profil User
+document.querySelectorAll('.view-more').forEach(function(link) {
+  link.addEventListener('click', function(event) {
+    event.preventDefault();
+    this.previousElementSibling.querySelectorAll('.hidden').forEach(function(item) {
+      item.classList.remove('hidden');
+    });
+    this.style.display = 'none';
+  });
+});

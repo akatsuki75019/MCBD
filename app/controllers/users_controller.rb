@@ -35,12 +35,11 @@ class UsersController < ApplicationController
     
   
     if @user.errors.empty?
-      redirect_to root_path, notice: 'Profil mis à jour avec succès.'
+      redirect_to @user, notice: 'Profil mis à jour avec succès.'
     else
       render :edit
     end
   end
-
 
   def destroy
   end
