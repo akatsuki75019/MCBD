@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   root 'static_pages#index'
   
   namespace :admin do
-      resources :users
+      resources :users, only: [:index, :show, :edit, :update, :destroy]
       resources :books
-      resources :orders
-      resources :carts
+      resources :orders, only: [:index, :show, :edit, :update, :destroy]
+      resources :carts, only: [:index, :show, :edit, :update, :destroy]
       resources :price_codes
       resources :categories
       resources :editors
