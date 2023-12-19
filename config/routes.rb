@@ -7,7 +7,6 @@ Rails.application.routes.draw do
       resources :books
       resources :orders
       resources :carts
-      resources :wishlists
       resources :price_codes
       resources :categories
       resources :editors

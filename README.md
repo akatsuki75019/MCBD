@@ -67,6 +67,7 @@ MCBD App est une application rails 7 développée pour une petite librairie pari
 ## Diagramme de la base de données
 [Diagramme MCBD](https://dbdiagram.io/d/MCBD-project-656def0856d8064ca059e219)
 
+![MCBD dbdiagram.io](https://res.cloudinary.com/dgsiwrjpp/image/upload/v1702993184/MCBD/dbdiagram.png)
 
 
 ## Modèles définis
@@ -168,5 +169,10 @@ Blanchard-Chabay Floriane
 Coron Alexandre
 Courtois Axel
 Guerin Nelly
+
+
+## Remerciements
+
+À Hadrien Samouillan et Charles Dutheil, un immense merci pour votre mentorat précieux tout au long du développement de MCBD Shop. Votre expertise et vos conseils ont été des clés essentielles pour résoudre nos défis. Votre soutien continu a été inestimable.
 
 Merci d'utiliser MCBD Shop - Librairie Paris ! N'hésitez pas à nous contacter pour toute question ou commentaire.
