@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-  has_one :cart
-  has_one :wishlist
-  has_many :orders
-  has_many :attendances
+  has_one :cart, dependent: :destroy
+  has_one :wishlist, dependent: :destroy
+  has_many :orders, dependent: :destroy
+  has_many :attendances, dependent: :destroy
   has_many :events, through: :attendances
 
   # Include default devise modules. Others available are:

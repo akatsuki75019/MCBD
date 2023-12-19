@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :user
-  has_many :joint_table_order_books
+  has_many :joint_table_order_books, dependent: :destroy
   has_many :books, through: :joint_table_order_books
   before_save :calculate_total_price
   after_save :send_confirmation_emails
