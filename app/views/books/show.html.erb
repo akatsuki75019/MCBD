@@ -2,6 +2,10 @@
 <html class="h-auto" lang="fr">
   <head>
     <title>MCBD|<%= @book.title%> </title>
+    <script type="application/ld+json">
+      <%= book_jsonld(@book) %>
+    </script>
+
   </head>
 
   <%= render 'breadcrumb' %>
@@ -36,4 +40,5 @@
       </div>
     </div>
   </section>
+  
 </html>
