@@ -3,7 +3,7 @@
 #### Avant-propos :
   * Github de l'équipe : [MCBD](https://github.com/akatsuki75019/MCBD)
   * Notion de l'équipe (gestion de projet) : [Projet Final Fullstack](https://little-self-taught-chameleon.notion.site/Projet-final-fullstack-af79220fcb33424899d3cfd75030d07d?pvs=4)
-  * MCBD Shop en production : [MCBD App](https://mcbdapp-2089282d029d.herokuapp.com/) 
+  * MCBD Shop en production : [MCBD App](https://mcbd-a75a07330df5.herokuapp.com/) 
 
 
 ## À propos de MCBD Shop 
