@@ -120,7 +120,8 @@ Assurez-vous d'avoir Ruby 7 et PostgreSQL installés sur votre machine.
   * `MAILJET_PWD='votre-mot-de-passe-mailjet'`
   * `PUBLISHABLE_KEY='votre-cle-API-stripe'`
   * `SECRET_KEY='votre-cle-secrete-stripe'`
-7. Lancez le serveur : `$ rails server`
+7. Lancez la commande `rails assets:precompile`
+8. Lancez le serveur : `$ rails server`
 
 L'application devrait être accessible à l'adresse http://localhost:3000.
 
